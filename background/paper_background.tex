@@ -1,0 +1,713 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+\usepackage{url}
+
+\newcommand{\bl}{b_L}
+\newcommand{\mhat}{\hat{m}}
+
+\title{Transformer MLP Gate Thresholds Are Couplings
+to a Carried Reference Direction}
+\author{Olli Tuomi\\Evident Solutions Oy}
+\date{July 22, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The corpus-mean direction of a transformer's residual stream is usually
+treated as a nuisance and subtracted before analysis. We present
+evidence that it is a functional component: the reference against which
+the MLP gate population sets its operating point. In Phi-2, an exact
+decomposition of resting gate pre-activations shows that the resting
+inhibition of $>$99.9\% of gates is carried by the coupling $w\cdot\bl$
+to the carried mean direction, at $50$--$60\times$ the explicit bias
+parameter, and this resting term rank-predicts each neuron's firing
+rate at $\rho \approx 0.95$. Causally, removing the stream's projection
+on the reference multiplies above-threshold firing by $\sim$9$\times$,
+dose-monotonically, at $30$--$40\times$ a norm-matched control; a
+random-initialised twin is flat, and replacement tests show the
+function is carried by the direction, not the magnitude or token
+content. The decomposition replicates on four further families
+spanning both gate types (GELU with an explicit gate bias, bias-free
+SwiGLU), and the dose-response on two of them. Across an eight-model
+scan the mechanism is present in every GELU and SiLU family and absent
+only in OPT, where an opposing LayerNorm bias cancels the carried
+reference. Gate thresholds are implemented as couplings to a constant
+the network itself builds and maintains, not as bias parameters.
+\end{abstract}
+
+\section{Introduction}
+
+Transformer residual streams contain large, stable components that are
+shared across inputs: attention sinks and massive activations
+\citep{xiao2023,sun2024}, and outlier dimensions tied to token
+frequency \citep{kovaleva2021,timkey2021,puccetti2022}. Existing work
+locates these objects and shows they matter for quantisation and
+attention. What they are \emph{for}, computationally, is less settled.
+
+This paper studies one such object, the corpus-mean direction of the
+layer-normalised residual stream, $\bl$, and measures a specific
+function for it: it is the reference against which the MLP gate
+population sets its operating point. The claim decomposes into parts
+that were tested separately, each against a random-initialised control
+model (``twin'') of identical architecture:
+
+\begin{enumerate}
+\item \textbf{Object} (\S\ref{sec:object}): $\bl$ is constant across
+  text, is nearly a single direction shared across mid-stack layers,
+  and its mid-stack content is not the surface function-word
+  distribution.
+\item \textbf{Function} (\S\ref{sec:function}): removing or amplifying
+  the stream's projection on $\bl$ releases or suppresses gate firing,
+  dose-monotonically, far beyond norm-matched controls; the twin is
+  flat.
+\item \textbf{Identity} (\S\ref{sec:identity}): the function is
+  carried by the direction, not by magnitude or token content.
+\item \textbf{Implementation} (\S\ref{sec:bias}): resting gate
+  inhibition is the coupling $w\cdot\bl$, not the bias parameter. This
+  is an exact decomposition, not a fit.
+\item \textbf{Maintenance and dependence} (\S\ref{sec:maintenance}):
+  the direction is rebuilt by aligned per-layer mean writes after
+  local removal; defeating restoration by co-removal is
+  near-catastrophic for prediction.
+\item \textbf{Formation} (\S\ref{sec:formation}): on public Pythia
+  checkpoints, the reference coupling appears in the same early window
+  as gate sparsification and induction heads.
+\end{enumerate}
+
+The battery is characterised in Phi-2, with Formation on Pythia-410M
+checkpoints. The two most portable legs, the static decomposition
+(\S\ref{sec:bias}) and the causal dose-response (\S\ref{sec:function}),
+are then tested on further families; the remaining causal tests are
+Phi-2-only (Limitations).
+
+Throughout, ``gate'' means the scalar nonlinearity of an MLP hidden
+unit; ``duty cycle'' is the fraction of positions at which a unit's
+activation is positive. Two background facts motivate the hypothesis.
+First, the trained model's median duty cycle is 0.076 against 0.48 at
+random init: trained gates are off by default \citep{szatkowski2025},
+and ``off by default'' is only defined relative to what occupies the
+stream at rest. Second, in a decomposition of what drives firing, the
+corpus-mean component contributes a share of about $-0.40$ of trained
+drive at every layer measured, and $\approx 0$ in the twin: trained
+gates are held down by something constant. The experiments below ask
+whether that constant is functional structure.
+
+\paragraph{Provenance.} Every experiment was pre-registered with named
+outcome branches and construction-validity gates (each instrument must
+first reproduce a known result before its new reading is taken); one
+pre-registered prediction failed and is reported as failed
+(\S\ref{sec:knob}). Primary model: Phi-2 (2.7B, 32 layers, $d{=}2560$),
+fp16, hooks on public weights; twin: same architecture, random init.
+Cross-model replication: GPT-2-medium, Pythia-1.4B, Qwen2.5-1.5B,
+TinyLlama-1.1B, plus an eight-model GELU/ReLU/SiLU scan, each against
+its own \texttt{from\_config} twin. Formation: Pythia-410M-deduped
+public checkpoints \citep{biderman2023}.
+
+\section{The object}
+\label{sec:object}
+
+\paragraph{Definitions.} $m_L$ is the corpus-mean raw residual at the
+input of layer $L$; $\bl$ is the corpus-mean layer-normalised MLP
+input at $L$ (the object gates actually read); $\mhat_L$ the unit
+vector of $m_L$. Statistics are computed over document positions
+$\geq 16$, excluding the attention-sink region.
+
+\paragraph{Constancy.} Split-half cosine of $\bl$ across document
+halves is $0.94$--$0.99$ at every measured layer.
+
+\paragraph{One direction, not one per layer.}
+$\cos(\mhat_{10}, \mhat_{18}) = 0.94$: the mid-stack reference is
+close to a single shared direction. Functionally this is confirmed in
+\S\ref{sec:identity}: layer 10's gates accept layer 18's mean
+direction as their reference almost without loss. This cross-layer
+alignment is a Phi-2 property, not a universal one (it is
+family-dependent across the replication models; Limitations); every
+other claim in the paper is per-layer and stands without it.
+
+\paragraph{Content.} Decoded through the unembedding, mid-stack $\bl$
+(L2--L18) is only weakly token-shaped (max row cosine
+$0.14$--$0.15$, about $1.7\times$ the isotropic floor), and its
+nearest tokens are not function words but truncated word stems
+(\emph{dilig, conclud, showc, withd, \ldots}). The high-frequency
+function-word surface (\emph{the, and, a, to, \ldots}) appears in
+$\bl$ only at L22--L26, close to the readout. The natural prior, that
+the constant component of English text's representation is the
+function-word bed, is wrong mid-stack; the reference is a largely
+off-vocabulary direction.
+
+\paragraph{Sources.} The embedding mean is negligible (norm 0.42,
+cosine 0.02 to the deep mean). Instead, every layer's attention
+\emph{and} MLP mean writes are mutually aligned with the deep mean
+(cosines $+0.2$ to $+0.7$, never negative), each small (norms
+$\sim$1--3 against update RMS 15--38), summing coherently: the
+reference is a distributed construction to which every component
+contributes a small aligned DC term.
+
+\section{Function: the gate population thresholds against it}
+\label{sec:function}
+
+\paragraph{Manipulation.} At layer $L \in \{6, 10, 14\}$, the residual
+entering the layer is modified at all positions $\geq 16$:
+$x' = x + (\alpha - 1)(x \cdot \mhat_L)\,\mhat_L$, for
+$\alpha \in \{0, 0.5, 1, 1.5, 2\}$. $\alpha{=}1$ is the identity
+(verified as an exact no-op, KL $= 0$); $\alpha{=}0$ removes the
+stream's projection on the reference; $\alpha{=}2$ doubles it. The
+control subtracts the same per-position magnitude along a fixed random
+unit direction (norm-matched). 39 documents.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+$\alpha$ & \multicolumn{3}{c}{$\Delta$frac(act$>$0.5)} &
+\multicolumn{3}{c}{KL vs.\ clean} \\
+ & L6 & L10 & L14 & L6 & L10 & L14 \\
+\midrule
+0.0 (removed) & $+0.103$ & $+0.086$ & $+0.075$ & 1.427 & 0.519 & 0.274 \\
+0.5 & $+0.023$ & $+0.023$ & $+0.021$ & 0.047 & 0.040 & 0.035 \\
+1.0 (identity) & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+1.5 & $-0.006$ & $-0.007$ & $-0.007$ & 0.014 & 0.018 & 0.020 \\
+2.0 (doubled) & $-0.008$ & $-0.009$ & $-0.009$ & 0.055 & 0.060 & 0.110 \\
+\midrule
+norm-matched control & $+0.003$ & $+0.001$ & $+0.003$ & 0.020 & 0.022 &
+0.025 \\
+\bottomrule
+\end{tabular}
+\caption{Dose-response of gate firing and output damage to scaling the
+stream's projection on $\mhat_L$ at the manipulated layer (Phi-2,
+trained). The twin is flat at every $\alpha$
+($|\Delta\text{frac}| \leq 0.002$, no ordering). Point estimates are
+document medians over 39 documents; 95\% document-bootstrap CIs (2000
+resamples) on the removal row: $\Delta$frac
+$[+0.096,+0.112]/[+0.079,+0.098]/[+0.068,+0.088]$ and KL
+$[1.14,2.03]/[0.36,0.75]/[0.15,0.40]$ (L6/L10/L14), each disjoint from
+the norm-matched control's KL CI ($\leq [0.010,0.032]$). The
+document-sampling spread on KL dwarfs the run-to-run fp16 jitter
+($\sim$1\%), so only the leading two digits are informative.}
+\label{tab:dose}
+\end{table}
+
+\paragraph{Result.} Table~\ref{tab:dose} shows the dose-response.
+Removal releases firing;
+amplification suppresses it; the response is monotone through the
+identity point at every layer and $30$--$40\times$ the norm-matched
+control, consistent with a population of near-binary gates driven
+across threshold together \citep{balogh2026}. Against the clean
+baseline of frac(act$>$0.5) $= 0.0105$ at L10, the release is a
+$\sim$9$\times$ multiplication of above-threshold firing. The
+suppression side saturates small, which is the expected asymmetry: at
+duty 0.076 the population is already near its inhibited floor, so
+added inhibition has little left to turn off while release frees every
+marginal gate. The twin shows no response, having no resting coupling
+to lose (\S\ref{sec:bias}).
+
+\paragraph{Output damage.} Removal at a single site costs
+KL $= 1.43 / 0.52 / 0.27$ (L6/L10/L14) against $0.020$--$0.025$ for
+the norm-matched control. The twin loses only $0.32$--$0.38$ KL under
+the same removal despite its raw mean being $8$--$11\times$ larger in
+norm (168 vs.\ 15--21): per unit of removed norm the trained model is
+roughly two orders of magnitude more sensitive.
+
+\paragraph{Restoration.} The release is local: downstream firing is
+undisturbed. After removal at L6, $\cos(\text{resid}, \mhat)$ is down
+$-0.16$ at L10 and L14, $-0.10$ at L18, and recovers to baseline by
+L26--L30: the stream re-accumulates its mean over $\sim$12--16 layers,
+consistent with the anatomy (every layer's mean write is
+reference-aligned, so the reference self-heals by accumulation).
+Deeper removal sites restore more slowly.
+
+\paragraph{Cross-model.} The same knob at one mid-stack layer (depth
+$\approx 0.31$: Pythia-1.4B $L8$, Qwen2.5-1.5B $L9$; 29 documents,
+each against its own twin) reproduces the sign, the monotonicity, and
+the control separation. On the duty-cycle readout (activation $>0$),
+removal shifts duty by $+0.318\,[0.303,0.329]$ (Pythia) and
+$+0.302\,[0.286,0.316]$ (Qwen), doubling by $-0.124$ and $-0.081$,
+monotone across a 15-point $\alpha$ grid, against $+0.0001$ for the
+norm-matched control and flat twins ($|\Delta\text{duty}| \leq
+0.002$); Phi-2 on the same measure is $+0.238/-0.070$. Qwen is the
+sharpest case: its SwiGLU gate has no bias parameter, so the carried
+reference is the entire resting inhibition, and scaling it still moves
+firing in dose-response. Removal costs final-position KL $3.60$
+(Pythia) and $0.59$ (Qwen).
+
+\section{Identity: the direction, not the magnitude or the tokens}
+\label{sec:identity}
+
+Removal tests necessity of the projection, but it leaves two
+alternative readings open. Gates might not read this direction at all
+and simply need the stream to be full; and since the manipulation acts
+on the pre-norm residual, removing the projection shrinks the norm
+entering LayerNorm, so the renormalisation boosts the gain on every
+orthogonal component, so some of the release could be that gain boost
+rather than the loss of the inhibitory coupling. The replacement panel
+addresses both: at L10,
+$x' = x - (x\cdot\mhat)\mhat + (x\cdot\mhat)\,\hat{c}$ transfers the
+signed per-position projection onto a candidate direction $\hat{c}$;
+magnitude, sign pattern, and timing are preserved, the total norm is
+approximately unchanged (the cross-terms with $\hat{c}$ are small),
+and only the direction changes.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+replacement $\hat{c}$ & $\cos(\hat{c},\mhat_{10})$ &
+$\Delta$frac(act$>$0.5) & KL \\
+\midrule
+none (pure removal) & --- & $+0.0845$ & 0.521 \\
+coordinate-shuffled $\mhat$ & $-0.003$ & $+0.0840$ & 0.963 \\
+random direction & $+0.011$ & $+0.0778$ & 0.502 \\
+function-word $W_U$ sum & $+0.096$ & $+0.0740$ & 0.402 \\
+layer 18's $\mhat$ & $+0.940$ & $+0.0027$ & 0.004 \\
+identity & 1.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\caption{Replacement panel at L10 (Phi-2, 23 documents). Preservation
+of quiet firing tracks $\cos(\hat{c},\mhat)$ monotonically.}
+\label{tab:identity}
+\end{table}
+
+In Table~\ref{tab:identity}, shuffled and random directions release
+firing exactly like removal; a unit sum of function-word unembedding
+rows (cosine 0.096 to $\mhat$) buys a sliver proportionate to its
+cosine and nothing more, so token content per se contributes nothing;
+and another layer's mean direction (cosine 0.94) preserves quiet
+firing almost perfectly, $31\times$ less release and $130\times$ less
+KL than removal. The magnitude-reader alternative is excluded: no
+low-cosine candidate preserves anything. The gain-boost alternative is
+excluded the same way: a random-direction replacement leaves the
+pre-norm magnitude in place, so the LayerNorm gain is the same as
+clean, yet firing releases as if the projection had been removed,
+while layer 18's direction, under the same norm, preserves quiet
+firing. One further observation: the
+shuffled replacement's KL (0.96) \emph{exceeds} removal's (0.52);
+transferring the projection onto a wrong direction injects a coherent
+error signal on top of losing the reference.
+
+\section{Implementation: the threshold is the coupling}
+\label{sec:bias}
+
+A gate's \emph{resting} pre-activation decomposes exactly:
+$\langle w\cdot x_{\text{ln}} + b_n \rangle = w\cdot\bl + b_n$, since
+$\langle x_{\text{ln}} \rangle = \bl$ by definition. If gates
+threshold against the carried reference, training should have moved
+the operating-point inhibition into the coupling $w\cdot\bl$ rather
+than the explicit bias parameter $b_n$.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+layer & $w\cdot\bl$ (median) & $b_n$ (median) & resting &
+ref-dominant & $\rho$(resting, duty) \\
+\midrule
+6 & $-1.535$ & $-0.027$ & $-1.568$ & 99.98\% & 0.943 \\
+10 & $-1.226$ & $-0.022$ & $-1.250$ & 99.99\% & 0.959 \\
+14 & $-1.091$ & $-0.021$ & $-1.115$ & 99.96\% & 0.960 \\
+22 & $-1.130$ & $-0.018$ & $-1.149$ & 99.94\% & 0.954 \\
+\bottomrule
+\end{tabular}
+\caption{Exact resting decomposition of gate pre-activations (Phi-2,
+19 documents). ``Ref-dominant'' is the fraction of gates whose resting
+inhibition is carried mostly by $w\cdot\bl$. 95\% document-bootstrap
+CIs (2000 resamples): ref-dominant stays $\geq 99.89\%$ at every layer
+(widest $[99.89,99.98]$ at L22), and $\rho$ is
+$[0.936,0.945]/[0.951,0.959]/[0.953,0.959]/[0.945,0.952]$
+(L6/L10/L14/L22).}
+\label{tab:bias}
+\end{table}
+
+Table~\ref{tab:bias}: the reference coupling carries the resting
+inhibition at $50$--$60\times$ the explicit bias parameter for more
+than 99.9\% of gates at every measured layer, and the resting
+pre-activation rank-predicts each neuron's duty cycle at
+$\rho \approx 0.95$. The gate population's sparsity \emph{is} the
+reference coupling, almost completely. In the twin,
+$w\cdot\bl \approx 0$ (median magnitude $\leq 0.02$) and duty is
+$0.5$; its bias parameters are exactly zero at init, so the
+informative twin statistic is the absent coupling. This is the
+classical bias-as-weight-to-a-constant-input construction, discovered
+in the weights: the model implements thresholds as couplings to a
+constant it itself carries and maintains. It also explains the
+dose-response of \S\ref{sec:function} without further assumptions:
+scaling the stream's projection on $\mhat$ scales the operating-point
+term of every gate simultaneously.
+
+\paragraph{Per-gate anatomy.} Factoring each fc1 row against the unit
+reference, $w = c_n\,\hat{\bl} + w_\perp$, the coupling is a small
+slice of read norm: $|c_n|/\|w\|$ has median $0.07$--$0.12$ across
+layers against a random-twin floor of $0.013$, thinning toward the
+readout, so $\approx 0.99$ of the row remains free for content. The
+coupling alone rank-predicts duty as well as the full resting
+inhibition ($\rho(c_n,\text{duty}) = 0.943$--$0.959$, matching
+Table~\ref{tab:bias}); $b_n$ adds nothing to the ordering. Per gate,
+the coupling is a low single-digit-percent tax on the read weight
+that fixes where the gate sits while leaving its content direction
+almost untouched.
+
+\paragraph{The coupling over training.} The decomposition above
+compares two endpoints. Pythia-410M-deduped, whose GELU gates carry an
+explicit bias and whose checkpoints are public, lets the two static
+terms be tracked step by step (four mid-stack layers). $b_n$ is
+exactly zero at initialisation (Pythia zero-inits biases) and stays
+$\leq 0.04$ in magnitude the entire run, while $|w\cdot\bl|$, after
+training first destroys the init constant ($\sim0.25 \to 0.12$ by step
+128), builds through the step $512\to1000$ window ($0.16 \to 0.38$),
+peaks near $0.85$--$0.95$ around step 4000, and relaxes partially
+thereafter. The reference coupling carries the resting inhibition of
+$\geq 99.6\%$ of gates at every checkpoint including init: there is no
+phase in which the explicit bias leads and is overtaken. The network
+never uses the bias parameter at all; it builds the coupling directly.
+Duty falls
+$0.51 \to 0.16$ over the same build and $\rho(\text{resting},
+\text{duty})$ stays $0.91$--$0.998$ throughout. The endpoint inference
+is an observed time-course, and it independently reproduces the
+formation window of \S\ref{sec:formation} through a different
+statistic.
+
+\paragraph{Cross-model replication.} The resting decomposition is
+static (weights and mean activations only), so it can be re-run
+cheaply on other families against a \texttt{from\_config} twin.
+Table~\ref{tab:bias_xmodel} does so on four more architectures,
+spanning both gate types: GELU MLPs with an explicit gate bias
+(GPT-2-medium, Pythia-1.4B) and bias-free SwiGLU gates (Qwen2.5-1.5B,
+TinyLlama-1.1B). In every family the resting pre-activation is
+negative (gates held off by the carried reference) and rank-predicts
+duty at $\rho \geq 0.96$ across mid-stack layers, with the twin
+floored (resting $\approx 0$, duty $\approx 0.5$) throughout. Where a
+gate bias exists, the reference coupling dominates it for $>99\%$ of
+gates at $15$--$43\times$ the bias parameter; where the gate is
+bias-free, the coupling alone carries the entire negative resting
+term. The one sub-threshold $\rho$ is Qwen's shallowest sampled layer
+($L5$, $\rho = 0.62$, a strongly suppressed near-off regime, duty
+$0.004$); every deeper layer is $\rho \geq 0.96$. Magnitude varies
+(TinyLlama's resting inhibition is an order of magnitude weaker than
+GPT-2's).
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrrr}
+\toprule
+model & gate (bias?) & resting med.\ & ref-dom.\ & $\rho$(rest, duty) \\
+\midrule
+GPT-2-medium   & \texttt{c\_fc} (yes)         & $-1.52$ to $-0.99$ & $99.4$--$99.7\%$ & $0.91$--$0.97$ \\
+Pythia-1.4B    & \texttt{h\_to\_4h} (yes)     & $-1.08$ to $-0.74$ & $>99.9\%$        & $0.96$--$0.98$ \\
+Qwen2.5-1.5B   & \texttt{gate\_proj} (no)     & $-4.14$ to $-0.37$ & ---              & $0.62$--$0.99$ \\
+TinyLlama-1.1B & \texttt{gate\_proj} (no)     & $-0.21$ to $-0.07$ & ---              & $0.97$--$0.99$ \\
+\bottomrule
+\end{tabular}
+\caption{Cross-model resting decomposition (30 documents, four
+mid-stack layers per model at depth fractions $0.2$--$0.65$; ranges
+span those layers). ``Ref-dom.'' is the fraction of gates whose
+resting inhibition is carried mostly by $w\cdot\bl$ rather than the
+bias parameter (vacuous for the bias-free SwiGLU gates; for these the
+informative statistic is the negative resting coupling and its
+duty-prediction). Where a bias exists, $|w\cdot\bl|/|b_n|$ is
+$15$--$18\times$ (GPT-2) and $38$--$43\times$ (Pythia). Every model's
+random-init twin is floored: resting median $|{\leq}0.01|$, duty
+$\approx 0.5$.}
+\label{tab:bias_xmodel}
+\end{table}
+
+\paragraph{A counteracting boundary case.} The mechanism is not
+universal. Extending the static decomposition to eight further models
+spanning GELU, ReLU, and SiLU gates, it is present in all six non-OPT
+families (ref-dominant $99.5$--$100\%$ where a bias exists,
+$\rho \geq 0.89$ throughout) but absent in both OPT models (opt-350m,
+opt-1.3b): their resting inhibition is $40$--$130\times$ weaker,
+bias-dominated, and rank-predicts nothing ($\rho = 0.000$). A norm
+decomposition explains why. Writing $w\cdot\bl = w\cdot(\bl - \beta) +
+w\cdot\beta$ (residual-maintained mean plus LayerNorm bias), the
+residual-maintained part is primary wherever the mechanism is present:
+it dominates $91$--$99\%$ of gates in the GELU LayerNorm models and
+equals the resting term by construction in the bias-free RMSNorm
+models, with $\beta$ a $7$--$26\%$ augmentation. So the
+\S\ref{sec:maintenance} attribution of the reference to a maintained
+residual mean, rather than a static norm parameter, holds. OPT is the
+exception that locates the requirement: it builds a large
+residual-carried inhibition comparable to GPT-2's but trains an almost
+exactly opposing LN-bias excitation ($|w\cdot(\bl-\beta)| \approx
+|w\cdot\beta| \approx 0.5$--$0.6$, opposite sign), netting
+$w\cdot\bl \approx 0.006$: a reference cancelled at the operating
+point, not absent. ReLU-versus-family stays formally confounded (every
+ReLU model sampled is an OPT).
+
+\paragraph{The read side.} A separate census of Phi-2's conjunctive
+gate neurons finds that most carry an inhibitory reader: a token whose
+presence drives the gate off. Those suppressor-token directions align
+with $\hat{\bl}$ at a mean-removed cosine of $0.28$--$0.52$ across
+eight layers, while content-token and isotropic directions are
+orthogonal to it (aggregate $-0.001$ and $0.003$), and the alignment
+vanishes against the twin's reference ($\leq 0.02$). Read-side ``gate
+off when a suppressor token is present'' and write-side resting
+inhibition ($w\cdot\bl < 0$) are one fact: the gate population couples
+negatively to the carried reference.
+
+\section{Maintenance, and the cost of losing the reference}
+\label{sec:maintenance}
+
+\paragraph{Attention carries the steady feed.} Decomposing each
+block's output into its component along $\mhat$ and the orthogonal
+remainder, and measuring the constant (split-half) share of each: at
+L10, the attention block's $\mhat$-channel has constant share 0.452
+against 0.014 for its orthogonal channel, a $33\times$ dissociation;
+the block outputs a steady reference feed while its content channel
+fluctuates. The MLP shows no dissociation (0.003 vs.\ 0.003),
+consistent with the earlier finding that per-layer MLP DC components
+mutually cancel. In the twin both channels are largely constant (0.93
+vs.\ 0.87; an untrained block is a mostly-constant filter), so the
+dissociation is a trained property. Together with \S\ref{sec:object}:
+per-layer mean writes build the reference; attention sustains it in
+operation.
+
+\paragraph{Co-removal.} Single-site removal understates the
+dependence because the stream heals. Removing the projection at
+\emph{all} measured layers $\geq 6$ simultaneously releases firing at
+every depth (at L18 more than at the shallowest site) and costs
+KL $= 4.38$, $\Delta$NLL $= +4.75$ nats, about $8.5\times$ the
+single-site effect, while the twin under the identical intervention
+loses 0.65 KL with flat firing (document-bootstrap 95\% CIs over 23
+documents: KL $[3.74,6.05]$, $\Delta$NLL $[4.62,5.03]$, disjoint from
+the twin). Late-only co-removal ($\geq 14$) is far milder (KL 0.55,
+CI $[0.24,0.90]$): the dependence is concentrated mid-stack. The
+reference is a standing operating condition of the trained trunk, not
+a local convenience of any layer.
+
+\section{Operating point}
+\label{sec:knob}
+
+A pre-registered prediction failed here: we expected the reference to
+act as a signed excitability knob, with output entropy rising
+monotonically in the reference magnitude. It does not. On a finer
+$\alpha$ grid at L10 ($\alpha \in \{0.6, \ldots, 1.4\}$, 29 documents,
+document-bootstrap CIs, position terciles), entropy has its minimum
+exactly at the natural magnitude ($\Delta H = 0$ at $\alpha{=}1.0$,
+$\Delta H \geq 0$ elsewhere, monotone on each arm), in every position
+tercile, twin floored. The two arms are unequal. The release arm
+($\alpha < 1$) clears the norm-matched control with disjoint CIs and
+is universal: it replicates on Pythia-1.4B and Qwen2.5-1.5B
+($\Delta H$ at $\alpha{=}0.8$: $+0.057$ Pythia, $+0.047$ Qwen,
+$+0.013$ Phi-2, each above a control $\leq |0.0005|$). The
+amplification arm is family-dependent: symmetric in Pythia, shallow in
+Phi-2 (control-separated only for $|\alpha-1| \geq 0.3$), and mildly
+entropy-\emph{reducing} in Qwen over $\alpha \in [1.05, 1.3]$. The
+robust reading is a floor from below: the natural reference magnitude
+is the confident point, and weakening the reference always floods
+entropy in.
+
+\section{Formation}
+\label{sec:formation}
+
+On Pythia-410M-deduped public checkpoints (different family and scale
+from the causal experiments; one seed), three statistics move together
+in the step 512$\to$1000 window: the induction-head score (0.03 $\to$
+0.88), the median duty cycle (0.42 $\to$ 0.28, continuing to 0.16 by
+step 4000), and the reference share of resting drive ($-0.06 \to
+-0.34$, deepening to $\approx -0.75$ by step 3000--4000). The
+reference frame and gate sparsification form as one construction, in
+the same window as the induction transition \citep{olsson2022}. The
+joint timing of the duty-cycle collapse (activation sparsity is a
+known endpoint property \citep{szatkowski2025}) with induction and
+readout reorganisation is developed in a companion paper
+\citep{tuomi2026dev}; the reference-formation reading is added here.
+One further observation: training's first measurable act on the MLP
+write is destroying the init constant (constant share $0.40 \to 0.15$
+by step 128, before anything else moves), so the trained reference is
+a construction, not a residue of initialisation, consistent with the
+training dynamics of massive activations \citep{gallego2025}. The
+claim ``jointly'' is bounded by checkpoint resolution: 512$\to$1000 is
+one interval, and the induction transition itself unfolds in multiple
+phases \citep{minegishi2025,xu2026}; checkpoints below step 512 exist
+and are the direct test, not yet run.
+
+\section{Related work}
+
+\paragraph{Massive activations, sinks, outlier dimensions.} Attention
+sinks \citep{xiao2023} and massive activations \citep{sun2024} are
+large constant components with a bias-like role in attention;
+\citet{sun2024} explicitly propose them as bias terms
+\citep[see also][]{owen2025}, and later work ties sinks to compression
+valleys \citep{queipo2025}, to outlier-driven rescaling essential for
+training \citep{qiu2026}, and to depth-transient damping
+\citep{li2026}. Outlier dimensions are frequency-driven and
+normalisation-amplified \citep{kovaleva2021,timkey2021,puccetti2022},
+and \citet{macocco2025} show that last-layer outlier dimensions act as
+a constant positive logit contribution toward frequent tokens. The
+object studied here is in the same family but the measured function
+differs in site and form: a \emph{direction} (not a coordinate set),
+read at the MLP gate inputs mid-stack (not at the output logits), that
+carries the resting inhibition of the gate population by exact
+decomposition, is direction-specific under replacement, and is
+maintained by distributed aligned writes.
+
+We ran the geometric comparison against these objects on Phi-2.
+Mid-stack, $\cos(\bl, \cdot)$ against the first-token direction at its
+emergence layer (located here at layer 21, peak coordinate magnitude
+$\sim$1250; cf.\ \citealp{shi2026}, who propose the first-token
+massive activation as a ``shared global reference vector'' for
+attention) is $0.04$--$0.17$, and against the residual-sink and
+massive-coordinate directions $\leq 0.27$: the objects are distinct.
+The separation is trained: in the random-init twin the reference
+\emph{is} the sink blob ($\cos = 0.98$, no massive activation), and
+training rotates the reference off the sink. On outlier dimensions:
+$\bl$ carries $10$--$23\%$ of its squared norm on the twenty largest
+last-layer outlier coordinates against an isotropic share of $0.8\%$,
+a real but minority overlap that grows toward the readout; its own
+dominant coordinates are largely disjoint from the outlier set (top-20
+Jaccard $0.05$--$0.14$). Mid-stack, $\bl$ is a distributed direction
+with a minority frequency-correlated component, not the axis-aligned
+outlier set, and it should not be conflated with the sink objects of
+\citet{qiu2026} or \citet{shi2026}.
+
+\paragraph{Entropy and confidence regulation.}
+\citet{stolfo2024} identify neurons that regulate output confidence
+partly through the unembedding null space. The entropy-minimum
+observation of \S\ref{sec:knob} is adjacent in effect but attaches to
+a carried stream component rather than to specific neurons; we made no
+attempt to connect the two.
+
+\paragraph{Bias as coupling.} Treating bias as a weight onto a
+constant input is the classical homogeneous-coordinates construction.
+Weight-based taxonomies of gated neurons \citep{gerstner2025} and
+readings of MLP units as binary routers \citep{balogh2026}
+characterise gate function from the parameters, and massive
+activations have been read as carried constants with a bias-like role
+\citep{sun2024,ssun2026}. The observation here joins these: a trained
+transformer implements the homogeneous-coordinates construction
+spontaneously, with the constant supplied by the network's own
+maintained mean rather than by a dedicated input.
+\citet{sun2024} also report the trained converse on the attention
+side: augmenting self-attention with explicit learnable bias
+parameters yields models that do not form massive activations: given
+the parameter, the network uses it instead of building a carried
+constant. OPT plays the same role on the gate side here
+(\S\ref{sec:bias}): the parameter-based strategy exists, and most
+families do not take it. Finally, modern architectures dropped dense
+biases for training stability with no measured quality loss
+\citep{chowdhery2022}; the decomposition here offers an account of
+why the removal is functionally free on the gate side, namely that
+the operating point never lived in $b_n$.
+
+\section{Limitations}
+
+\begin{itemize}
+\item \textbf{Replication scope.} The static decomposition
+  (\S\ref{sec:bias}) is shown on eight further models and is absent in
+  OPT, where an opposing LayerNorm bias cancels the carried reference;
+  the ReLU-versus-OPT-family confound (every sampled ReLU model is an
+  OPT) is not separated by matched-nonlinearity twins. The causal
+  dose-response and the entropy release arm replicate on two further
+  families (Pythia-1.4B, Qwen2.5-1.5B); the replacement panel
+  (\S\ref{sec:identity}, one site, L10) and co-removal
+  (\S\ref{sec:maintenance}) are Phi-2-only. The formation results,
+  including the checkpoint time-course, are on one model
+  (Pythia-410M), one seed, trend-grade (15--30 documents).
+\item \textbf{Single-direction geometry is family-dependent.} The
+  cross-layer ``nearly a single direction'' claim (\S\ref{sec:object})
+  is heterogeneous across the replication families: $\cos(\mhat)$
+  between mid-stack layers is high in GPT-2-medium ($0.95$) and
+  Qwen2.5-1.5B ($0.96$), modest in TinyLlama-1.1B ($0.74$), and below
+  its own twin floor in Pythia-1.4B ($0.41$ vs.\ twin $0.67$). The
+  coupling mechanism replicates in every family; the
+  single-carried-direction geometry does not, and is not claimed to.
+\item \textbf{Within-layer atomicity is open.} $\bl$ is a corpus mean,
+  rank-1 by construction; a single mean vector would look identical
+  whether one atomic direction or several register-conditioned bias
+  lines were carried underneath it. Preliminary evidence (structured,
+  register-separable secondary components surviving removal of the
+  $\mhat$ projection) points toward the latter; whether those
+  secondary lines carry any independent gating function is left to
+  separate work, and every causal result here concerns only the
+  rank-1 mean.
+\item \textbf{The reference is register-adaptive, not frozen.} Across
+  prose and code (four replication families; Phi-2 itself was not
+  tested across registers) the coupling mechanism transfers:
+  $\rho(\text{resting}, \text{duty})$ on code matches prose layer by
+  layer ($0.75$--$0.99$). But the direction shifts partially with
+  register: in the RMSNorm models (where the twin cosine floor is low
+  enough to discriminate), trained
+  $\cos(\bl^{\text{prose}}, \bl^{\text{code}}) \approx 0.8$, code
+  $|\bl|$ runs up to $1.4\times$ prose, and cross-register rank
+  transfer ($\approx 0.75$--$0.85$) sits below the within-register
+  $\sim0.95$. ``Carries and maintains a constant'' should be read as a
+  register-adaptive reference, not a corpus-independent vector.
+\item \textbf{Operating-point asymmetry.} The pre-registered monotone
+  knob failed (\S\ref{sec:knob}); the entropy minimum that replaces it
+  rests mainly on the release direction, since the amplification arm
+  is shallow in Phi-2 and varies across families.
+\item \textbf{Manipulation scope.} The reference is the corpus mean; a
+  position-resolved background is a refinement not tested.
+  Manipulations leave positions $<16$ untouched, so attention
+  re-import from the sink region is possible. $\alpha$-scaling changes
+  the LayerNorm input distribution, so all downstream effects pass
+  through LN renormalisation; the norm-matched control shares this
+  property, and the norm-preserving replacement panel
+  (\S\ref{sec:identity}) excludes a pure gain-boost account at L10,
+  the one site where it was run. The function-word replacement is one
+  naive construction of a token background, not an optimised one.
+\item \textbf{Geometric comparisons are activation-proxy.} The
+  comparisons against first-token massive activations, the residual
+  sink, and last-layer outlier dimensions (Related work) use
+  activation-based proxies of each object on one model; a weights-only
+  unification against each paper's exact construction is not
+  attempted.
+\end{itemize}
+
+\section{Reproducibility}
+
+{\raggedright
+Scripts and JSON artifacts (public checkpoints, fixed seeds):
+\texttt{census\_background\_reference.py} (\S\ref{sec:object},
+\S\ref{sec:function}),
+\texttt{census\_background\_identity.py} (\S\ref{sec:identity},
+co-removal),
+\texttt{census\_reference\_mechanism.py} (\S\ref{sec:bias},
+\S\ref{sec:maintenance}, \S\ref{sec:knob}),
+\texttt{census\_checkpoint\_trajectory.py} and
+\texttt{census\_formation\_microscopy.py} (\S\ref{sec:formation}),
+\texttt{census\_reference\_geometry.py} (geometric comparisons,
+Related work),
+\texttt{census\_crossmodel\_causal.py} (cross-model dose-response and
+entropy V),
+\texttt{census\_bias\_migration\_scale.py} (Table~\ref{tab:bias_xmodel}),
+\texttt{census\_bias\_migration\_formation.py} (coupling time-course
+over checkpoints),
+\texttt{census\_bias\_migration\_nonlinearity.py} (eight-model scan,
+OPT boundary),
+\texttt{census\_reference\_norm\_decomp.py} (residual-versus-LN-bias
+decomposition),
+\texttt{census\_suppressor\_reference.py} (read-side alignment),
+\texttt{census\_reference\_corpus.py} (register adaptivity),
+\texttt{census\_readweight\_factorization.py} (per-gate anatomy).
+Each experiment's pre-registration, gates, and full numbers are in the
+project's lab notebook
+(\texttt{plan\_mid\_stack\_empirical\_basis.md}, \S3t--\S3x). Code and
+data are available at
+\url{https://github.com/EvidentSolutions/llm-interp/tree/main/background}.
+\par}
+
+\section*{Use of AI Assistants}
+
+Large language models were used as assistive tools for coding,
+running experiments, and drafting text. All research questions,
+experimental design, and reported claims were directed and verified by
+the authors, who take full responsibility for the content.
+
+\bibliographystyle{plainnat}
+\bibliography{paper_background}
+
+\end{document}

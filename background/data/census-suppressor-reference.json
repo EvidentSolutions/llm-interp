@@ -1,0 +1,601 @@
+{
+ "config": {
+  "model": "microsoft/phi-2",
+  "smoke": false,
+  "n_docs": 30,
+  "skip": 16,
+  "layers": [
+   2,
+   6,
+   10,
+   14,
+   18,
+   22,
+   26,
+   30
+  ]
+ },
+ "per_layer": {
+  "2": {
+   "cos_bL_meantok": 0.964,
+   "n_supp": 5,
+   "n_exc": 5,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.396,
+     "mean": 0.382,
+     "n": 5
+    },
+    "cos_bL_raw": {
+     "med": 0.734,
+     "mean": 0.72,
+     "n": 5
+    },
+    "cos_mhat_centered": {
+     "med": 0.39,
+     "mean": 0.377,
+     "n": 5
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.001,
+     "mean": 0.005,
+     "n": 5
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": 0.005,
+     "mean": 0.062,
+     "n": 5
+    },
+    "cos_bL_raw": {
+     "med": 0.427,
+     "mean": 0.472,
+     "n": 5
+    },
+    "cos_mhat_centered": {
+     "med": 0.0,
+     "mean": 0.061,
+     "n": 5
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.018,
+     "mean": -0.014,
+     "n": 5
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": -0.005,
+     "mean": 0.003,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.419,
+     "mean": 0.424,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": -0.005,
+     "mean": 0.003,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.001,
+     "mean": 0.0,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.508
+  },
+  "6": {
+   "cos_bL_meantok": 0.964,
+   "n_supp": 6,
+   "n_exc": 6,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.29,
+     "mean": 0.252,
+     "n": 6
+    },
+    "cos_bL_raw": {
+     "med": 0.678,
+     "mean": 0.647,
+     "n": 6
+    },
+    "cos_mhat_centered": {
+     "med": 0.225,
+     "mean": 0.217,
+     "n": 6
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.006,
+     "mean": 0.001,
+     "n": 6
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": 0.002,
+     "mean": 0.06,
+     "n": 6
+    },
+    "cos_bL_raw": {
+     "med": 0.457,
+     "mean": 0.499,
+     "n": 6
+    },
+    "cos_mhat_centered": {
+     "med": -0.006,
+     "mean": 0.05,
+     "n": 6
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.011,
+     "mean": 0.009,
+     "n": 6
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": -0.006,
+     "mean": 0.001,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.45,
+     "mean": 0.453,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": -0.002,
+     "mean": 0.002,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.001,
+     "mean": 0.001,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.534
+  },
+  "10": {
+   "cos_bL_meantok": 0.962,
+   "n_supp": 10,
+   "n_exc": 10,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.305,
+     "mean": 0.271,
+     "n": 10
+    },
+    "cos_bL_raw": {
+     "med": 0.716,
+     "mean": 0.685,
+     "n": 10
+    },
+    "cos_mhat_centered": {
+     "med": 0.272,
+     "mean": 0.232,
+     "n": 10
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.015,
+     "mean": 0.009,
+     "n": 10
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": 0.025,
+     "mean": 0.021,
+     "n": 10
+    },
+    "cos_bL_raw": {
+     "med": 0.502,
+     "mean": 0.496,
+     "n": 10
+    },
+    "cos_mhat_centered": {
+     "med": 0.019,
+     "mean": 0.018,
+     "n": 10
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.008,
+     "mean": -0.006,
+     "n": 10
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": 0.003,
+     "mean": 0.005,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.483,
+     "mean": 0.48,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": 0.003,
+     "mean": 0.004,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.0,
+     "mean": -0.0,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.569
+  },
+  "14": {
+   "cos_bL_meantok": 0.965,
+   "n_supp": 7,
+   "n_exc": 7,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.358,
+     "mean": 0.355,
+     "n": 7
+    },
+    "cos_bL_raw": {
+     "med": 0.764,
+     "mean": 0.756,
+     "n": 7
+    },
+    "cos_mhat_centered": {
+     "med": 0.326,
+     "mean": 0.29,
+     "n": 7
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.022,
+     "mean": 0.016,
+     "n": 7
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": -0.021,
+     "mean": -0.028,
+     "n": 7
+    },
+    "cos_bL_raw": {
+     "med": 0.488,
+     "mean": 0.475,
+     "n": 7
+    },
+    "cos_mhat_centered": {
+     "med": -0.029,
+     "mean": -0.029,
+     "n": 7
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.003,
+     "mean": -0.004,
+     "n": 7
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": 0.002,
+     "mean": 0.009,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.507,
+     "mean": 0.508,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": 0.001,
+     "mean": 0.008,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.002,
+     "mean": 0.0,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.621
+  },
+  "18": {
+   "cos_bL_meantok": 0.962,
+   "n_supp": 7,
+   "n_exc": 7,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.437,
+     "mean": 0.417,
+     "n": 7
+    },
+    "cos_bL_raw": {
+     "med": 0.792,
+     "mean": 0.784,
+     "n": 7
+    },
+    "cos_mhat_centered": {
+     "med": 0.375,
+     "mean": 0.366,
+     "n": 7
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.016,
+     "mean": 0.013,
+     "n": 7
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": -0.053,
+     "mean": -0.049,
+     "n": 7
+    },
+    "cos_bL_raw": {
+     "med": 0.455,
+     "mean": 0.457,
+     "n": 7
+    },
+    "cos_mhat_centered": {
+     "med": -0.05,
+     "mean": -0.038,
+     "n": 7
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.016,
+     "mean": -0.015,
+     "n": 7
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": 0.008,
+     "mean": 0.018,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.509,
+     "mean": 0.512,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": 0.009,
+     "mean": 0.016,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.001,
+     "mean": 0.0,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.649
+  },
+  "22": {
+   "cos_bL_meantok": 0.958,
+   "n_supp": 8,
+   "n_exc": 8,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.387,
+     "mean": 0.369,
+     "n": 8
+    },
+    "cos_bL_raw": {
+     "med": 0.767,
+     "mean": 0.746,
+     "n": 8
+    },
+    "cos_mhat_centered": {
+     "med": 0.328,
+     "mean": 0.295,
+     "n": 8
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.009,
+     "mean": 0.01,
+     "n": 8
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": 0.087,
+     "mean": 0.094,
+     "n": 8
+    },
+    "cos_bL_raw": {
+     "med": 0.554,
+     "mean": 0.555,
+     "n": 8
+    },
+    "cos_mhat_centered": {
+     "med": 0.065,
+     "mean": 0.071,
+     "n": 8
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.007,
+     "mean": 0.009,
+     "n": 8
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": -0.003,
+     "mean": 0.002,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.48,
+     "mean": 0.479,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": -0.0,
+     "mean": 0.002,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.001,
+     "mean": -0.001,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.609
+  },
+  "26": {
+   "cos_bL_meantok": 0.972,
+   "n_supp": 9,
+   "n_exc": 9,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.522,
+     "mean": 0.443,
+     "n": 9
+    },
+    "cos_bL_raw": {
+     "med": 0.875,
+     "mean": 0.845,
+     "n": 9
+    },
+    "cos_mhat_centered": {
+     "med": 0.38,
+     "mean": 0.338,
+     "n": 9
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.013,
+     "mean": 0.008,
+     "n": 9
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": -0.004,
+     "mean": 0.04,
+     "n": 9
+    },
+    "cos_bL_raw": {
+     "med": 0.59,
+     "mean": 0.612,
+     "n": 9
+    },
+    "cos_mhat_centered": {
+     "med": -0.008,
+     "mean": 0.03,
+     "n": 9
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.001,
+     "mean": -0.003,
+     "n": 9
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": 0.015,
+     "mean": 0.011,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.605,
+     "mean": 0.594,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": 0.012,
+     "mean": 0.008,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.0,
+     "mean": 0.001,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.574
+  },
+  "30": {
+   "cos_bL_meantok": 0.977,
+   "n_supp": 11,
+   "n_exc": 11,
+   "supp": {
+    "cos_bL_centered": {
+     "med": 0.275,
+     "mean": 0.313,
+     "n": 11
+    },
+    "cos_bL_raw": {
+     "med": 0.883,
+     "mean": 0.87,
+     "n": 11
+    },
+    "cos_mhat_centered": {
+     "med": 0.204,
+     "mean": 0.21,
+     "n": 11
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.004,
+     "mean": -0.011,
+     "n": 11
+    }
+   },
+   "exc": {
+    "cos_bL_centered": {
+     "med": -0.013,
+     "mean": -0.031,
+     "n": 11
+    },
+    "cos_bL_raw": {
+     "med": 0.74,
+     "mean": 0.709,
+     "n": 11
+    },
+    "cos_mhat_centered": {
+     "med": -0.014,
+     "mean": -0.046,
+     "n": 11
+    },
+    "cos_twin_bL_centered": {
+     "med": 0.003,
+     "mean": 0.002,
+     "n": 11
+    }
+   },
+   "iso": {
+    "cos_bL_centered": {
+     "med": 0.095,
+     "mean": 0.064,
+     "n": 500
+    },
+    "cos_bL_raw": {
+     "med": 0.804,
+     "mean": 0.759,
+     "n": 500
+    },
+    "cos_mhat_centered": {
+     "med": 0.081,
+     "mean": 0.047,
+     "n": 500
+    },
+    "cos_twin_bL_centered": {
+     "med": -0.002,
+     "mean": -0.001,
+     "n": 500
+    }
+   },
+   "boilerplate_axis_cos_bL": 0.618
+  }
+ },
+ "aggregate": {
+  "supp_cos_bL_med": 0.372,
+  "exc_cos_bL_med": -0.001,
+  "iso_cos_bL_med": 0.003
+ }
+}
