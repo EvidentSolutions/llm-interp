@@ -1,4 +1,4 @@
-# Contrastive Projection: Reading Transformer Internals Through Desuperposition
+# Contrastive Projection: Reading Transformer Internals by Differencing Logit Lenses
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20843137.svg)](https://doi.org/10.5281/zenodo.20843137)
 
@@ -63,7 +63,7 @@ Individual experiments can be run directly, e.g. `python code/ioi_path_trace.py`
 ```bibtex
 @misc{tuomi2026contrastive,
   author    = {Tuomi, Olli},
-  title     = {Contrastive Projection: Reading Transformer Internals Through Desuperposition},
+  title     = {Contrastive Projection: Reading Transformer Internals by Differencing Logit Lenses},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.20843137},
