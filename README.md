@@ -14,7 +14,7 @@ and the JSON artifacts behind every number in the text.
 | Folder | Paper | Archive |
 |--------|-------|---------|
 | [`contrastive/`](contrastive/) | Contrastive Projection: Reading Transformer Internals by Differencing Logit Lenses | [DOI 10.5281/zenodo.20843136](https://doi.org/10.5281/zenodo.20843136) |
-| [`visibility_paper/`](visibility_paper/) | A Visibility Threshold for Top-k Logit-Lens Readouts | [DOI 10.5281/zenodo.21461944](https://doi.org/10.5281/zenodo.21461944) |
+| [`visibility/`](visibility/) | A Visibility Threshold for Top-k Logit-Lens Readouts | [DOI 10.5281/zenodo.21461944](https://doi.org/10.5281/zenodo.21461944) |
 
 The DOIs above are Zenodo *concept* DOIs — they always resolve to the latest
 archived version of each paper.
