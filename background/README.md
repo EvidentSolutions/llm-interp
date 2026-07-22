@@ -1,10 +1,13 @@
 # Transformer MLP Gate Thresholds Are Couplings to a Carried Reference Direction
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21498411.svg)](https://doi.org/10.5281/zenodo.21498411)
+
 Code, data, and the paper for the finding that a transformer's corpus-mean
 residual direction is not a nuisance to subtract but a functional reference: the
 constant the MLP gate population couples to when it sets its operating point.
 
 **Paper:** [`paper_background.pdf`](paper_background.pdf) &nbsp;·&nbsp;
+**Preprint DOI:** [10.5281/zenodo.21498411](https://doi.org/10.5281/zenodo.21498411) &nbsp;·&nbsp;
 **Author:** Olli Tuomi, Evident Solutions Oy
 ([ORCID 0009-0006-2042-1576](https://orcid.org/0009-0006-2042-1576))
 
@@ -84,10 +87,12 @@ here; its reported numbers are already in `data/census-suppressor-reference.json
 
 ```bibtex
 @misc{tuomi2026background,
-  author = {Tuomi, Olli},
-  title  = {Transformer MLP Gate Thresholds Are Couplings to a Carried Reference Direction},
-  year   = {2026},
-  note   = {Evident Solutions Oy}
+  author    = {Tuomi, Olli},
+  title     = {Transformer MLP Gate Thresholds Are Couplings to a Carried Reference Direction},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21498411},
+  url       = {https://doi.org/10.5281/zenodo.21498411}
 }
 ```
 
