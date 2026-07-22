@@ -1,0 +1,131 @@
+{
+ "config": {
+  "smoke": false,
+  "fs": [
+   0.001,
+   0.003,
+   0.01,
+   0.03,
+   0.1,
+   0.3
+  ],
+  "ns": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "f_tri": 0.003,
+  "n_samp": 100,
+  "topk": 15,
+  "V": 51200,
+  "d": 2560,
+  "seed": 0
+ },
+ "analytic": {
+  "f_star": 0.00893,
+  "bath_max_sigma": 4.803
+ },
+ "gate_f0_bath_max_sigma": 4.46,
+ "leg1": {
+  "single": {
+   "0.001": {
+    "hit_rate": 0.01,
+    "best_rank_med": 4119
+   },
+   "0.003": {
+    "hit_rate": 0.14,
+    "best_rank_med": 307
+   },
+   "0.01": {
+    "hit_rate": 0.9,
+    "best_rank_med": 0
+   },
+   "0.03": {
+    "hit_rate": 1.0,
+    "best_rank_med": 0
+   },
+   "0.1": {
+    "hit_rate": 1.0,
+    "best_rank_med": 0
+   },
+   "0.3": {
+    "hit_rate": 1.0,
+    "best_rank_med": 0
+   }
+  },
+  "family5": {
+   "0.001": {
+    "hit_rate": 0.018,
+    "best_rank_med": 2032
+   },
+   "0.003": {
+    "hit_rate": 0.054,
+    "best_rank_med": 230
+   },
+   "0.01": {
+    "hit_rate": 0.476,
+    "best_rank_med": 0
+   },
+   "0.03": {
+    "hit_rate": 0.914,
+    "best_rank_med": 0
+   },
+   "0.1": {
+    "hit_rate": 0.96,
+    "best_rank_med": 0
+   },
+   "0.3": {
+    "hit_rate": 0.964,
+    "best_rank_med": 0
+   }
+  }
+ },
+ "leg2": {
+  "1": {
+   "hit_rate": 0.25,
+   "best_rank_med": 135
+  },
+  "2": {
+   "hit_rate": 0.62,
+   "best_rank_med": 4
+  },
+  "4": {
+   "hit_rate": 0.94,
+   "best_rank_med": 0
+  },
+  "8": {
+   "hit_rate": 1.0,
+   "best_rank_med": 0
+  },
+  "16": {
+   "hit_rate": 1.0,
+   "best_rank_med": 0
+  }
+ },
+ "leg2_predicted_rescue_N": 3.0,
+ "leg3": {
+  "top_tokens": [
+   " euth",
+   " hiber",
+   " despair",
+   " temperament",
+   " wary",
+   "winter",
+   " recovering",
+   " delicious",
+   " enrolled",
+   " deterrence",
+   " breeds",
+   " afraid",
+   " tantal",
+   " canine",
+   " scared"
+  ],
+  "food_hits_in_top15": 1,
+  "aligned_energy_frac": 0.0923,
+  "null_span_frac_med": 0.0064,
+  "f_star": 0.0089
+ }
+}

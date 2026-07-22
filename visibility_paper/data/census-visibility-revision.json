@@ -1,0 +1,647 @@
+{
+ "config": {
+  "smoke": false,
+  "seed": 0,
+  "new_models": [
+   "gpt2-medium",
+   "bigscience/bloom-560m",
+   "Qwen/Qwen2.5-0.5B",
+   "Qwen/Qwen2.5-1.5B",
+   "TinyLlama/TinyLlama_v1.1"
+  ],
+  "pairs": [
+   "hotcold-dog",
+   "hotcold-soup",
+   "food-tool",
+   "animal-vehicle",
+   "negation",
+   "king-queen",
+   "season",
+   "drink"
+  ],
+  "n_state_docs": 40
+ },
+ "leg_M": {
+  "new_models": [
+   {
+    "model": "gpt2-medium",
+    "d": 1024,
+    "V_eff": 50257,
+    "V_padded": 50257,
+    "f_star_analytic": 0.022,
+    "bath_max_sigma_pred": 4.8,
+    "bath_max_sigma_measured": 4.673,
+    "curve": {
+     "0.0003": 0.0,
+     "0.001": 0.005,
+     "0.002": 0.01,
+     "0.003": 0.025,
+     "0.005": 0.065,
+     "0.01": 0.165,
+     "0.02": 0.705,
+     "0.03": 0.905,
+     "0.05": 1.0,
+     "0.1": 1.0,
+     "0.3": 1.0
+    },
+    "f_50": 0.01537,
+    "f50_over_fstar": 0.699,
+    "secs": 7.9,
+    "tied": true,
+    "bath_gate_pass": true
+   },
+   {
+    "model": "bigscience/bloom-560m",
+    "d": 1024,
+    "V_eff": 250680,
+    "V_padded": 250880,
+    "f_star_analytic": 0.02499,
+    "bath_max_sigma_pred": 5.123,
+    "bath_max_sigma_measured": 4.79,
+    "curve": {
+     "0.0003": 0.0,
+     "0.001": 0.0,
+     "0.002": 0.005,
+     "0.003": 0.02,
+     "0.005": 0.06,
+     "0.01": 0.165,
+     "0.02": 0.59,
+     "0.03": 0.875,
+     "0.05": 1.0,
+     "0.1": 1.0,
+     "0.3": 0.995
+    },
+    "f_50": 0.01727,
+    "f50_over_fstar": 0.691,
+    "secs": 18.3,
+    "tied": true,
+    "bath_gate_pass": true
+   },
+   {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "d": 896,
+    "V_eff": 151665,
+    "V_padded": 151936,
+    "f_star_analytic": 0.0274,
+    "bath_max_sigma_pred": 5.024,
+    "bath_max_sigma_measured": 4.765,
+    "curve": {
+     "0.0003": 0.0,
+     "0.001": 0.005,
+     "0.002": 0.0,
+     "0.003": 0.01,
+     "0.005": 0.04,
+     "0.01": 0.195,
+     "0.02": 0.57,
+     "0.03": 0.885,
+     "0.05": 0.99,
+     "0.1": 1.0,
+     "0.3": 1.0
+    },
+    "f_50": 0.01757,
+    "f50_over_fstar": 0.641,
+    "secs": 99.2,
+    "tied": true,
+    "bath_gate_pass": true
+   },
+   {
+    "model": "Qwen/Qwen2.5-1.5B",
+    "d": 1536,
+    "V_eff": 151665,
+    "V_padded": 151936,
+    "f_star_analytic": 0.01617,
+    "bath_max_sigma_pred": 5.024,
+    "bath_max_sigma_measured": 4.81,
+    "curve": {
+     "0.0003": 0.0,
+     "0.001": 0.0,
+     "0.002": 0.005,
+     "0.003": 0.055,
+     "0.005": 0.155,
+     "0.01": 0.545,
+     "0.02": 0.96,
+     "0.03": 1.0,
+     "0.05": 1.0,
+     "0.1": 0.995,
+     "0.3": 1.0
+    },
+    "f_50": 0.00923,
+    "f50_over_fstar": 0.571,
+    "secs": 304.9,
+    "tied": true,
+    "bath_gate_pass": true
+   },
+   {
+    "model": "TinyLlama/TinyLlama_v1.1",
+    "d": 2048,
+    "V_eff": 32000,
+    "V_padded": 32000,
+    "f_star_analytic": 0.01069,
+    "bath_max_sigma_pred": 4.705,
+    "bath_max_sigma_measured": 4.411,
+    "curve": {
+     "0.0003": 0.005,
+     "0.001": 0.01,
+     "0.002": 0.075,
+     "0.003": 0.135,
+     "0.005": 0.345,
+     "0.01": 0.815,
+     "0.02": 0.985,
+     "0.03": 1.0,
+     "0.05": 0.99,
+     "0.1": 0.99,
+     "0.3": 1.0
+    },
+    "f_50": 0.00628,
+    "f50_over_fstar": 0.588,
+    "secs": 475.6,
+    "tied": false,
+    "bath_gate_pass": true
+   }
+  ],
+  "joint_regression": {
+   "n_points": 8,
+   "points": [
+    {
+     "model": "EleutherAI/pythia-410m-deduped",
+     "d": 1024,
+     "f_50": 0.01235
+    },
+    {
+     "model": "EleutherAI/pythia-1b-deduped",
+     "d": 2048,
+     "f_50": 0.00621
+    },
+    {
+     "model": "microsoft/phi-2",
+     "d": 2560,
+     "f_50": 0.005
+    },
+    {
+     "model": "gpt2-medium",
+     "d": 1024,
+     "f_50": 0.01537
+    },
+    {
+     "model": "bigscience/bloom-560m",
+     "d": 1024,
+     "f_50": 0.01727
+    },
+    {
+     "model": "Qwen/Qwen2.5-0.5B",
+     "d": 896,
+     "f_50": 0.01757
+    },
+    {
+     "model": "Qwen/Qwen2.5-1.5B",
+     "d": 1536,
+     "f_50": 0.00923
+    },
+    {
+     "model": "TinyLlama/TinyLlama_v1.1",
+     "d": 2048,
+     "f_50": 0.00628
+    }
+   ],
+   "slope_log_f50_vs_log_d": -1.219,
+   "r2": 0.9662
+  },
+  "v_term": {
+   "passers": [
+    {
+     "model": "EleutherAI/pythia-410m-deduped",
+     "V": 50277,
+     "pred": 4.8,
+     "measured": 4.41
+    },
+    {
+     "model": "EleutherAI/pythia-1b-deduped",
+     "V": 50277,
+     "pred": 4.8,
+     "measured": 4.486
+    },
+    {
+     "model": "microsoft/phi-2",
+     "V": 50295,
+     "pred": 4.8,
+     "measured": 4.463
+    },
+    {
+     "model": "gpt2-medium",
+     "V": 50257,
+     "pred": 4.8,
+     "measured": 4.673
+    },
+    {
+     "model": "bigscience/bloom-560m",
+     "V": 250680,
+     "pred": 5.123,
+     "measured": 4.79
+    },
+    {
+     "model": "Qwen/Qwen2.5-0.5B",
+     "V": 151665,
+     "pred": 5.024,
+     "measured": 4.765
+    },
+    {
+     "model": "Qwen/Qwen2.5-1.5B",
+     "V": 151665,
+     "pred": 5.024,
+     "measured": 4.81
+    },
+    {
+     "model": "TinyLlama/TinyLlama_v1.1",
+     "V": 32000,
+     "pred": 4.705,
+     "measured": 4.411
+    }
+   ],
+   "corr_lnV_ceiling": 0.883
+  }
+ },
+ "leg_E": [
+  {
+   "model": "EleutherAI/pythia-410m-deduped",
+   "layer": 15,
+   "d": 1024,
+   "V": 50277,
+   "sigma_pred": 4.8,
+   "n_states": 40,
+   "state_kurtosis_med": 2.816,
+   "state_maxsigma_med": 4.891,
+   "delta_kurtosis": 3.994,
+   "delta_maxsigma": 4.508
+  },
+  {
+   "model": "EleutherAI/pythia-1b-deduped",
+   "layer": 10,
+   "d": 2048,
+   "V": 50277,
+   "sigma_pred": 4.8,
+   "n_states": 40,
+   "state_kurtosis_med": 19.476,
+   "state_maxsigma_med": 6.61,
+   "delta_kurtosis": 6.191,
+   "delta_maxsigma": 5.153
+  },
+  {
+   "model": "microsoft/phi-2",
+   "layer": 20,
+   "d": 2560,
+   "V": 50295,
+   "sigma_pred": 4.8,
+   "n_states": 40,
+   "state_kurtosis_med": 3.632,
+   "state_maxsigma_med": 5.494,
+   "delta_kurtosis": 8.416,
+   "delta_maxsigma": 5.467
+  }
+ ],
+ "leg_A": [
+  {
+   "model": "EleutherAI/pythia-70m-deduped",
+   "layer": 4,
+   "d": 512,
+   "bath_sigma": 9.372,
+   "f_emp_bar": 0.14643,
+   "pairs": [
+    {
+     "pair": "hotcold-dog",
+     "f_real": 0.0197,
+     "null_med": 0.04173,
+     "margin_vs_emp": 0.13,
+     "present": false
+    },
+    {
+     "pair": "hotcold-soup",
+     "f_real": 0.01453,
+     "null_med": 0.03405,
+     "margin_vs_emp": 0.1,
+     "present": false
+    },
+    {
+     "pair": "food-tool",
+     "f_real": 0.01194,
+     "null_med": 0.02983,
+     "margin_vs_emp": 0.08,
+     "present": false
+    },
+    {
+     "pair": "animal-vehicle",
+     "f_real": 0.0072,
+     "null_med": 0.03729,
+     "margin_vs_emp": 0.05,
+     "present": false
+    },
+    {
+     "pair": "negation",
+     "f_real": 0.06095,
+     "null_med": 0.0313,
+     "margin_vs_emp": 0.42,
+     "present": false
+    },
+    {
+     "pair": "king-queen",
+     "f_real": 0.01951,
+     "null_med": 0.02358,
+     "margin_vs_emp": 0.13,
+     "present": false
+    },
+    {
+     "pair": "season",
+     "f_real": 0.01373,
+     "null_med": 0.03499,
+     "margin_vs_emp": 0.09,
+     "present": false
+    },
+    {
+     "pair": "drink",
+     "f_real": 0.02329,
+     "null_med": 0.04053,
+     "margin_vs_emp": 0.16,
+     "present": false
+    }
+   ],
+   "n_present": 0,
+   "n_pairs": 8,
+   "median_margin_present": null
+  },
+  {
+   "model": "EleutherAI/pythia-160m-deduped",
+   "layer": 8,
+   "d": 768,
+   "bath_sigma": 8.597,
+   "f_emp_bar": 0.08779,
+   "pairs": [
+    {
+     "pair": "hotcold-dog",
+     "f_real": 0.01272,
+     "null_med": 0.02373,
+     "margin_vs_emp": 0.14,
+     "present": false
+    },
+    {
+     "pair": "hotcold-soup",
+     "f_real": 0.03692,
+     "null_med": 0.02072,
+     "margin_vs_emp": 0.42,
+     "present": false
+    },
+    {
+     "pair": "food-tool",
+     "f_real": 0.01987,
+     "null_med": 0.02776,
+     "margin_vs_emp": 0.23,
+     "present": false
+    },
+    {
+     "pair": "animal-vehicle",
+     "f_real": 0.06942,
+     "null_med": 0.02613,
+     "margin_vs_emp": 0.79,
+     "present": false
+    },
+    {
+     "pair": "negation",
+     "f_real": 0.01339,
+     "null_med": 0.02273,
+     "margin_vs_emp": 0.15,
+     "present": false
+    },
+    {
+     "pair": "king-queen",
+     "f_real": 0.02765,
+     "null_med": 0.02579,
+     "margin_vs_emp": 0.32,
+     "present": false
+    },
+    {
+     "pair": "season",
+     "f_real": 0.01333,
+     "null_med": 0.03051,
+     "margin_vs_emp": 0.15,
+     "present": false
+    },
+    {
+     "pair": "drink",
+     "f_real": 0.01581,
+     "null_med": 0.02577,
+     "margin_vs_emp": 0.18,
+     "present": false
+    }
+   ],
+   "n_present": 0,
+   "n_pairs": 8,
+   "median_margin_present": null
+  },
+  {
+   "model": "EleutherAI/pythia-410m-deduped",
+   "layer": 15,
+   "d": 1024,
+   "bath_sigma": 4.467,
+   "f_emp_bar": 0.01911,
+   "pairs": [
+    {
+     "pair": "hotcold-dog",
+     "f_real": 0.17322,
+     "null_med": 0.01466,
+     "margin_vs_emp": 9.06,
+     "present": true
+    },
+    {
+     "pair": "hotcold-soup",
+     "f_real": 0.11473,
+     "null_med": 0.01181,
+     "margin_vs_emp": 6.0,
+     "present": true
+    },
+    {
+     "pair": "food-tool",
+     "f_real": 0.14505,
+     "null_med": 0.01385,
+     "margin_vs_emp": 7.59,
+     "present": true
+    },
+    {
+     "pair": "animal-vehicle",
+     "f_real": 0.09778,
+     "null_med": 0.01681,
+     "margin_vs_emp": 5.12,
+     "present": true
+    },
+    {
+     "pair": "negation",
+     "f_real": 0.15483,
+     "null_med": 0.0157,
+     "margin_vs_emp": 8.1,
+     "present": true
+    },
+    {
+     "pair": "king-queen",
+     "f_real": 0.15492,
+     "null_med": 0.01294,
+     "margin_vs_emp": 8.11,
+     "present": true
+    },
+    {
+     "pair": "season",
+     "f_real": 0.0864,
+     "null_med": 0.01384,
+     "margin_vs_emp": 4.52,
+     "present": true
+    },
+    {
+     "pair": "drink",
+     "f_real": 0.1078,
+     "null_med": 0.017,
+     "margin_vs_emp": 5.64,
+     "present": true
+    }
+   ],
+   "n_present": 8,
+   "n_pairs": 8,
+   "median_margin_present": 6.79
+  },
+  {
+   "model": "EleutherAI/pythia-1b-deduped",
+   "layer": 10,
+   "d": 2048,
+   "bath_sigma": 4.397,
+   "f_emp_bar": 0.00935,
+   "pairs": [
+    {
+     "pair": "hotcold-dog",
+     "f_real": 0.08903,
+     "null_med": 0.00955,
+     "margin_vs_emp": 9.52,
+     "present": true
+    },
+    {
+     "pair": "hotcold-soup",
+     "f_real": 0.07101,
+     "null_med": 0.00757,
+     "margin_vs_emp": 7.59,
+     "present": true
+    },
+    {
+     "pair": "food-tool",
+     "f_real": 0.09822,
+     "null_med": 0.00705,
+     "margin_vs_emp": 10.5,
+     "present": true
+    },
+    {
+     "pair": "animal-vehicle",
+     "f_real": 0.07481,
+     "null_med": 0.00703,
+     "margin_vs_emp": 8.0,
+     "present": true
+    },
+    {
+     "pair": "negation",
+     "f_real": 0.11533,
+     "null_med": 0.01018,
+     "margin_vs_emp": 12.33,
+     "present": true
+    },
+    {
+     "pair": "king-queen",
+     "f_real": 0.11203,
+     "null_med": 0.00698,
+     "margin_vs_emp": 11.98,
+     "present": true
+    },
+    {
+     "pair": "season",
+     "f_real": 0.05494,
+     "null_med": 0.00653,
+     "margin_vs_emp": 5.88,
+     "present": true
+    },
+    {
+     "pair": "drink",
+     "f_real": 0.06064,
+     "null_med": 0.0069,
+     "margin_vs_emp": 6.49,
+     "present": true
+    }
+   ],
+   "n_present": 8,
+   "n_pairs": 8,
+   "median_margin_present": 8.76
+  },
+  {
+   "model": "microsoft/phi-2",
+   "layer": 20,
+   "d": 2560,
+   "bath_sigma": 4.445,
+   "f_emp_bar": 0.00766,
+   "pairs": [
+    {
+     "pair": "hotcold-dog",
+     "f_real": 0.09235,
+     "null_med": 0.00755,
+     "margin_vs_emp": 12.06,
+     "present": true
+    },
+    {
+     "pair": "hotcold-soup",
+     "f_real": 0.06758,
+     "null_med": 0.0055,
+     "margin_vs_emp": 8.82,
+     "present": true
+    },
+    {
+     "pair": "food-tool",
+     "f_real": 0.09218,
+     "null_med": 0.00748,
+     "margin_vs_emp": 12.04,
+     "present": true
+    },
+    {
+     "pair": "animal-vehicle",
+     "f_real": 0.10317,
+     "null_med": 0.00761,
+     "margin_vs_emp": 13.47,
+     "present": true
+    },
+    {
+     "pair": "negation",
+     "f_real": 0.08597,
+     "null_med": 0.00673,
+     "margin_vs_emp": 11.22,
+     "present": true
+    },
+    {
+     "pair": "king-queen",
+     "f_real": 0.06675,
+     "null_med": 0.00767,
+     "margin_vs_emp": 8.71,
+     "present": true
+    },
+    {
+     "pair": "season",
+     "f_real": 0.12511,
+     "null_med": 0.00612,
+     "margin_vs_emp": 16.33,
+     "present": true
+    },
+    {
+     "pair": "drink",
+     "f_real": 0.10144,
+     "null_med": 0.00735,
+     "margin_vs_emp": 13.24,
+     "present": true
+    }
+   ],
+   "n_present": 8,
+   "n_pairs": 8,
+   "median_margin_present": 12.05
+  }
+ ],
+ "verdicts": {
+  "leg_A": "BATTERY-CONFIRMS",
+  "leg_E": "HEAVY-TAILED"
+ }
+}

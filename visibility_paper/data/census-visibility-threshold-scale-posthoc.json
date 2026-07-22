@@ -1,0 +1,83 @@
+{
+ "note": "post-hoc, not pre-registered; see 3ag RESULT",
+ "n_bath": 100,
+ "n_drop": 8,
+ "seed": 0,
+ "per_model": [
+  {
+   "model": "EleutherAI/pythia-70m-deduped",
+   "d": 512,
+   "V": 50277,
+   "iso_pred_sigma": 4.8,
+   "col_energy_top1": 0.00286,
+   "col_energy_top8": 0.02201,
+   "col_energy_top1_iso": 0.00195,
+   "col_energy_top8_iso": 0.01562,
+   "col_gini": 0.095,
+   "bath_max_sigma": 9.372,
+   "bath_kurtosis": 1.138,
+   "bath_max_sigma_top8_dropped": 9.61,
+   "bath_kurtosis_top8_dropped": 1.153
+  },
+  {
+   "model": "EleutherAI/pythia-160m-deduped",
+   "d": 768,
+   "V": 50277,
+   "iso_pred_sigma": 4.8,
+   "col_energy_top1": 0.00322,
+   "col_energy_top8": 0.01665,
+   "col_energy_top1_iso": 0.0013,
+   "col_energy_top8_iso": 0.01042,
+   "col_gini": 0.094,
+   "bath_max_sigma": 8.597,
+   "bath_kurtosis": 2.155,
+   "bath_max_sigma_top8_dropped": 8.554,
+   "bath_kurtosis_top8_dropped": 2.007
+  },
+  {
+   "model": "EleutherAI/pythia-410m-deduped",
+   "d": 1024,
+   "V": 50277,
+   "iso_pred_sigma": 4.8,
+   "col_energy_top1": 0.00652,
+   "col_energy_top8": 0.02024,
+   "col_energy_top1_iso": 0.00098,
+   "col_energy_top8_iso": 0.00781,
+   "col_gini": 0.077,
+   "bath_max_sigma": 4.467,
+   "bath_kurtosis": 0.004,
+   "bath_max_sigma_top8_dropped": 4.393,
+   "bath_kurtosis_top8_dropped": 0.002
+  },
+  {
+   "model": "EleutherAI/pythia-1b-deduped",
+   "d": 2048,
+   "V": 50277,
+   "iso_pred_sigma": 4.8,
+   "col_energy_top1": 0.00336,
+   "col_energy_top8": 0.01115,
+   "col_energy_top1_iso": 0.00049,
+   "col_energy_top8_iso": 0.00391,
+   "col_gini": 0.058,
+   "bath_max_sigma": 4.397,
+   "bath_kurtosis": 0.009,
+   "bath_max_sigma_top8_dropped": 4.44,
+   "bath_kurtosis_top8_dropped": 0.006
+  },
+  {
+   "model": "microsoft/phi-2",
+   "d": 2560,
+   "V": 50295,
+   "iso_pred_sigma": 4.8,
+   "col_energy_top1": 0.00146,
+   "col_energy_top8": 0.00853,
+   "col_energy_top1_iso": 0.00039,
+   "col_energy_top8_iso": 0.00313,
+   "col_gini": 0.066,
+   "bath_max_sigma": 4.445,
+   "bath_kurtosis": 0.005,
+   "bath_max_sigma_top8_dropped": 4.465,
+   "bath_kurtosis_top8_dropped": 0.0
+  }
+ ]
+}

@@ -1,0 +1,229 @@
+{
+ "config": {
+  "smoke": false,
+  "fs": [
+   0.0003,
+   0.001,
+   0.002,
+   0.003,
+   0.005,
+   0.01,
+   0.02,
+   0.03,
+   0.05,
+   0.1,
+   0.3
+  ],
+  "n_samp": 200,
+  "topk": 15,
+  "seed": 0,
+  "models": [
+   "EleutherAI/pythia-70m-deduped",
+   "EleutherAI/pythia-160m-deduped",
+   "EleutherAI/pythia-410m-deduped",
+   "EleutherAI/pythia-1b-deduped",
+   "microsoft/phi-2"
+  ]
+ },
+ "per_model": [
+  {
+   "model": "EleutherAI/pythia-70m-deduped",
+   "d": 512,
+   "V_eff": 50277,
+   "V_padded": 50304,
+   "f_star_analytic": 0.04306,
+   "bath_max_sigma_pred": 4.8,
+   "bath_max_sigma_measured": 9.372,
+   "curve": {
+    "0.0003": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.0,
+    "0.003": 0.0,
+    "0.005": 0.01,
+    "0.01": 0.005,
+    "0.02": 0.005,
+    "0.03": 0.01,
+    "0.05": 0.02,
+    "0.1": 0.055,
+    "0.3": 0.38
+   },
+   "f_50": null,
+   "f50_over_fstar": null,
+   "secs": 4.5,
+   "bath_gate_pass": false
+  },
+  {
+   "model": "EleutherAI/pythia-160m-deduped",
+   "d": 768,
+   "V_eff": 50277,
+   "V_padded": 50304,
+   "f_star_analytic": 0.02912,
+   "bath_max_sigma_pred": 4.8,
+   "bath_max_sigma_measured": 8.342,
+   "curve": {
+    "0.0003": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.005,
+    "0.003": 0.0,
+    "0.005": 0.005,
+    "0.01": 0.015,
+    "0.02": 0.015,
+    "0.03": 0.055,
+    "0.05": 0.08,
+    "0.1": 0.26,
+    "0.3": 0.945
+   },
+   "f_50": 0.14695,
+   "f50_over_fstar": 5.046,
+   "secs": 3.8,
+   "bath_gate_pass": false
+  },
+  {
+   "model": "EleutherAI/pythia-410m-deduped",
+   "d": 1024,
+   "V_eff": 50277,
+   "V_padded": 50304,
+   "f_star_analytic": 0.022,
+   "bath_max_sigma_pred": 4.8,
+   "bath_max_sigma_measured": 4.41,
+   "curve": {
+    "0.0003": 0.0,
+    "0.001": 0.0,
+    "0.002": 0.02,
+    "0.003": 0.03,
+    "0.005": 0.07,
+    "0.01": 0.375,
+    "0.02": 0.785,
+    "0.03": 0.96,
+    "0.05": 0.995,
+    "0.1": 1.0,
+    "0.3": 1.0
+   },
+   "f_50": 0.01235,
+   "f50_over_fstar": 0.561,
+   "secs": 4.3,
+   "bath_gate_pass": true
+  },
+  {
+   "model": "EleutherAI/pythia-1b-deduped",
+   "d": 2048,
+   "V_eff": 50277,
+   "V_padded": 50304,
+   "f_star_analytic": 0.01112,
+   "bath_max_sigma_pred": 4.8,
+   "bath_max_sigma_measured": 4.486,
+   "curve": {
+    "0.0003": 0.005,
+    "0.001": 0.01,
+    "0.002": 0.045,
+    "0.003": 0.115,
+    "0.005": 0.345,
+    "0.01": 0.84,
+    "0.02": 0.985,
+    "0.03": 1.0,
+    "0.05": 1.0,
+    "0.1": 1.0,
+    "0.3": 1.0
+   },
+   "f_50": 0.00621,
+   "f50_over_fstar": 0.558,
+   "secs": 5.8,
+   "bath_gate_pass": true
+  },
+  {
+   "model": "microsoft/phi-2",
+   "d": 2560,
+   "V_eff": 50295,
+   "V_padded": 51200,
+   "f_star_analytic": 0.00892,
+   "bath_max_sigma_pred": 4.8,
+   "bath_max_sigma_measured": 4.463,
+   "curve": {
+    "0.0003": 0.0,
+    "0.001": 0.025,
+    "0.002": 0.09,
+    "0.003": 0.185,
+    "0.005": 0.5,
+    "0.01": 0.94,
+    "0.02": 1.0,
+    "0.03": 1.0,
+    "0.05": 1.0,
+    "0.1": 1.0,
+    "0.3": 1.0
+   },
+   "f_50": 0.005,
+   "f50_over_fstar": 0.561,
+   "secs": 6.4,
+   "bath_gate_pass": true
+  }
+ ],
+ "gates": {
+  "reproduction_3af": {
+   "published": {
+    "0.001": 0.01,
+    "0.003": 0.14,
+    "0.01": 0.9
+   },
+   "measured": {
+    "0.001": 0.025,
+    "0.003": 0.185,
+    "0.01": 0.94
+   },
+   "deviation": {
+    "0.001": 0.015,
+    "0.003": 0.045,
+    "0.01": 0.04
+   },
+   "tol": 0.12,
+   "pass": true
+  },
+  "bath_ceiling_constant": {
+   "measured": {
+    "EleutherAI/pythia-70m-deduped": 9.372,
+    "EleutherAI/pythia-160m-deduped": 8.342,
+    "EleutherAI/pythia-410m-deduped": 4.41,
+    "EleutherAI/pythia-1b-deduped": 4.486,
+    "microsoft/phi-2": 4.463
+   },
+   "tol_excess": 0.5,
+   "excluded_by_gate": [
+    "EleutherAI/pythia-70m-deduped",
+    "EleutherAI/pythia-160m-deduped"
+   ],
+   "pass_all": false,
+   "spread_iso": 0.076
+  },
+  "easy_end": {
+   "measured": {
+    "EleutherAI/pythia-160m-deduped": 0.945,
+    "EleutherAI/pythia-410m-deduped": 1.0,
+    "EleutherAI/pythia-1b-deduped": 1.0,
+    "microsoft/phi-2": 1.0
+   },
+   "pass_iso": true,
+   "pass_all": false
+  }
+ },
+ "regression": {
+  "subset": "bath-gate-passing (isotropic) models only",
+  "excluded_by_bath_gate": [
+   "EleutherAI/pythia-70m-deduped",
+   "EleutherAI/pythia-160m-deduped"
+  ],
+  "slope_log_f50_vs_log_d": -0.988,
+  "r2": 1.0,
+  "n_points": 3,
+  "f50_over_fstar": {
+   "EleutherAI/pythia-410m-deduped": 0.561,
+   "EleutherAI/pythia-1b-deduped": 0.558,
+   "microsoft/phi-2": 0.561
+  },
+  "f50_over_fstar_spread": 0.003,
+  "verdict": "LINEAR",
+  "branches": {
+   "LINEAR": "slope ~ -1: 07-17 correction validated",
+   "SQRT": "slope ~ -0.5: correction AND closed form wrong",
+   "FLAT": "slope ~ 0: max-statistic model does not govern"
+  }
+ }
+}

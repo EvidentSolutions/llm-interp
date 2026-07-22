@@ -1,0 +1,544 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+
+\newcommand{\WU}{W_U}
+\newcommand{\fstar}{f^{*}}
+
+\title{A Visibility Threshold for Top-$k$ Logit-Lens Readouts}
+\author{Olli Tuomi\\Evident Solutions Oy}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Projecting a transformer hidden state, or a difference of hidden
+states, through the unembedding matrix $\WU$ and reading the top-$k$
+tokens is a standard inspection technique. We ask how much of the
+state's energy must be aligned with a token direction for that token
+to appear in the top $k$. Under an isotropy assumption on the
+remainder and on the rows of $\WU$, the top-$k$ readout is a
+max-statistic and the answer is a closed form:
+$\fstar = 2\ln(2V)/(d + 2\ln(2V))$, about $0.9\%$ of the state's
+energy for Phi-2 ($d{=}2560$, $V{=}51{,}200$). We test this with
+planted signals on ten models from five families (Pythia, Phi,
+GPT-2, BLOOM, Qwen, TinyLlama; $d = 512$--$2560$,
+$V = 32$k--$251$k). On the eight models whose unembedding passes the
+isotropy gate, the measured half-visibility point $f_{50}$ tracks
+$\fstar$ with slope $1.15$ in the log--log regression
+($R^2 = 0.98$), with a family-dependent constant
+$f_{50}/\fstar \in [0.56, 0.70]$ ($0.56 \pm 0.003$ within the
+Pythia/Phi subset); the ceiling's predicted rise with $\ln V$ is
+directionally confirmed across the $8\times$ vocabulary span. The
+two smallest Pythia models violate the assumption: their unembedding
+row directions are heavy-tailed (bath excess kurtosis $+1.1$ and
+$+2.2$ versus $\approx 0$), the empirical ceiling is about twice the
+isotropic prediction, and the threshold rises accordingly (for
+Pythia-70m, a planted signal carrying $30\%$ of the state's energy is
+usually invisible). Averaging $N$ independent difference vectors that
+share a signal lowers the threshold roughly $N$-fold, as predicted.
+Real hidden states violate the isotropy of the remainder as well
+(post-signal kurtosis $2.8$--$19.5$), raising the effective bar for
+real reads by $1.05$--$1.5\times$ on the gate-passing models. This is a
+measured correction, not a failure of the framework. A battery of
+eight real contrast pairs clears the bar at $4.5$--$16\times$ on
+every isotropic model ($24/24$ present, surviving the real-remainder
+correction) and is absent on both anisotropic models ($16/16$). The practical readings are: a
+clean top-$k$ readout is compatible with the large majority of the
+state's energy being unaligned with any token direction; absence
+from the top $k$ bounds aligned energy only up to $\fstar$; and the
+threshold is a property of $\WU$ geometry, not of $d$ alone, so
+small-model readouts require a measured calibration.
+\end{abstract}
+
+\section{Introduction}
+
+The logit lens \citep{nostalgebraist2020} and its descendants project
+hidden states through the unembedding matrix $\WU \in
+\mathbb{R}^{V\times d}$ (we write $\hat{\WU}$ for its row-normalised
+version) and read the top-$k$ tokens. The same readout is applied to
+weight vectors such as MLP output columns \citep{geva2022,dar2022}.
+Differences of hidden states are not new either: contrastive and
+steering methods \citep{zou2023,turner2023,rimsky2024} construct them,
+though they interpret them through scalar projections or effects on
+generation rather than token readouts; \citet{tuomi2026contrastive}
+reads such differences through the logit lens, where the shared
+component cancels and the distinguishing tokens surface. In each
+reading use, a short list of tokens is taken as a description of what
+a $d$-dimensional vector contains.
+
+A basic quantitative question about this readout appears not to have
+a standard answer: how large must a token-aligned component be,
+relative to everything else in the vector, before it surfaces in the
+top $k$? The question matters in both directions. If the answer is
+``small,'' then a clean token list is compatible with a vector whose
+energy is almost entirely elsewhere, and the readout should not be
+treated as an energy account. If a component below the answer is
+present, the readout will not show it, and its absence should not be
+treated as evidence of absence.
+
+This paper derives the threshold under explicit assumptions
+(\S\ref{sec:threshold}), measures it with planted signals on five
+models (\S\ref{sec:planted}, \S\ref{sec:scale}), characterises where
+and why the assumptions fail (\S\ref{sec:scale}), and places one real
+contrast on the resulting curve at each scale (\S\ref{sec:anchor}).
+All experiments are weights-plus-forward-pass measurements on public
+checkpoints; scripts, seeds, and result files are listed in
+\S\ref{sec:repro}.
+
+\section{The threshold}
+\label{sec:threshold}
+
+\paragraph{Setup.} Let $x \in \mathbb{R}^d$ be the vector to be read
+(a hidden state, a difference of hidden states, or a weight column).
+Write it as
+\[
+x = \sqrt{f}\,\|x\|\,u_t \;+\; \sqrt{1-f}\,\|x\|\,\varepsilon,
+\]
+where $u_t$ is the unit direction of the $\WU$ row for token $t$, $f$
+is the fraction of $x$'s energy aligned with $u_t$, and $\varepsilon$
+is a unit vector. The readout computes $|\hat{\WU} x|$ for the
+row-normalised unembedding $\hat{\WU} \in \mathbb{R}^{V\times d}$ and
+returns the $k$ tokens with the largest values. Token $t$ is
+\emph{visible} if it is among them.
+
+\paragraph{Assumptions.} (i) $\varepsilon$ is isotropic; (ii) the
+rows of $\hat{\WU}$ behave, against a random direction, like $V$
+independent isotropic directions; (iii) the bar is set by the maximum
+bath entry ($k{=}1$); a top-$k$ criterion replaces the maximum by the
+$k$-th order statistic and relaxes the bar by a constant factor.
+Assumption (ii) is the one that fails in practice, in a measurable
+way (\S\ref{sec:scale}).
+
+\paragraph{Derivation.} Under (i)--(ii), the bath entries
+$\hat{\WU}\varepsilon$ are approximately $\mathcal{N}(0, 1/d)$, and
+the maximum of $V$ two-sided Gaussian draws concentrates at
+$\sqrt{2\ln(2V)}$ standard deviations. Token $t$'s entry is
+$\sqrt{f}\,\|x\|$ against a bath of scale
+$\sqrt{(1-f)/d}\,\|x\|$. Visibility requires
+\[
+\frac{\sqrt{f}}{\sqrt{1-f}} \;>\; \frac{\sqrt{2\ln(2V)}}{\sqrt{d}}
+\quad\Longleftrightarrow\quad
+f \;>\; \fstar = \frac{2\ln(2V)}{d + 2\ln(2V)}.
+\]
+For Phi-2 ($d{=}2560$, $V{=}51{,}200$): $\fstar \approx 0.89\%$ and
+the bath ceiling is $4.80\sigma$. Since $d \gg \ln V$ in practice,
+$\fstar \approx 2\ln(2V)/d$: the \emph{energy} threshold is linear in
+$1/d$ (the \emph{amplitude} bar $\sqrt{\fstar}$ scales as
+$1/\sqrt{d}$). Because the dependence on $V$ is logarithmic and $V$
+is nearly constant across the model suite used below, $\fstar$ is in
+practice a function of $d$.
+
+Two consequences follow directly. First, a vector can carry, say,
+$90\%$ of its energy in directions unaligned with every token and
+still produce a stable, clean top-$k$ list from the remaining $10\%$,
+because $10\% \gg \fstar$. Second, averaging $N$ independent vectors
+that share the aligned component suppresses the incoherent remainder
+by $\sqrt{N}$ in amplitude, so a signal at $f < \fstar$ becomes
+visible at roughly $N \approx \fstar/f$.
+
+\section{Planted-signal measurements on Phi-2}
+\label{sec:planted}
+
+\paragraph{Method.} A target row direction is planted at energy
+fraction $f$ into an isotropic bath,
+$\delta = \sqrt{1-f}\,\varepsilon + \sqrt{f}\,u_t$, and we record
+whether $t$ lands in the top 15 of $|\hat{\WU}\delta|$. 100 samples
+per $f$; content-word tokens; seed fixed. The $f{=}0$ bath maximum
+measures the ceiling directly: $4.46\sigma$ against the predicted
+$4.80\sigma$, a $\sim$7\% undershoot attributable to correlations
+among $\WU$ rows.
+
+\paragraph{Threshold curve.} Hit rates for a single planted token:
+
+\begin{center}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+$f$ & 0.001 & 0.003 & 0.01 & 0.03 & 0.1 & 0.3 \\
+\midrule
+hit rate & 0.01 & 0.14 & 0.90 & 1.00 & 1.00 & 1.00 \\
+median rank & 4119 & 307 & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The transition brackets $\fstar \approx 0.9\%$. A 5-token family
+signal (the planted energy split over five related rows) shifts the
+curve right by roughly the per-token mass split, as expected: hit
+rate 0.48 at $f{=}0.01$, 0.91 at $f{=}0.03$.
+
+\paragraph{Triangulation.} Averaging $N$ independent baths sharing a
+planted signal at $f = 0.003$ (below threshold):
+
+\begin{center}
+\small
+\begin{tabular}{lccccc}
+\toprule
+$N$ & 1 & 2 & 4 & 8 & 16 \\
+\midrule
+hit rate & 0.25 & 0.62 & 0.94 & 1.00 & 1.00 \\
+median rank & 135 & 4 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The predicted rescue point is $N \approx \fstar/f = 3$; the curve
+crosses between $N{=}2$ and $N{=}4$. This is the arithmetic behind
+multi-contrast averaging \citep{tuomi2026contrastive}: it does not
+sharpen the signal, it suppresses the bath.
+
+\section{The threshold across scale}
+\label{sec:scale}
+
+$V$ is fixed across the Pythia suite (50{,}277 after removing padded
+rows) and $d$ spans $5\times$, so the closed form predicts $\fstar$
+moves $4.8\times$. The experiment was pre-registered with three
+outcome branches (slope $-1$: the closed form holds; slope $-0.5$:
+the energy/amplitude exponent is wrong; slope $0$: the max-statistic
+model does not govern) and three gates, of which one (the bath
+ceiling must be roughly constant in $d$, since it depends only on $V$)
+doubles as a per-model isotropy check. A model failing it is
+reported and excluded from the regression. 200 samples per point.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrl}
+\toprule
+model & $d$ & bath ($\sigma$) & analytic $\fstar$ & $f_{50}$ &
+$f_{50}/\fstar$ \\
+\midrule
+Pythia-70m & 512 & 9.37 & 4.31\% & no crossing & --- \\
+Pythia-160m & 768 & 8.34 & 2.91\% & 14.70\% & 5.05 \\
+Pythia-410m & 1024 & 4.41 & 2.20\% & 1.24\% & 0.561 \\
+Pythia-1b & 2048 & 4.49 & 1.11\% & 0.62\% & 0.558 \\
+Phi-2 & 2560 & 4.46 & 0.89\% & 0.50\% & 0.561 \\
+\bottomrule
+\end{tabular}
+\caption{Planted-signal sweep across five models. $f_{50}$ is the
+planted-energy fraction at which the top-15 hit rate crosses 0.5
+(log-linear interpolation). The predicted ceiling is $4.80\sigma$ at
+every $d$; the first two models fail the isotropy gate and are
+excluded from the regression.}
+\label{tab:scale}
+\end{table}
+
+\paragraph{Result on the isotropic subset.} For the three models
+whose bath sits at the predicted ceiling (spread $0.08\sigma$),
+regressing $\log f_{50}$ on $\log d$ gives slope $-0.988$
+($R^2 = 1.000$, $n{=}3$). More informative than the slope is the
+ratio column of Table~\ref{tab:scale}: $f_{50}/\fstar = 0.56$ at all
+three values of $d$, with spread $0.003$. The closed form is correct
+up to a single multiplicative constant. The constant being below 1
+has the expected sign: a top-15 hit needs to beat the 15th order
+statistic rather than the maximum, and the measured ceiling itself
+sits $\sim$7\% under the analytic value. We have not derived
+it; the scale-invariance of the ratio is the measured content.
+
+Two known effects account for most of the constant. Replacing the
+maximum by the $k$-th order statistic moves the bar from
+$\sqrt{2\ln(2V)}$ to approximately $\sqrt{2\ln(2V/k)}$, an energy
+factor $\ln(2V/k)/\ln(2V) \approx 0.77$ at $k{=}15$,
+$V \approx 50\text{k}$; and the bar is set by the \emph{measured}
+ceiling rather than the analytic one, a further factor
+$(4.46/4.80)^2 \approx 0.86$. Together these predict a ratio of
+$\approx 0.66$ against the measured $0.56$; we attribute the residual
+$\approx 0.85$ factor to fluctuation of the signal entry itself at
+the 50\% crossing (the planted row's logit carries its own share of
+the bath noise) and to residual row correlations, and present this as
+intuition rather than derivation. The decomposition does predict that
+the constant should drift with $k$ and with the measured ceiling,
+which is testable.
+
+\paragraph{Five more families.} To move past an $n{=}3$ regression,
+we ran the identical sweep on five further models chosen to break the
+suite's shared tokenizer and to span vocabulary size:
+Table~\ref{tab:scale2}. All five pass the bath-ceiling gate, giving
+eight isotropic models across five families, $d = 896$--$2560$ and
+$V = 32$k--$251$k. Because $V$ now varies, the right regression is
+$\log f_{50}$ on $\log \fstar$ (which absorbs both $d$ and $V$):
+slope $1.15$, $R^2 = 0.981$, $n{=}8$. The order-statistic constant
+is family-dependent (0.56 for Pythia/Phi, 0.57--0.70 for
+the others), which is why the mixed-family slope sits above 1; the
+within-family result (slope $-0.99$ in $\log d$, constant $0.56$)
+remains the cleanest statement, and the family spread bounds how far
+the constant travels: every measured value lies in $[0.56, 0.70]$.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrlrrrl}
+\toprule
+model & $d$ & $V$ & tied & bath ($\sigma$) & $\fstar$ & $f_{50}$ &
+$f_{50}/\fstar$ \\
+\midrule
+Qwen2.5-0.5B & 896 & 151{,}665 & yes & 4.76 & 2.74\% & 1.76\% & 0.64 \\
+GPT-2-medium & 1024 & 50{,}257 & yes & 4.67 & 2.20\% & 1.54\% & 0.70 \\
+BLOOM-560m & 1024 & 250{,}680 & yes & 4.79 & 2.50\% & 1.73\% & 0.69 \\
+Qwen2.5-1.5B & 1536 & 151{,}665 & yes & 4.81 & 1.62\% & 0.92\% & 0.57 \\
+TinyLlama-1.1B & 2048 & 32{,}000 & no & 4.41 & 1.07\% & 0.63\% & 0.59 \\
+\bottomrule
+\end{tabular}
+\caption{The sweep on five additional families. All pass the
+bath-ceiling gate; predicted ceilings vary with $V$
+(\S\ref{sec:scale}, $V$-dependence).}
+\label{tab:scale2}
+\end{table}
+
+\paragraph{The $V$-dependence, first contact.} The closed form
+predicts the ceiling rises as $\sqrt{2\ln(2V)}$: $4.71\sigma$ at
+$V{=}32$k, $4.80\sigma$ at $50$k, $5.02\sigma$ at $152$k,
+$5.12\sigma$ at $251$k. Across the eight gate-passing models the
+measured ceilings correlate with $\ln V$ at $0.88$ and rise
+monotonically with $V$ within matched $d$ (BLOOM-560m $4.79\sigma$
+vs.\ GPT-2-medium $4.67\sigma$ at $d{=}1024$), sitting uniformly
+$4$--$7\%$ under the analytic value, the same undershoot as
+Phi-2's and attributable to row correlations. The $V$-term is
+directionally confirmed over an $8\times$ span; a quantitative fit
+would need more models per $V$.
+
+\paragraph{Where the assumption fails.} Pythia-70m and 160m violate
+the ceiling gate at $9.37\sigma$ and $8.34\sigma$, roughly double the
+isotropic prediction. The consequence for readability is large: 160m's
+measured $f_{50}$ is 14.7\%, five times its analytic $\fstar$, and
+70m's hit rate is only 0.38 at $f = 0.3$: a signal carrying 30\% of
+the state's energy usually loses the top-15 to the bath.
+
+A follow-up diagnostic (not pre-registered) checked the obvious
+explanation, axis-aligned outlier coordinates
+\citep{timkey2021,puccetti2022}: it does not hold for this object. On
+the row-normalised $\WU$, per-coordinate energy concentration is mild
+in all five models (top-1 coordinate share $0.0015$--$0.0065$), and
+removing the eight highest-variance coordinates leaves the inflated
+ceilings unchanged (70m: $9.37\sigma \to 9.61\sigma$; 160m:
+$8.60\sigma \to 8.55\sigma$; the diagnostic re-draws the bath, so its
+160m baseline differs from the sweep's $8.34\sigma$ by sampling). What separates the failing models is
+the excess kurtosis of the bath distribution: $+1.14$ (70m) and
+$+2.15$ (160m) versus $0.00$--$0.01$ for the three passing models.
+The small models' unembedding \emph{row directions} are heavy-tailed
+in a way not carried by any small set of coordinates; we leave the
+precise geometry open. Operationally: the isotropic threshold formula
+applies exactly where the bath is Gaussian-tailed, and the bath
+kurtosis is a one-line check for whether it applies.
+
+\section{A real contrast on the curve, at each scale}
+\label{sec:anchor}
+
+The planted-signal experiments locate the bar; they say nothing about
+what real vectors carry, and they construct the isotropic remainder
+of assumption~(i) by design. We therefore first measure that
+assumption on real vectors, then place a battery of real contrasts on
+the curve.
+
+\paragraph{Assumption (i) on real vectors.} For the three isotropic
+models at the capture layers below, we take real hidden states,
+remove the span of their top-15 $\WU$ rows (the ``signal''), and
+measure the remainder's bath statistics through $\hat{\WU}$. The
+remainder is \emph{not} isotropic: median excess kurtosis is $2.8$
+(Pythia-410m), $19.5$ (Pythia-1b), $3.6$ (Phi-2), with ceilings of
+$4.9\sigma$, $6.6\sigma$, $5.5\sigma$ against the $4.8\sigma$
+prediction. The same statistic on the real contrast \emph{difference}
+below gives kurtosis $4.0$/$6.2$/$8.4$ and ceilings
+$4.5\sigma$/$5.2\sigma$/$5.5\sigma$. The practical consequence is a
+multiplicative correction: using each model's real-difference ceiling
+in place of the random-bath ceiling scales the bar by
+$(s_{\text{real}}/s_{\text{rand}})^2 = 1.05$ (410m), $1.32$ (1b),
+$1.50$ (Phi-2). The framework survives with a measured correction
+factor; the margins reported below clear it comfortably.
+
+\paragraph{The anchor.} As a real anchor we use a minimal contrast
+pair inspired by prior work with this readout
+\citep{tuomi2026contrastive}: the difference of hidden
+states for ``My grandmother said that the \{hot, cold\} dog that she
+saw was'' at the final position, captured at the layer nearest 62.5\%
+depth in each model. The aligned-energy fraction $f_{\text{real}}$ is
+the least-squares span energy of the top-15 $\WU$ rows on the
+difference vector; the null is the median span energy of 15 random
+rows. The per-model bar is the empirical
+$f_{\text{emp}} = s^2/(d + s^2)$ computed from that model's measured
+bath ceiling $s$, which is the calibrated bar for the two anisotropic
+models. A model's margin is interpreted only if
+$f_{\text{real}} \geq 3\times$ its random-span null; below that we
+report signal absence rather than a margin.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrl}
+\toprule
+model & layer & bar $f_{\text{emp}}$ & $f_{\text{real}}$ & margin &
+signal \\
+\midrule
+Pythia-70m & 4/6 & 14.64\% & 1.97\% & --- & absent (0.5$\times$ null) \\
+Pythia-160m & 8/12 & 8.78\% & 1.27\% & --- & absent (0.6$\times$ null) \\
+Pythia-410m & 15/24 & 1.91\% & 17.32\% & 9.1$\times$ & present \\
+Pythia-1b & 10/16 & 0.93\% & 8.90\% & 9.5$\times$ & present \\
+Phi-2 & 20/32 & 0.77\% & 9.23\% & 12.1$\times$ & present \\
+\bottomrule
+\end{tabular}
+\caption{One real contrast placed on each model's curve. Margin is
+$f_{\text{real}}/f_{\text{emp}}$.}
+\label{tab:anchor}
+\end{table}
+
+On the three isotropic models the margin is $9$--$12\times$ the bar
+and roughly constant: as $d$ falls from 2560 to 1024 the bar rises
+$2.5\times$ and the contrast's aligned energy rises with it
+($9.2\% \to 17.3\%$). For this contrast, readability does not degrade
+with $d$ in the isotropic regime: bar and signal move together.
+The top-15 lists are recognisably about the contrast at all three
+scales (e.g., Pythia-1b's top-15 includes \emph{salad, ingredients,
+creatures, breeds}).
+
+On the two anisotropic models the contrast is signal-absent: the
+top-15 consists of whitespace and byte tokens, and the span energy
+sits below even the random-row null (the selected junk tokens' rows
+are nearly collinear, so fifteen of them span less than fifteen
+random rows). This grouping is expected rather than mysterious: rare
+and undertrained tokens retain unembedding rows near their common
+initialisation cluster, so a heavy-tailed bath direction that overlaps
+the cluster promotes the whole group at once: the readout-side
+signature of the undertrained-token phenomenon. With a single contrast we cannot distinguish ``the
+model never forms the distinction'' from ``the distinction is formed
+and the heavy-tailed bath swamps it''; both are consistent with the
+observation. We note only that the two models where the readout
+geometry is degraded are also the two where the one real read we have
+is empty.
+
+\paragraph{A battery, not an anecdote.} To test whether the anchor is
+typical, we ran seven further minimal pairs (soup temperature,
+food/tool, animal/vehicle, negation, king/queen, summer/winter,
+coffee/water) through the same machinery on all five models. On the
+three isotropic models every pair is signal-present ($24/24$), with
+median aligned energy $13.0\%$/$8.2\%$/$9.2\%$ and median margins
+$6.8\times$/$8.8\times$/$12.0\times$ (range $4.5$--$16\times$);
+the hot/cold anchor sits near each model's median, not above it. On
+the two anisotropic models every pair is signal-absent ($16/16$),
+extending the single-anchor observation: where the readout geometry
+is degraded, none of eight ordinary contrasts survives the bath.
+These margins are quoted against the random-bath bar; applying the
+real-difference correction above ($1.05$--$1.5\times$) leaves all 24
+present.
+
+This is still one read position and one seed per pair; the battery
+anchors the synthetic curves in eight real measurements per scale
+rather than one, but it is not a population claim about what models
+of different sizes carry.
+
+\section{What the threshold does and does not license}
+\label{sec:implications}
+
+\textbf{Clean readouts are cheap.} Above $\fstar$ (about 1\% of
+energy at $d \approx 2500$), a token direction dominates the top-$k$
+list. A stable, interpretable readout is therefore compatible with
+$\geq 90\%$ of the vector's energy being unaligned with every token
+direction, and a top-$k$ list should not be read as an energy
+account of the state.
+
+\textbf{Absence is only bounded.} A token missing from the top $k$
+carries less than roughly $\fstar$ aligned energy at that layer (up
+to the order-statistic constant); it is not evidence of zero signal.
+Averaging $N$ matched vectors lowers the detection bar to about
+$\fstar/N$.
+
+\textbf{The bar is $\WU$-geometry, not $d$.} The isotropic formula
+holds (up to the family constant) on eight of ten models across five
+families, including one at $d{=}896$; the two failures are the
+smallest Pythias, and what separates them is bath kurtosis, not
+dimension. Readout-based claims on small models should be calibrated
+against the measured bath of that model's $\WU$, not the dimension
+count; claims about real states should apply the measured
+real-remainder correction (\S\ref{sec:anchor}).
+
+\section{Related work}
+
+The logit lens \citep{nostalgebraist2020} and tuned lens
+\citep{belrose2023} established the readout studied here;
+\citet{geva2022} and \citet{dar2022} apply it to weight vectors.
+Contrastive and steering methods \citep{zou2023,turner2023,rimsky2024}
+construct differences of hidden states but interpret them through
+scalar projections or behavioural effects, not token readouts;
+\citet{tuomi2026contrastive} reads such differences through the logit
+lens, where the shared component cancels and the threshold derived
+here governs what surfaces from the remainder.
+Anisotropy of learned embedding spaces is well documented
+\citep{ethayarajh2019,timkey2021,puccetti2022}, including massive
+activations in the residual stream \citep{sun2024}; the measurement
+here isolates the specific consequence of unembedding row-direction
+anisotropy for top-$k$ readability, and finds it is not the
+axis-aligned form in the two affected models. \citet{heap2025} show
+sparse-autoencoder interpretability metrics can score well on
+random-weight models; the threshold arithmetic is a possible
+ingredient of such effects (any readout that only needs $\sim$1\% of
+energy aligned will find something to read in many vectors), though
+we have not tested that connection.
+
+\section{Limitations}
+
+\begin{itemize}
+\item The derivation assumes an isotropic remainder and isotropic
+  row directions. The second fails measurably on two of ten models;
+  the first fails on real hidden states (post-signal kurtosis
+  $2.8$--$19.5$), where it is handled as a measured $1.05$--$1.5
+  \times$ bar correction rather than derived.
+\item The within-family regression has $n{=}3$ points over a
+  $2.5\times$ span of $d$; the mixed-family regression has $n{=}8$
+  but conflates the family-dependent constant with the slope.
+\item The order-statistic constant ($f_{50}/\fstar$; $0.56$ for
+  Pythia/Phi, $0.56$--$0.70$ across families) is measured, not
+  derived, will vary with $k$, and its family dependence is
+  unexplained.
+\item The battery uses one read position and one seed per pair; the
+  signal-absent results on the two small models are confounded by
+  model competence and are reported as absences, not as readability
+  failures.
+\item Row-normalised readout ($|\hat{\WU}x|$) is used throughout;
+  the unnormalised logit-lens variant re-weights ranks by row norms
+  and its constant may differ.
+\item All models are $\leq 2.7$B parameters. The $V$-dependence of
+  the ceiling is confirmed only directionally ($V = 32$k--$251$k,
+  correlation $0.88$, uniformly $4$--$7\%$ under the analytic
+  value); the $V$-dependence of $f_{50}$ itself is untested
+  per-family.
+\end{itemize}
+
+\section{Reproducibility}
+\label{sec:repro}
+
+All experiments run on public checkpoints (EleutherAI Pythia deduped
+suite; microsoft/phi-2; gpt2-medium; bigscience/bloom-560m;
+Qwen/Qwen2.5-0.5B and -1.5B; TinyLlama/TinyLlama\_v1.1) with fixed
+seed 0. Scripts and result files:
+\texttt{census\_visibility\_threshold.py} (Phi-2 curves,
+triangulation, real anchor),
+\texttt{census\_visibility\_threshold\_scale.py} (five-model sweep,
+gates, regression),
+\texttt{census\_visibility\_threshold\_scale\_posthoc.py} (kurtosis
+diagnostic),
+\texttt{census\_visibility\_anchor\_scale.py} (real anchor per
+scale), and
+\texttt{census\_visibility\_revision.py} (five additional families,
+the real-vector isotropy check, and the eight-pair battery), each
+writing a JSON artifact with full per-point numbers.
+
+\section*{Use of AI Assistants}
+
+Large language models were used as assistive tools for coding,
+running experiments, and drafting text. All research questions,
+experimental design, and reported claims were directed and verified by
+the authors, who take full responsibility for the content.
+
+\bibliographystyle{plainnat}
+\bibliography{paper_visibility}
+
+\end{document}

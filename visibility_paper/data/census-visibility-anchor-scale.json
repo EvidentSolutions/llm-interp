@@ -1,0 +1,242 @@
+{
+ "config": {
+  "topk": 15,
+  "n_null": 40,
+  "n_bath": 100,
+  "seed": 0,
+  "prompts": [
+   "My grandmother said that the hot dog that she saw was",
+   "My grandmother said that the cold dog that she saw was"
+  ],
+  "models": [
+   [
+    "EleutherAI/pythia-70m-deduped",
+    4,
+    6
+   ],
+   [
+    "EleutherAI/pythia-160m-deduped",
+    8,
+    12
+   ],
+   [
+    "EleutherAI/pythia-410m-deduped",
+    15,
+    24
+   ],
+   [
+    "EleutherAI/pythia-1b-deduped",
+    10,
+    16
+   ],
+   [
+    "microsoft/phi-2",
+    20,
+    32
+   ]
+  ]
+ },
+ "per_model": [
+  {
+   "model": "EleutherAI/pythia-70m-deduped",
+   "d": 512,
+   "V_eff": 50277,
+   "layer": 4,
+   "n_layers": 6,
+   "bath_sigma": 9.372,
+   "f_emp_bar": 0.14643,
+   "f_star_analytic": 0.04306,
+   "f_real": 0.0197,
+   "null_span_med": 0.04006,
+   "signal_over_null": 0.49,
+   "signal_present": false,
+   "margin_vs_emp_bar": 0.135,
+   "margin_vs_analytic": 0.458,
+   "food_hits_in_top15": 0,
+   "top_tokens": [
+    "�",
+    "�",
+    "�",
+    "�",
+    "�",
+    "   \n",
+    "                                            ",
+    "\n\n     ",
+    "\n                                  ",
+    "                                             ",
+    "               ",
+    "\r\r         ",
+    "\n                                           ",
+    "\n                    ",
+    "\n                                    "
+   ],
+   "secs": 4.5
+  },
+  {
+   "model": "EleutherAI/pythia-160m-deduped",
+   "d": 768,
+   "V_eff": 50277,
+   "layer": 8,
+   "n_layers": 12,
+   "bath_sigma": 8.597,
+   "f_emp_bar": 0.08779,
+   "f_star_analytic": 0.02912,
+   "f_real": 0.01272,
+   "null_span_med": 0.02286,
+   "signal_over_null": 0.56,
+   "signal_present": false,
+   "margin_vs_emp_bar": 0.145,
+   "margin_vs_analytic": 0.437,
+   "food_hits_in_top15": 0,
+   "top_tokens": [
+    "  \n ",
+    "                                             ",
+    "                                                   ",
+    "\n\n                       ",
+    "\n\n         ",
+    "\n\n                    ",
+    "                                                               ",
+    "                                                                    ",
+    "\n\n\n       ",
+    "\r\n       ",
+    "                                         ",
+    "                               ",
+    "                                                     ",
+    "                                                                         ",
+    "\n\n\n      "
+   ],
+   "secs": 2.4
+  },
+  {
+   "model": "EleutherAI/pythia-410m-deduped",
+   "d": 1024,
+   "V_eff": 50277,
+   "layer": 15,
+   "n_layers": 24,
+   "bath_sigma": 4.467,
+   "f_emp_bar": 0.01911,
+   "f_star_analytic": 0.022,
+   "f_real": 0.17322,
+   "null_span_med": 0.01612,
+   "signal_over_null": 10.75,
+   "signal_present": true,
+   "margin_vs_emp_bar": 9.064,
+   "margin_vs_analytic": 7.873,
+   "food_hits_in_top15": 0,
+   "top_tokens": [
+    " containing",
+    " affection",
+    "因",
+    " commercial",
+    "FILE",
+    " weeping",
+    " sympath",
+    " omin",
+    " commercially",
+    " product",
+    " angry",
+    " refined",
+    " silent",
+    " products",
+    " urges"
+   ],
+   "secs": 3.0
+  },
+  {
+   "model": "EleutherAI/pythia-1b-deduped",
+   "d": 2048,
+   "V_eff": 50277,
+   "layer": 10,
+   "n_layers": 16,
+   "bath_sigma": 4.397,
+   "f_emp_bar": 0.00935,
+   "f_star_analytic": 0.01112,
+   "f_real": 0.08903,
+   "null_span_med": 0.00817,
+   "signal_over_null": 10.89,
+   "signal_present": true,
+   "margin_vs_emp_bar": 9.522,
+   "margin_vs_analytic": 8.004,
+   "food_hits_in_top15": 2,
+   "top_tokens": [
+    " creatures",
+    " loneliness",
+    " portraits",
+    " ingredients",
+    " salad",
+    "=-",
+    " spectral",
+    " locom",
+    " wards",
+    " creature",
+    " incap",
+    " personality",
+    " breeds",
+    "rait",
+    " breed"
+   ],
+   "secs": 3.9
+  },
+  {
+   "model": "microsoft/phi-2",
+   "d": 2560,
+   "V_eff": 50295,
+   "layer": 20,
+   "n_layers": 32,
+   "bath_sigma": 4.445,
+   "f_emp_bar": 0.00766,
+   "f_star_analytic": 0.00892,
+   "f_real": 0.09235,
+   "null_span_med": 0.00847,
+   "signal_over_null": 10.9,
+   "signal_present": true,
+   "margin_vs_emp_bar": 12.056,
+   "margin_vs_analytic": 10.354,
+   "food_hits_in_top15": 1,
+   "top_tokens": [
+    " euth",
+    " hiber",
+    " despair",
+    " temperament",
+    " wary",
+    "winter",
+    " recovering",
+    " delicious",
+    " enrolled",
+    " deterrence",
+    " breeds",
+    " afraid",
+    " tantal",
+    " canine",
+    " scared"
+   ],
+   "secs": 14.3
+  }
+ ],
+ "gate_reproduction_3af_leg3": {
+  "f_real_published": 0.0923,
+  "f_real_measured": 0.09235,
+  "dev": 0.0001,
+  "tol": 0.01,
+  "top15_recurrence": 15,
+  "recur_min": 8,
+  "pass": true
+ },
+ "reading": {
+  "margins_vs_emp_bar": {
+   "EleutherAI/pythia-410m-deduped": 9.064,
+   "EleutherAI/pythia-1b-deduped": 9.522,
+   "microsoft/phi-2": 12.056
+  },
+  "signal_absent": [
+   "EleutherAI/pythia-70m-deduped",
+   "EleutherAI/pythia-160m-deduped"
+  ],
+  "verdict": "COMPENSATION",
+  "branches": {
+   "COMPENSATION": "margin ~constant: corollary refuted",
+   "NO-COMPENSATION": "margin falls with d: corollary measured end to end",
+   "INVERTED": "margin grows at small d: competence confound flag"
+  }
+ }
+}
