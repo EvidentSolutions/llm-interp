@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage[round]{natbib}
+\usepackage{url}
 
 \newcommand{\WU}{W_U}
 \newcommand{\fstar}{f^{*}}
@@ -515,6 +516,7 @@ we have not tested that connection.
 \section{Reproducibility}
 \label{sec:repro}
 
+{\raggedright
 All experiments run on public checkpoints (EleutherAI Pythia deduped
 suite; microsoft/phi-2; gpt2-medium; bigscience/bloom-560m;
 Qwen/Qwen2.5-0.5B and -1.5B; TinyLlama/TinyLlama\_v1.1) with fixed
@@ -529,7 +531,10 @@ diagnostic),
 scale), and
 \texttt{census\_visibility\_revision.py} (five additional families,
 the real-vector isotropy check, and the eight-pair battery), each
-writing a JSON artifact with full per-point numbers.
+writing a JSON artifact with full per-point numbers. Code and data are
+available at
+\url{https://github.com/EvidentSolutions/llm-interp/tree/main/visibility_paper}
+and archived at \url{https://doi.org/10.5281/zenodo.21461944}.\par}
 
 \section*{Use of AI Assistants}
 
