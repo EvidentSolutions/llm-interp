@@ -479,6 +479,16 @@ averaging isolates this from the pair-specific content (e.g., medical vs
 fishing in the cold/fish pair alone) that dominates the single-pair readout
 (Table~\ref{tab:triangulation}).
 
+% KNOWN DEFECT (2026-07-30, do not re-publish without fixing): the
+% "Multi-contrast recovery" numbers below (77/75/49/101) are rank-1
+% shared-axis injections (deep_decompose.py rec_s), NOT the token-subspace
+% construction 3.3 describes. Token-subspace triangulation recovers 7/4/7/-32
+% at L28 (peaks 25-45% mid-late). Verified: triangulation_table_verify.py;
+% session_report_2026-07-30_triangulation_table_verification.md. The
+% "apples-to-apples" sentence above and the abstract's "1% -> 77%" inherit
+% this. Plan: this paper is likely superseded by the bbxnlp version (which
+% presents triangulation qualitatively and is unaffected); README carries
+% the public note.
 \begin{table}[htbp]
 \centering
 \small

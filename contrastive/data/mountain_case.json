@@ -1,0 +1,17 @@
+{
+ "Everest": {
+  "entropy": 1.23,
+  "greedy": "a staggering height of 29,",
+  "pole_L24": "Nepal, Tibet, billions, Himal, Dalai"
+ },
+ "Cook": {
+  "entropy": 2.14,
+  "greedy": "a height of 3,7",
+  "pole_L24": "volcan, climbers, yond, volcano, Peaks"
+ },
+ "Silverhorn": {
+  "entropy": 2.36,
+  "greedy": "a height of 2,8",
+  "pole_L28": "., 1100, 1200, 1300, 1050"
+ }
+}

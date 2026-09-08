@@ -1,0 +1,101 @@
+{
+ "raw_capital": {
+  "8": "illon, ville, Antar, oise, Blanc, secret",
+  "12": "inc, is, d, pr, war, pl",
+  "16": "is, ,, M, 's, name, d",
+  "20": "is, ,, :, , and, (",
+  "24": "is, ,, was, :, , ",
+  "28": "is, ,, , was, and, in",
+  "32": "is, ,, \", was, .\", ."
+ },
+ "raw_currency": {
+  "8": "inc, government, oise, 's, Inc, tr",
+  "12": "'s, is, inc, f, d, ,",
+  "16": ",, is, 's, -, and, b",
+  "20": "is, ,, and, 's, (, :",
+  "24": "is, ,, and, in, was, (",
+  "28": "is, ,, was, and, in, has",
+  "32": "is, was, ,, has, in, "
+ },
+ "diff_cap_minus_cur": {
+  "8": "ocate, urat, achel, ook, ittle, Nicotine",
+  "12": "ook, apiece, uty, Detention, û, JB",
+  "16": "___, bang, google, anyon, ographer, ipt",
+  "20": "___, oky, ocate, vc, û, cis",
+  "24": "___, ded, Location, bell, Compan, edu",
+  "28": "ded, ipt, city, isl, ___, location",
+  "32": "haps, city, city, weather, inos, isite"
+ },
+ "diff_cur_minus_cap": {
+  "8": "PUR, Dian, Norn, ELD, Trident, Unified",
+  "12": "predec, streng, central, dominant, coll, dec",
+  "16": "esse, predec, CLR, spons, dec, throughout",
+  "20": "predec, throughout, dec, esse, Dec, Official",
+  "24": "predec, exchanges, denominati, deval, used, denominati",
+  "28": "predec, yen, deval, denominati, used, exchanges",
+  "32": "deval, circulated, pegged, circulatin, expired, disinteg"
+ },
+ "diff_mismatched": {
+  "8": "Browser, SPONSORED, ADVERTISEM, GOP, BILL, Romney",
+  "12": "Browser, SPONSORED, BILL, ADVERTISEM, GOP, tek",
+  "16": "Browser, BILL, SPONSORED, ADVERTISEM, GOP, tek",
+  "20": "BILL, ADVERTISEM, Browser, SPONSORED, isma, LOS",
+  "24": "SPONSORED, BILL, Browser, ADVERTISEM, isma, argo",
+  "28": "Browser, Denver, isma, BILL, ADVERTISEM, SPONSORED",
+  "32": "is, ___, ...?, ______, ...\", downtown"
+ },
+ "japan_raw_capital": {
+  "8": "honor, inc, ć, kie, igo, ese",
+  "12": "inc, G, 's, Y, Pro, is",
+  "16": "is, ,, 's, G, Y, :",
+  "20": "is, ,, 's, :, and, in",
+  "24": "is, ,, 's, :, in, and",
+  "28": "is, ,, and, was, , has",
+  "32": "is, ,, was, \", , ."
+ },
+ "japan_raw_currency": {
+  "8": "ese, ification, Inc, ESE, inc, ura",
+  "12": "'s, ende, long, inc, f, Pr",
+  "16": "'s, ,, predec, is, and, ende",
+  "20": "'s, ,, is, and, in, (",
+  "24": "is, ,, in, and, 's, has",
+  "28": "is, ,, was, and, (, has",
+  "32": "is, ,, was, has, and, "
+ },
+ "japan_cap_minus_cur": {
+  "8": "ocate, ittle, yg, otal, vent, leck",
+  "12": "VC, ook, entropy, ittle, zen, eve",
+  "16": "zen, OTUS, bang, anch, VW, ACE",
+  "20": "ocate, locate, cis, bang, Location, oky",
+  "24": "loc, Location, locate, Located, UNESCO, latitude",
+  "28": "lat, obe, location, Location, ilt, UNESCO",
+  "32": "capitals, city, Population, lat, icut, haps"
+ },
+ "japan_cur_minus_cap": {
+  "8": "rates, Franco, unificatio, uries, aido, labels",
+  "12": "Public, Hermes, public, dec, sovere, hemor",
+  "16": "PUR, Dec, purchasing, Interest, dec, throughout",
+  "20": "Dec, throughout, originals, Standard, Public, dec",
+  "24": "currencies, denominati, exchanges, currency, exchange, denominati",
+  "28": "circulated, denominati, predec, dollar, Dollar, currencies",
+  "32": "pegged, denominati, deval, circulated, circulatin, expired"
+ },
+ "answersite_cap_minus_cur": {
+  "8": "Shim, stage, Force, zen, axis, ovo",
+  "12": "ens, Sched, sh, ises, zen, Lia",
+  "16": "location, location, ood, search, Location, cities",
+  "20": "cities, Location, city, suburbs, location, Cities",
+  "24": "cities, Cities, city, Paris, Beijing, City",
+  "28": "London, Tokyo, Paris, Berlin, Beijing, Moscow",
+  "32": "London, Berlin, Moscow, Beijing, Paris, London"
+ },
+ "answersite_cur_minus_cap": {
+  "8": "ELD, arat, gold, mone, Currency, Sovereign",
+  "12": "(£, denominati, Gold, Token, ELD, prevalent",
+  "16": "yne, denominati, Sterling, prevalent, (£, denominati",
+  "20": "currencies, denominati, denominati, currency, currency, yen",
+  "24": "currency, currencies, denominati, dollar, yen, currency",
+  "28": "dollar, pes, USD, Dollar, yen, dollars",
+  "32": "yen, pes, cents, AUD, ru, yuan"
+ }
+}

@@ -1,0 +1,318 @@
+{
+ "A_phi2_hotdog_predsite": {
+  "fstar": 0.008932492982775696,
+  "layers": {
+   "4": {
+    "raw_top": [
+     [
+      "boiling",
+      0.00709697837010026
+     ],
+     [
+      "Norman",
+      0.005706883501261473
+     ],
+     [
+      "hot",
+      0.004943439271301031
+     ],
+     [
+      "flavors",
+      0.0062601459212601185
+     ]
+    ],
+    "maxcos_tok": "boiling",
+    "f_max": 0.0071,
+    "ratio": 0.79,
+    "visible": false
+   },
+   "6": {
+    "raw_top": [
+     [
+      "fried",
+      0.007105981931090355
+     ],
+     [
+      "delicious",
+      0.011060669086873531
+     ],
+     [
+      "fried",
+      0.008823909796774387
+     ],
+     [
+      "tasty",
+      0.00878226850181818
+     ]
+    ],
+    "maxcos_tok": "delicious",
+    "f_max": 0.01106,
+    "ratio": 1.24,
+    "visible": true
+   },
+   "8": {
+    "raw_top": [
+     [
+      "fried",
+      0.00578262098133564
+     ],
+     [
+      "hors",
+      0.005800329614430666
+     ],
+     [
+      "crispy",
+      0.008253795094788074
+     ],
+     [
+      "owicz",
+      0.004015807528048754
+     ]
+    ],
+    "maxcos_tok": "crispy",
+    "f_max": 0.00825,
+    "ratio": 0.92,
+    "visible": false
+   },
+   "10": {
+    "raw_top": [
+     [
+      "ç",
+      0.005226512439548969
+     ],
+     [
+      "Ramos",
+      0.005246518179774284
+     ],
+     [
+      "chery",
+      0.003914313856512308
+     ],
+     [
+      "anish",
+      0.0034974412992596626
+     ]
+    ],
+    "maxcos_tok": "crispy",
+    "f_max": 0.00648,
+    "ratio": 0.73,
+    "visible": false
+   },
+   "12": {
+    "raw_top": [
+     [
+      "ç",
+      0.005151665303856134
+     ],
+     [
+      "Ramos",
+      0.004817058797925711
+     ],
+     [
+      "dé",
+      0.0049107675440609455
+     ],
+     [
+      "Rebell",
+      0.003805165644735098
+     ]
+    ],
+    "maxcos_tok": "Being",
+    "f_max": 0.00584,
+    "ratio": 0.65,
+    "visible": false
+   },
+   "16": {
+    "raw_top": [
+     [
+      "ç",
+      0.005105279386043549
+     ],
+     [
+      "circular",
+      0.005840558558702469
+     ],
+     [
+      "career",
+      0.0064315395429730415
+     ],
+     [
+      "tantal",
+      0.006820604670792818
+     ]
+    ],
+    "maxcos_tok": "tantal",
+    "f_max": 0.00682,
+    "ratio": 0.76,
+    "visible": false
+   },
+   "20": {
+    "raw_top": [
+     [
+      "tast",
+      0.006569372024387121
+     ],
+     [
+      "circular",
+      0.00713941128924489
+     ],
+     [
+      "price",
+      0.007479725871235132
+     ],
+     [
+      "flavor",
+      0.007801390253007412
+     ]
+    ],
+    "maxcos_tok": "flavor",
+    "f_max": 0.0078,
+    "ratio": 0.87,
+    "visible": false
+   },
+   "24": {
+    "raw_top": [
+     [
+      "delicious",
+      0.018567601218819618
+     ],
+     [
+      "tast",
+      0.011425361037254333
+     ],
+     [
+      "flavor",
+      0.014396044425666332
+     ],
+     [
+      "cooked",
+      0.013295086100697517
+     ]
+    ],
+    "maxcos_tok": "delicious",
+    "f_max": 0.01857,
+    "ratio": 2.08,
+    "visible": true
+   },
+   "28": {
+    "raw_top": [
+     [
+      "tast",
+      0.017193660140037537
+     ],
+     [
+      "charred",
+      0.01759110577404499
+     ],
+     [
+      "overc",
+      0.01898694410920143
+     ],
+     [
+      "crispy",
+      0.01768447831273079
+     ]
+    ],
+    "maxcos_tok": "spicy",
+    "f_max": 0.01975,
+    "ratio": 2.21,
+    "visible": true
+   }
+  }
+ },
+ "B_phi2": {
+  "fstar": 0.008932492982775696,
+  "layers": {
+   "4": {
+    "single_maxcos": "crew",
+    "single_f": 0.00798,
+    "single_ratio": 0.89,
+    "tri_maxcos": "crew",
+    "tri_f": 0.00826,
+    "tri_ratio": 0.92
+   },
+   "6": {
+    "single_maxcos": "enses",
+    "single_f": 0.00681,
+    "single_ratio": 0.76,
+    "tri_maxcos": "feasibility",
+    "tri_f": 0.007,
+    "tri_ratio": 0.78
+   },
+   "8": {
+    "single_maxcos": "Remote",
+    "single_f": 0.00744,
+    "single_ratio": 0.83,
+    "tri_maxcos": "feasibility",
+    "tri_f": 0.00744,
+    "tri_ratio": 0.83
+   }
+  }
+ },
+ "B_pythia": {
+  "fstar": 0.011123878171556894,
+  "layers": {
+   "12": {
+    "single_maxcos": "traditional",
+    "single_f": 0.00692,
+    "single_ratio": 0.62,
+    "tri_maxcos": "erved",
+    "tri_f": 0.00773,
+    "tri_ratio": 0.7
+   },
+   "15": {
+    "single_maxcos": "restaurant",
+    "single_f": 0.01097,
+    "single_ratio": 0.99,
+    "tri_maxcos": "restaurant",
+    "tri_f": 0.01228,
+    "tri_ratio": 1.1
+   },
+   "17": {
+    "single_maxcos": "restaurant",
+    "single_f": 0.01267,
+    "single_ratio": 1.14,
+    "tri_maxcos": "eaten",
+    "tri_f": 0.01452,
+    "tri_ratio": 1.31
+   },
+   "20": {
+    "single_maxcos": "restaurant",
+    "single_f": 0.01334,
+    "single_ratio": 1.2,
+    "tri_maxcos": "vendors",
+    "tri_f": 0.01588,
+    "tri_ratio": 1.43
+   }
+  }
+ },
+ "B_qwen": {
+  "fstar": 0.016172134071433836,
+  "layers": {
+   "12": {
+    "single_maxcos": "dietary",
+    "single_f": 0.01352,
+    "single_ratio": 0.84,
+    "tri_maxcos": "dietary",
+    "tri_f": 0.0121,
+    "tri_ratio": 0.75
+   },
+   "16": {
+    "single_maxcos": "sebagai",
+    "single_f": 0.01124,
+    "single_ratio": 0.7,
+    "tri_maxcos": "خيارات",
+    "tri_f": 0.01207,
+    "tri_ratio": 0.75
+   },
+   "20": {
+    "single_maxcos": "classic",
+    "single_f": 0.01023,
+    "single_ratio": 0.63,
+    "tri_maxcos": "损耗",
+    "tri_f": 0.01242,
+    "tri_ratio": 0.77
+   }
+  }
+ }
+}

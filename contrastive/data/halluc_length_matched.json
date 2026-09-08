@@ -1,0 +1,47 @@
+{
+ "Nikola Tesla": {
+  "real": "Nikola Tesla, born in 1856, invented the",
+  "fictional": "Halvard Kessler, born in 1856, invented the",
+  "n_tokens": 11,
+  "layers": {
+   "24": {
+    "real_pole": "Tesla, Tesla, electrom, electricity",
+    "fictional_pole": "Scandinavian, predec, Nordic, dru"
+   },
+   "28": {
+    "real_pole": "Tesla, Tesla, Altern, alternating",
+    "fictional_pole": "Kessler, tiss, helicop, rall"
+   }
+  }
+ },
+ "Marie Curie": {
+  "real": "Marie Curie, born in 1867, discovered",
+  "fictional": "Halvard Kessler, born in 1867, discovered",
+  "n_tokens": 10,
+  "layers": {
+   "24": {
+    "real_pole": "Radiation, radioactive, radiation, Radio",
+    "fictional_pole": "ser, lakes, season, lake"
+   },
+   "28": {
+    "real_pole": "Radio, radio, Radiation, rad",
+    "fictional_pole": "Kessler, lake, H, M"
+   }
+  }
+ },
+ "Isaac Newton": {
+  "real": "Isaac Newton, born in 1643, discovered",
+  "fictional": "Halvard Kessler, born in 1643, discovered",
+  "n_tokens": 10,
+  "layers": {
+   "24": {
+    "real_pole": "Newton, fundamental, laws, gravitationa",
+    "fictional_pole": "Targ, swallow, rarity, ocard"
+   },
+   "28": {
+    "real_pole": "Newton, gravity, gravity, Laws",
+    "fictional_pole": "mineral, Targ, Koen, alk"
+   }
+  }
+ }
+}

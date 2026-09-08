@@ -1,0 +1,130 @@
+{
+ "matched_dull": {
+  "4": {
+   "norm": 9.2,
+   "pos": "novels, literary, rette, reader",
+   "neg": "participa, seminar, attendees, pav"
+  },
+  "12": {
+   "norm": 24.2,
+   "pos": "literary, Rag, mag, novels",
+   "neg": "lectures, gun, lecture, Lect"
+  },
+  "20": {
+   "norm": 27.8,
+   "pos": "literary, satir, novels, anth",
+   "neg": "lectures, presenter, lecture, students"
+  },
+  "28": {
+   "norm": 40.5,
+   "pos": "readers, Readers, reader, literary",
+   "neg": "but, lectures, lecture, videos"
+  },
+  "30": {
+   "norm": 51.2,
+   "pos": "readers, Readers, reader, Literary",
+   "neg": "video, lecture, lectures, especiall"
+  },
+  "32": {
+   "norm": 18.7,
+   "pos": "readers, reader, literary, Readers",
+   "neg": "lectures, lecture, teaching, videos"
+  }
+ },
+ "matched_boring": {
+  "4": {
+   "norm": 10.4,
+   "pos": "novels, character, char, novel",
+   "neg": "unilatera, participa, session, aris"
+  },
+  "12": {
+   "norm": 26.0,
+   "pos": "Rag, mag, household, hom",
+   "neg": "lectures, Labs, lecture, rod"
+  },
+  "20": {
+   "norm": 27.9,
+   "pos": "novels, literary, satir, hereafter",
+   "neg": "presenter, students, lecturer, Students"
+  },
+  "28": {
+   "norm": 40.6,
+   "pos": "readers, reader, Readers, literary",
+   "neg": "but, videos, lectures, video"
+  },
+  "30": {
+   "norm": 53.1,
+   "pos": "readers, reader, Readers, reads",
+   "neg": "video, videos, but, Video"
+  },
+  "32": {
+   "norm": 18.4,
+   "pos": "readers, reader, literary, Readers",
+   "neg": "videos, Videos, videos, video"
+  }
+ },
+ "mismatch_nb_ld": {
+  "4": {
+   "norm": 34.5,
+   "pos": "ly, lly, lli, ilee",
+   "neg": "ed, ers, ing, iveness"
+  },
+  "12": {
+   "norm": 39.9,
+   "pos": "ly, vell, stable, lyn",
+   "neg": "ers, ed, oping, hered"
+  },
+  "20": {
+   "norm": 46.8,
+   "pos": "alde, darn, lli, OTH",
+   "neg": "ers, ively, ing, iveness"
+  },
+  "28": {
+   "norm": 62.3,
+   "pos": "darn, aux, raud, izarre",
+   "neg": "ed, ers, ing, er"
+  },
+  "30": {
+   "norm": 70.5,
+   "pos": "darn, Issue, readers, stad",
+   "neg": "ing, ed, ers, er"
+  },
+  "32": {
+   "norm": 26.8,
+   "pos": "readers, Pages, Fiction, Scrib",
+   "neg": "ing, ed, ers, er"
+  }
+ },
+ "mismatch_nd_lb": {
+  "4": {
+   "norm": 34.5,
+   "pos": "ed, ers, iveness, es",
+   "neg": "ly, cium, �, imi"
+  },
+  "12": {
+   "norm": 40.5,
+   "pos": "ers, er, ively, iveness",
+   "neg": "ollo, omm, SSL, iggs"
+  },
+  "20": {
+   "norm": 47.5,
+   "pos": "ers, er, ively, ery",
+   "neg": "iosis, clip, cone, duct"
+  },
+  "28": {
+   "norm": 64.5,
+   "pos": "ers, er, ership, readers",
+   "neg": "but, I, so, video"
+  },
+  "30": {
+   "norm": 76.2,
+   "pos": "ers, er, readers, eri",
+   "neg": "video, clip, Video, Videos"
+  },
+  "32": {
+   "norm": 26.9,
+   "pos": "er, ers, readers, reader",
+   "neg": "Videos, clip, youtube, video"
+  }
+ }
+}

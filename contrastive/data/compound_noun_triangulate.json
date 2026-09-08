@@ -1,0 +1,20 @@
+{
+ "microsoft/phi-2": {
+  "best_single": 0,
+  "best_tri": 1,
+  "L_single": 5,
+  "L_tri": 5
+ },
+ "EleutherAI/pythia-1.4b": {
+  "best_single": 17,
+  "best_tri": 3,
+  "L_single": null,
+  "L_tri": 15
+ },
+ "Qwen/Qwen2.5-1.5B": {
+  "best_single": 60,
+  "best_tri": 20,
+  "L_single": null,
+  "L_tri": null
+ }
+}

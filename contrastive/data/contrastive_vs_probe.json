@@ -1,0 +1,50 @@
+{
+ "4": {
+  "contrast_acc": 1.0,
+  "probe_acc": 1.0,
+  "contrast_reads": [
+   "udos, rx, uke, bodied",
+   "worse, Worse, lack, inadequate"
+  ],
+  "probe_reads": [
+   "udos, rx, uke, Spiegel",
+   "worse, Worse, lack, inadequate"
+  ]
+ },
+ "12": {
+  "contrast_acc": 1.0,
+  "probe_acc": 1.0,
+  "contrast_reads": [
+   "delighted, compliment, compliment, bask",
+   "Worse, worse, :(, put"
+  ],
+  "probe_reads": [
+   "compliment, delighted, compliment, appreciate",
+   "Worse, :(, worse, poor"
+  ]
+ },
+ "20": {
+  "contrast_acc": 1.0,
+  "probe_acc": 1.0,
+  "contrast_reads": [
+   "delighted, compliment, wonderfull, compliment",
+   "worse, Worse, Worst, worst"
+  ],
+  "probe_reads": [
+   "compliment, compliment, delighted, congratula",
+   "worse, Worse, negatively, Worst"
+  ]
+ },
+ "28": {
+  "contrast_acc": 1.0,
+  "probe_acc": 1.0,
+  "contrast_reads": [
+   "appreci, appreciate, appreciati, marvel",
+   "regret, regrets, regretted, boycott"
+  ],
+  "probe_reads": [
+   "loved, enjoyed, appreci, appreciate",
+   "regrets, boycott, regret, worse"
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "microsoft/phi-2": {
+  "layer": 30,
+  "hot": 0.999,
+  "cold": 0.004,
+  "probe_cv": 1.0
+ },
+ "EleutherAI/pythia-1.4b": {
+  "layer": 24,
+  "hot": 0.992,
+  "cold": 0.005,
+  "probe_cv": 1.0
+ },
+ "Qwen/Qwen2.5-1.5B": {
+  "layer": 28,
+  "hot": 1.0,
+  "cold": 0.001,
+  "probe_cv": 1.0
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "6": {
+  "raw": "not, always, no, only",
+  "prose_avg": "acknow, predec, conduc, surpr",
+  "prose_subtracted": "always, not, no, indeed",
+  "pile_subtracted": "not, always, no, nt"
+ },
+ "10": {
+  "raw": "not, no, only, nt",
+  "prose_avg": "acknow, awa, conduc, streng",
+  "prose_subtracted": "no, not, always, nt",
+  "pile_subtracted": "not, no, nt, hes"
+ },
+ "16": {
+  "raw": "not, no, made, always",
+  "prose_avg": "acknow, streng, predec, encount",
+  "prose_subtracted": "not, always, hes, made",
+  "pile_subtracted": "hes, not, always, probably"
+ },
+ "20": {
+  "raw": "not, more, made, a",
+  "prose_avg": "\", un, first, in",
+  "prose_subtracted": "not, made, always, too",
+  "pile_subtracted": "not, made, more, too"
+ },
+ "24": {
+  "raw": "not, more, a, better",
+  "prose_avg": "\", the, in, ,",
+  "prose_subtracted": "delicious, better, easier, more",
+  "pile_subtracted": "more, better, delicious, not"
+ },
+ "28": {
+  "raw": "more, better, too, not",
+  "prose_avg": "\", the, a, ,",
+  "prose_subtracted": "delicious, cooked, hotter, tast",
+  "pile_subtracted": "delicious, tast, better, cooked"
+ }
+}

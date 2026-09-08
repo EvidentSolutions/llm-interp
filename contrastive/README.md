@@ -24,6 +24,23 @@ Phi-2 (2.7B) to trace compound-noun recognition, the IOI and factual-recall
 circuits, recall-vs-hallucination, scalar implicature, and metaphor processing
 across 15 semantic axes and four models.
 
+## Known issue (2026-07-30)
+
+The "Multi-contrast recovery" column of the triangulation table
+(Table 4 / `tab:triangulation` in v2) reports injections of the **rank-1
+shared mean direction** across baselines, not of its token-subspace
+component as §3.3 describes. The token-subspace construction recovers
+7% / 4% / 7% at L28 for the caught-cold / theft / hot-dog rows (peaks
+25–45% at mid-late layers); the published 77% / 75% / 49% are the full
+shared-direction injections. The shared direction is genuinely causally
+sufficient and its top-token reads are as published — the misattribution
+is which component carries the recovery. Verification:
+`code/triangulation_table_verify.py`,
+`data/triangulation-table-verify.json`. The some/all row additionally
+requires a denoising envelope (read bare, its readable component is
+anti-causal). A corrected successor to this paper is in preparation; the
+numbers above stand as the accurate reading of the table in the meantime.
+
 ## Repository structure
 
 | Path | Contents |

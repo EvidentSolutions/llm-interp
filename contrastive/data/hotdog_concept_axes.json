@@ -1,0 +1,69 @@
+{
+ "baseline": {
+  "cold": 0.002,
+  "hot": 1.0
+ },
+ "layers": {
+  "8": {
+   "projE": 13.7,
+   "projP": -8.9,
+   "projT": 14.7,
+   "injE": 0.004,
+   "injP": 0.002,
+   "injT": 0.001,
+   "injEP": 0.041,
+   "injEPT": 0.039,
+   "injFull": 0.099
+  },
+  "12": {
+   "projE": 14.5,
+   "projP": -11.1,
+   "projT": 17.4,
+   "injE": 0.004,
+   "injP": 0.003,
+   "injT": 0.002,
+   "injEP": 0.237,
+   "injEPT": 0.208,
+   "injFull": 0.433
+  },
+  "16": {
+   "projE": 15.8,
+   "projP": -13.8,
+   "projT": 15.8,
+   "injE": 0.008,
+   "injP": 0.002,
+   "injT": 0.002,
+   "injEP": 0.553,
+   "injEPT": 0.481,
+   "injFull": 0.889
+  },
+  "20": {
+   "projE": 20.9,
+   "projP": -20.4,
+   "projT": 15.4,
+   "injE": 0.03,
+   "injP": 0.006,
+   "injT": 0.003,
+   "injEP": 0.98,
+   "injEPT": 0.985,
+   "injFull": 0.996
+  },
+  "24": {
+   "projE": 42.5,
+   "projP": -36.5,
+   "projT": 17.8,
+   "injE": 0.529,
+   "injP": 0.005,
+   "injT": 0.002,
+   "injEP": 0.998,
+   "injEPT": 0.998,
+   "injFull": 0.999
+  }
+ },
+ "cosEP_L20": 0.37,
+ "axis_reads_L20": {
+  "edibility": "delicious, cooked, tasted, sandwiches",
+  "petness": "roaming, adorable, vocal, wandering",
+  "temperature": "steam, boiling, burning, hotter"
+ }
+}

@@ -1,0 +1,2334 @@
+{
+ "caught_cold": {
+  "target": "She caught a cold and went to",
+  "baselines": [
+   "She caught a fish and went to",
+   "She caught a ball and went to",
+   "She caught a bus and went to",
+   "She caught a thief and went to",
+   "She caught a glimpse and went to"
+  ],
+  "published": [
+   1,
+   77
+  ],
+  "layers": {
+   "4": {
+    "argmax": {
+     "sgl_full": -15.4,
+     "sgl_sub": -5.9,
+     "rank1": -3.9,
+     "tri_full": -4.1,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "winters",
+      "miner",
+      "isol",
+      "rains",
+      "temperatures"
+     ]
+    },
+    "probe": {
+     "sgl_full": 1.0,
+     "sgl_sub": -1.1,
+     "rank1": 5.4,
+     "tri_full": 5.9,
+     "tri_sub": -0.2,
+     "tri_reads": [
+      "winters",
+      "miner",
+      "isol",
+      "rains",
+      "temperatures"
+     ]
+    }
+   },
+   "6": {
+    "argmax": {
+     "sgl_full": 4.2,
+     "sgl_sub": 0.1,
+     "rank1": 10.3,
+     "tri_full": 10.1,
+     "tri_sub": 0.3,
+     "tri_reads": [
+      "illness",
+      "symptoms",
+      "symptom",
+      "disease",
+      "hospital"
+     ]
+    },
+    "probe": {
+     "sgl_full": 11.3,
+     "sgl_sub": 4.1,
+     "rank1": 23.0,
+     "tri_full": 22.5,
+     "tri_sub": -0.2,
+     "tri_reads": [
+      "illness",
+      "symptoms",
+      "symptom",
+      "disease",
+      "hospital"
+     ]
+    }
+   },
+   "8": {
+    "argmax": {
+     "sgl_full": 21.6,
+     "sgl_sub": 14.6,
+     "rank1": 16.5,
+     "tri_full": 16.8,
+     "tri_sub": 5.1,
+     "tri_reads": [
+      "doctors",
+      "infected",
+      "infect",
+      "Nav",
+      "hospital"
+     ]
+    },
+    "probe": {
+     "sgl_full": 16.4,
+     "sgl_sub": 8.7,
+     "rank1": 22.8,
+     "tri_full": 23.3,
+     "tri_sub": 8.7,
+     "tri_reads": [
+      "doctors",
+      "infected",
+      "infect",
+      "Nav",
+      "hospital"
+     ]
+    }
+   },
+   "10": {
+    "argmax": {
+     "sgl_full": 33.8,
+     "sgl_sub": 1.2,
+     "rank1": 30.6,
+     "tri_full": 32.9,
+     "tri_sub": 6.5,
+     "tri_reads": [
+      "suscept",
+      "hospital",
+      "worse",
+      "okia",
+      "ventions"
+     ]
+    },
+    "probe": {
+     "sgl_full": 13.4,
+     "sgl_sub": 9.9,
+     "rank1": 13.0,
+     "tri_full": 12.2,
+     "tri_sub": 3.5,
+     "tri_reads": [
+      "suscept",
+      "hospital",
+      "worse",
+      "okia",
+      "ventions"
+     ]
+    }
+   },
+   "12": {
+    "argmax": {
+     "sgl_full": 41.6,
+     "sgl_sub": 6.8,
+     "rank1": 37.0,
+     "tri_full": 38.7,
+     "tri_sub": 9.2,
+     "tri_reads": [
+      "ser",
+      "quarantine",
+      "colo",
+      "zilla",
+      "Days"
+     ]
+    },
+    "probe": {
+     "sgl_full": 24.1,
+     "sgl_sub": 4.4,
+     "rank1": 17.3,
+     "tri_full": 18.5,
+     "tri_sub": 12.5,
+     "tri_reads": [
+      "ser",
+      "quarantine",
+      "colo",
+      "zilla",
+      "Days"
+     ]
+    }
+   },
+   "14": {
+    "argmax": {
+     "sgl_full": 81.7,
+     "sgl_sub": 10.0,
+     "rank1": 67.8,
+     "tri_full": 70.8,
+     "tri_sub": 7.4,
+     "tri_reads": [
+      "plete",
+      "abi",
+      "germ",
+      "iper",
+      "infect"
+     ]
+    },
+    "probe": {
+     "sgl_full": 13.5,
+     "sgl_sub": 2.2,
+     "rank1": 10.9,
+     "tri_full": 10.8,
+     "tri_sub": 7.7,
+     "tri_reads": [
+      "plete",
+      "abi",
+      "germ",
+      "iper",
+      "infect"
+     ]
+    }
+   },
+   "16": {
+    "argmax": {
+     "sgl_full": 95.2,
+     "sgl_sub": 6.5,
+     "rank1": 85.8,
+     "tri_full": 90.0,
+     "tri_sub": 16.6,
+     "tri_reads": [
+      "diagnosed",
+      "doctors",
+      "diagnosis",
+      "worsened",
+      "oise"
+     ]
+    },
+    "probe": {
+     "sgl_full": 20.9,
+     "sgl_sub": 6.9,
+     "rank1": -9.3,
+     "tri_full": -10.4,
+     "tri_sub": 3.4,
+     "tri_reads": [
+      "diagnosed",
+      "doctors",
+      "diagnosis",
+      "worsened",
+      "oise"
+     ]
+    }
+   },
+   "18": {
+    "argmax": {
+     "sgl_full": 95.2,
+     "sgl_sub": 15.1,
+     "rank1": 103.8,
+     "tri_full": 105.4,
+     "tri_sub": 13.0,
+     "tri_reads": [
+      "doctors",
+      "diagnosis",
+      "sympt",
+      "remedies",
+      "quarantine"
+     ]
+    },
+    "probe": {
+     "sgl_full": 26.4,
+     "sgl_sub": 6.1,
+     "rank1": 1.3,
+     "tri_full": 0.2,
+     "tri_sub": 11.8,
+     "tri_reads": [
+      "doctors",
+      "diagnosis",
+      "sympt",
+      "remedies",
+      "quarantine"
+     ]
+    }
+   },
+   "20": {
+    "argmax": {
+     "sgl_full": 64.1,
+     "sgl_sub": 14.7,
+     "rank1": 93.0,
+     "tri_full": 94.5,
+     "tri_sub": 29.0,
+     "tri_reads": [
+      "remedies",
+      "infected",
+      "doctors",
+      "doctor",
+      "remedy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 92.0,
+     "sgl_sub": 10.9,
+     "rank1": 44.2,
+     "tri_full": 44.6,
+     "tri_sub": 41.7,
+     "tri_reads": [
+      "remedies",
+      "infected",
+      "doctors",
+      "doctor",
+      "remedy"
+     ]
+    }
+   },
+   "22": {
+    "argmax": {
+     "sgl_full": 67.0,
+     "sgl_sub": 28.4,
+     "rank1": 92.0,
+     "tri_full": 92.1,
+     "tri_sub": 31.2,
+     "tri_reads": [
+      "antiv",
+      "sympt",
+      "remedies",
+      "doctors",
+      "sick"
+     ]
+    },
+    "probe": {
+     "sgl_full": 115.8,
+     "sgl_sub": 8.6,
+     "rank1": 86.5,
+     "tri_full": 84.7,
+     "tri_sub": 9.5,
+     "tri_reads": [
+      "antiv",
+      "sympt",
+      "remedies",
+      "doctors",
+      "sick"
+     ]
+    }
+   },
+   "24": {
+    "argmax": {
+     "sgl_full": 70.3,
+     "sgl_sub": 12.2,
+     "rank1": 91.1,
+     "tri_full": 91.7,
+     "tri_sub": 41.3,
+     "tri_reads": [
+      "doctors",
+      "doctor",
+      "sick",
+      "sympt",
+      "Sick"
+     ]
+    },
+    "probe": {
+     "sgl_full": 169.1,
+     "sgl_sub": 5.5,
+     "rank1": 128.8,
+     "tri_full": 129.1,
+     "tri_sub": 2.3,
+     "tri_reads": [
+      "doctors",
+      "doctor",
+      "sick",
+      "sympt",
+      "Sick"
+     ]
+    }
+   },
+   "26": {
+    "argmax": {
+     "sgl_full": 85.6,
+     "sgl_sub": 26.1,
+     "rank1": 94.9,
+     "tri_full": 95.6,
+     "tri_sub": 45.5,
+     "tri_reads": [
+      "doctors",
+      "doctor",
+      "doctor",
+      "Doctors",
+      "Doctor"
+     ]
+    },
+    "probe": {
+     "sgl_full": 85.3,
+     "sgl_sub": -2.4,
+     "rank1": 126.2,
+     "tri_full": 126.7,
+     "tri_sub": 17.9,
+     "tri_reads": [
+      "doctors",
+      "doctor",
+      "doctor",
+      "Doctors",
+      "Doctor"
+     ]
+    }
+   },
+   "28": {
+    "argmax": {
+     "sgl_full": 67.7,
+     "sgl_sub": 1.1,
+     "rank1": 76.9,
+     "tri_full": 76.9,
+     "tri_sub": 7.4,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "doctors",
+      "rest",
+      "doctor"
+     ]
+    },
+    "probe": {
+     "sgl_full": 116.2,
+     "sgl_sub": -7.7,
+     "rank1": 139.8,
+     "tri_full": 139.8,
+     "tri_sub": 17.0,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "doctors",
+      "rest",
+      "doctor"
+     ]
+    }
+   },
+   "30": {
+    "argmax": {
+     "sgl_full": 76.4,
+     "sgl_sub": 6.0,
+     "rank1": 76.8,
+     "tri_full": 76.3,
+     "tri_sub": -3.2,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "Doctor",
+      "see",
+      "rest"
+     ]
+    },
+    "probe": {
+     "sgl_full": 177.6,
+     "sgl_sub": -9.4,
+     "rank1": 287.4,
+     "tri_full": 291.7,
+     "tri_sub": 20.7,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "Doctor",
+      "see",
+      "rest"
+     ]
+    }
+   },
+   "32": {
+    "argmax": {
+     "sgl_full": 100.0,
+     "sgl_sub": 33.7,
+     "rank1": 63.7,
+     "tri_full": 71.0,
+     "tri_sub": -19.0,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "Doctor",
+      "sick",
+      "doctors"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.0,
+     "sgl_sub": 32.8,
+     "rank1": 304.5,
+     "tri_full": 274.8,
+     "tri_sub": -6.8,
+     "tri_reads": [
+      "doctor",
+      "Doctor",
+      "Doctor",
+      "sick",
+      "doctors"
+     ]
+    }
+   }
+  }
+ },
+ "theft_moral": {
+  "target": "He slipped a bottle under his coat and walked out without paying. He",
+  "baselines": [
+   "He picked up a bottle, went to the register and paid. He",
+   "He slipped a bottle under his coat then returned it to the shelf. He",
+   "He slipped a bottle under his coat, forgetting he already paid. He",
+   "He browsed the shelves, picked up a bottle, and put it back. He"
+  ],
+  "published": [
+   4,
+   75
+  ],
+  "layers": {
+   "4": {
+    "argmax": {
+     "sgl_full": 2.2,
+     "sgl_sub": 0.8,
+     "rank1": 1.5,
+     "tri_full": 1.2,
+     "tri_sub": 0.5,
+     "tri_reads": [
+      "sov",
+      "lander",
+      "IFF",
+      "Dagger",
+      "harassment"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.1,
+     "sgl_sub": 0.1,
+     "rank1": 0.1,
+     "tri_full": 0.1,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "sov",
+      "lander",
+      "IFF",
+      "Dagger",
+      "harassment"
+     ]
+    }
+   },
+   "6": {
+    "argmax": {
+     "sgl_full": 3.8,
+     "sgl_sub": 1.3,
+     "rank1": 2.9,
+     "tri_full": 2.2,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "kell",
+      "PR",
+      "Pub",
+      "advertisement",
+      "aith"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.2,
+     "sgl_sub": 0.1,
+     "rank1": 0.2,
+     "tri_full": 0.1,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "kell",
+      "PR",
+      "Pub",
+      "advertisement",
+      "aith"
+     ]
+    }
+   },
+   "8": {
+    "argmax": {
+     "sgl_full": 5.3,
+     "sgl_sub": 0.9,
+     "rank1": 5.2,
+     "tri_full": 4.1,
+     "tri_sub": 1.9,
+     "tri_reads": [
+      "spite",
+      "pless",
+      "masked",
+      "kell",
+      "St"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.7,
+     "sgl_sub": 0.1,
+     "rank1": 0.5,
+     "tri_full": 0.4,
+     "tri_sub": 0.2,
+     "tri_reads": [
+      "spite",
+      "pless",
+      "masked",
+      "kell",
+      "St"
+     ]
+    }
+   },
+   "10": {
+    "argmax": {
+     "sgl_full": 13.4,
+     "sgl_sub": 3.0,
+     "rank1": 5.6,
+     "tri_full": 4.4,
+     "tri_sub": 0.6,
+     "tri_reads": [
+      "nowhere",
+      "ben",
+      "ACK",
+      "£",
+      "Brexit"
+     ]
+    },
+    "probe": {
+     "sgl_full": 1.3,
+     "sgl_sub": 0.2,
+     "rank1": 0.2,
+     "tri_full": 0.2,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "nowhere",
+      "ben",
+      "ACK",
+      "£",
+      "Brexit"
+     ]
+    }
+   },
+   "12": {
+    "argmax": {
+     "sgl_full": 19.4,
+     "sgl_sub": 3.9,
+     "rank1": 7.2,
+     "tri_full": 6.6,
+     "tri_sub": -0.6,
+     "tri_reads": [
+      "chased",
+      "amar",
+      "storm",
+      "iren",
+      "TTL"
+     ]
+    },
+    "probe": {
+     "sgl_full": 2.5,
+     "sgl_sub": 0.3,
+     "rank1": 0.8,
+     "tri_full": 0.6,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "chased",
+      "amar",
+      "storm",
+      "iren",
+      "TTL"
+     ]
+    }
+   },
+   "14": {
+    "argmax": {
+     "sgl_full": 28.7,
+     "sgl_sub": 6.4,
+     "rank1": 11.6,
+     "tri_full": 10.9,
+     "tri_sub": -0.5,
+     "tri_reads": [
+      "cloud",
+      "chased",
+      "Cloud",
+      "gall",
+      "dehydration"
+     ]
+    },
+    "probe": {
+     "sgl_full": 3.5,
+     "sgl_sub": 0.3,
+     "rank1": 0.9,
+     "tri_full": 0.9,
+     "tri_sub": -0.1,
+     "tri_reads": [
+      "cloud",
+      "chased",
+      "Cloud",
+      "gall",
+      "dehydration"
+     ]
+    }
+   },
+   "16": {
+    "argmax": {
+     "sgl_full": 32.3,
+     "sgl_sub": 5.4,
+     "rank1": 22.7,
+     "tri_full": 24.5,
+     "tri_sub": 2.9,
+     "tri_reads": [
+      "'>",
+      "Run",
+      "fel",
+      "stormed",
+      "storm"
+     ]
+    },
+    "probe": {
+     "sgl_full": 7.9,
+     "sgl_sub": 0.4,
+     "rank1": 1.9,
+     "tri_full": 2.1,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "'>",
+      "Run",
+      "fel",
+      "stormed",
+      "storm"
+     ]
+    }
+   },
+   "18": {
+    "argmax": {
+     "sgl_full": 51.8,
+     "sgl_sub": 4.5,
+     "rank1": 35.4,
+     "tri_full": 40.9,
+     "tri_sub": 5.7,
+     "tri_reads": [
+      "hou",
+      "OU",
+      "stormed",
+      "onto",
+      "survived"
+     ]
+    },
+    "probe": {
+     "sgl_full": 14.0,
+     "sgl_sub": 0.4,
+     "rank1": 2.4,
+     "tri_full": 2.8,
+     "tri_sub": 0.2,
+     "tri_reads": [
+      "hou",
+      "OU",
+      "stormed",
+      "onto",
+      "survived"
+     ]
+    }
+   },
+   "20": {
+    "argmax": {
+     "sgl_full": 45.0,
+     "sgl_sub": 4.7,
+     "rank1": 37.2,
+     "tri_full": 38.6,
+     "tri_sub": 3.7,
+     "tri_reads": [
+      "disguised",
+      "hou",
+      "evasion",
+      "anonymity",
+      "justified"
+     ]
+    },
+    "probe": {
+     "sgl_full": 22.7,
+     "sgl_sub": 0.5,
+     "rank1": 3.1,
+     "tri_full": 3.2,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "disguised",
+      "hou",
+      "evasion",
+      "anonymity",
+      "justified"
+     ]
+    }
+   },
+   "22": {
+    "argmax": {
+     "sgl_full": 52.2,
+     "sgl_sub": 6.0,
+     "rank1": 41.3,
+     "tri_full": 42.4,
+     "tri_sub": 8.3,
+     "tri_reads": [
+      "evade",
+      "evasion",
+      "hou",
+      "disguised",
+      "justified"
+     ]
+    },
+    "probe": {
+     "sgl_full": 31.6,
+     "sgl_sub": 0.4,
+     "rank1": 5.9,
+     "tri_full": 6.0,
+     "tri_sub": 2.4,
+     "tri_reads": [
+      "evade",
+      "evasion",
+      "hou",
+      "disguised",
+      "justified"
+     ]
+    }
+   },
+   "24": {
+    "argmax": {
+     "sgl_full": 74.2,
+     "sgl_sub": 8.5,
+     "rank1": 59.3,
+     "tri_full": 58.0,
+     "tri_sub": 7.3,
+     "tri_reads": [
+      "evade",
+      "hoped",
+      "rend",
+      "vanished",
+      "evasion"
+     ]
+    },
+    "probe": {
+     "sgl_full": 23.1,
+     "sgl_sub": 0.4,
+     "rank1": 7.2,
+     "tri_full": 7.1,
+     "tri_sub": 4.5,
+     "tri_reads": [
+      "evade",
+      "hoped",
+      "rend",
+      "vanished",
+      "evasion"
+     ]
+    }
+   },
+   "26": {
+    "argmax": {
+     "sgl_full": 66.1,
+     "sgl_sub": 3.4,
+     "rank1": 47.0,
+     "tri_full": 45.7,
+     "tri_sub": 2.5,
+     "tri_reads": [
+      "hoped",
+      "evade",
+      "Escape",
+      "hope",
+      "hoping"
+     ]
+    },
+    "probe": {
+     "sgl_full": 61.6,
+     "sgl_sub": 0.2,
+     "rank1": 17.4,
+     "tri_full": 16.7,
+     "tri_sub": 17.9,
+     "tri_reads": [
+      "hoped",
+      "evade",
+      "Escape",
+      "hope",
+      "hoping"
+     ]
+    }
+   },
+   "28": {
+    "argmax": {
+     "sgl_full": 85.9,
+     "sgl_sub": 4.1,
+     "rank1": 75.5,
+     "tri_full": 71.5,
+     "tri_sub": 3.9,
+     "tri_reads": [
+      "evade",
+      "hoped",
+      "hope",
+      "hoping",
+      "evasion"
+     ]
+    },
+    "probe": {
+     "sgl_full": 68.2,
+     "sgl_sub": 13.5,
+     "rank1": 28.2,
+     "tri_full": 26.1,
+     "tri_sub": 21.1,
+     "tri_reads": [
+      "evade",
+      "hoped",
+      "hope",
+      "hoping",
+      "evasion"
+     ]
+    }
+   },
+   "30": {
+    "argmax": {
+     "sgl_full": 110.4,
+     "sgl_sub": 8.4,
+     "rank1": 89.2,
+     "tri_full": 80.8,
+     "tri_sub": 7.7,
+     "tri_reads": [
+      "evade",
+      "Dod",
+      "hoping",
+      "Escape",
+      "hoped"
+     ]
+    },
+    "probe": {
+     "sgl_full": 91.5,
+     "sgl_sub": 20.5,
+     "rank1": 33.0,
+     "tri_full": 28.9,
+     "tri_sub": 24.8,
+     "tri_reads": [
+      "evade",
+      "Dod",
+      "hoping",
+      "Escape",
+      "hoped"
+     ]
+    }
+   },
+   "32": {
+    "argmax": {
+     "sgl_full": 100.0,
+     "sgl_sub": 8.5,
+     "rank1": 87.0,
+     "tri_full": 84.0,
+     "tri_sub": 19.6,
+     "tri_reads": [
+      "hailed",
+      "Dod",
+      "Escape",
+      "justified",
+      "vanished"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.0,
+     "sgl_sub": 1.9,
+     "rank1": 46.2,
+     "tri_full": 42.0,
+     "tri_sub": 66.2,
+     "tri_reads": [
+      "hailed",
+      "Dod",
+      "Escape",
+      "justified",
+      "vanished"
+     ]
+    }
+   }
+  }
+ },
+ "hotdog_prov8": {
+  "target": "The hot dog was",
+  "baselines": [
+   "The cold dog was",
+   "The hot cat was",
+   "The old dog was",
+   "The angry dog was",
+   "The hot rod was",
+   "The hot chocolate was",
+   "The dog was",
+   "A hot dog was"
+  ],
+  "published": [
+   11,
+   49
+  ],
+  "layers": {
+   "4": {
+    "argmax": {
+     "sgl_full": 0.9,
+     "sgl_sub": 0.6,
+     "rank1": 0.4,
+     "tri_full": 0.3,
+     "tri_sub": 0.2,
+     "tri_reads": [
+      "hot",
+      "food",
+      "exha",
+      "everyone",
+      "P"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.0,
+     "sgl_sub": 0.0,
+     "rank1": 0.0,
+     "tri_full": 0.0,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "hot",
+      "food",
+      "exha",
+      "everyone",
+      "P"
+     ]
+    }
+   },
+   "6": {
+    "argmax": {
+     "sgl_full": 5.8,
+     "sgl_sub": 0.4,
+     "rank1": 5.1,
+     "tri_full": 3.4,
+     "tri_sub": 0.4,
+     "tri_reads": [
+      "delicious",
+      "tasty",
+      "breakfast",
+      "fried",
+      "sandwiches"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.3,
+     "sgl_sub": 0.0,
+     "rank1": 0.3,
+     "tri_full": 0.1,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "delicious",
+      "tasty",
+      "breakfast",
+      "fried",
+      "sandwiches"
+     ]
+    }
+   },
+   "8": {
+    "argmax": {
+     "sgl_full": 19.7,
+     "sgl_sub": 0.9,
+     "rank1": 13.2,
+     "tri_full": 6.0,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "sandwiches",
+      "fried",
+      "crispy",
+      "cooked",
+      "served"
+     ]
+    },
+    "probe": {
+     "sgl_full": 1.3,
+     "sgl_sub": 0.0,
+     "rank1": 1.2,
+     "tri_full": 0.3,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "sandwiches",
+      "fried",
+      "crispy",
+      "cooked",
+      "served"
+     ]
+    }
+   },
+   "10": {
+    "argmax": {
+     "sgl_full": 28.9,
+     "sgl_sub": 1.3,
+     "rank1": 26.4,
+     "tri_full": 10.8,
+     "tri_sub": 1.1,
+     "tri_reads": [
+      "ç",
+      "aron",
+      "Fres",
+      "flavour",
+      "piping"
+     ]
+    },
+    "probe": {
+     "sgl_full": 3.4,
+     "sgl_sub": 0.0,
+     "rank1": 6.5,
+     "tri_full": 0.8,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "aron",
+      "Fres",
+      "flavour",
+      "piping"
+     ]
+    }
+   },
+   "12": {
+    "argmax": {
+     "sgl_full": 41.7,
+     "sgl_sub": 0.9,
+     "rank1": 39.1,
+     "tri_full": 13.9,
+     "tri_sub": 1.0,
+     "tri_reads": [
+      "ç",
+      "crispy",
+      "fresh",
+      "circular",
+      "Serv"
+     ]
+    },
+    "probe": {
+     "sgl_full": 4.1,
+     "sgl_sub": 0.0,
+     "rank1": 6.0,
+     "tri_full": 0.6,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "crispy",
+      "fresh",
+      "circular",
+      "Serv"
+     ]
+    }
+   },
+   "14": {
+    "argmax": {
+     "sgl_full": 72.8,
+     "sgl_sub": 3.9,
+     "rank1": 56.9,
+     "tri_full": 21.1,
+     "tri_sub": 1.4,
+     "tri_reads": [
+      "ç",
+      "fried",
+      "Origin",
+      "crisp",
+      "itself"
+     ]
+    },
+    "probe": {
+     "sgl_full": 9.9,
+     "sgl_sub": 0.0,
+     "rank1": 11.9,
+     "tri_full": 1.1,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "fried",
+      "Origin",
+      "crisp",
+      "itself"
+     ]
+    }
+   },
+   "16": {
+    "argmax": {
+     "sgl_full": 60.5,
+     "sgl_sub": 3.2,
+     "rank1": 40.4,
+     "tri_full": 16.3,
+     "tri_sub": 0.7,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "itself",
+      "choice",
+      "circular"
+     ]
+    },
+    "probe": {
+     "sgl_full": 16.4,
+     "sgl_sub": 0.1,
+     "rank1": 15.4,
+     "tri_full": 1.4,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "itself",
+      "choice",
+      "circular"
+     ]
+    }
+   },
+   "18": {
+    "argmax": {
+     "sgl_full": 75.5,
+     "sgl_sub": 2.1,
+     "rank1": 38.0,
+     "tri_full": 19.5,
+     "tri_sub": 0.5,
+     "tri_reads": [
+      "crisp",
+      "crispy",
+      "cooked",
+      "sliced",
+      "packaged"
+     ]
+    },
+    "probe": {
+     "sgl_full": 28.6,
+     "sgl_sub": 0.1,
+     "rank1": 23.5,
+     "tri_full": 3.7,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "crisp",
+      "crispy",
+      "cooked",
+      "sliced",
+      "packaged"
+     ]
+    }
+   },
+   "20": {
+    "argmax": {
+     "sgl_full": 78.1,
+     "sgl_sub": 8.9,
+     "rank1": 37.8,
+     "tri_full": 28.1,
+     "tri_sub": 3.6,
+     "tri_reads": [
+      "crispy",
+      "crisp",
+      "cooked",
+      "tast",
+      "tasted"
+     ]
+    },
+    "probe": {
+     "sgl_full": 55.2,
+     "sgl_sub": 1.1,
+     "rank1": 52.2,
+     "tri_full": 15.4,
+     "tri_sub": 0.3,
+     "tri_reads": [
+      "crispy",
+      "crisp",
+      "cooked",
+      "tast",
+      "tasted"
+     ]
+    }
+   },
+   "22": {
+    "argmax": {
+     "sgl_full": 92.0,
+     "sgl_sub": 14.8,
+     "rank1": 30.9,
+     "tri_full": 29.6,
+     "tri_sub": 7.1,
+     "tri_reads": [
+      "crispy",
+      "crisp",
+      "cooked",
+      "tast",
+      "juicy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 64.5,
+     "sgl_sub": 10.5,
+     "rank1": 85.7,
+     "tri_full": 52.5,
+     "tri_sub": 2.0,
+     "tri_reads": [
+      "crispy",
+      "crisp",
+      "cooked",
+      "tast",
+      "juicy"
+     ]
+    }
+   },
+   "24": {
+    "argmax": {
+     "sgl_full": 83.7,
+     "sgl_sub": 11.6,
+     "rank1": 40.5,
+     "tri_full": 37.3,
+     "tri_sub": 6.6,
+     "tri_reads": [
+      "crispy",
+      "cooked",
+      "delicious",
+      "juicy",
+      "crisp"
+     ]
+    },
+    "probe": {
+     "sgl_full": 94.2,
+     "sgl_sub": 19.0,
+     "rank1": 121.4,
+     "tri_full": 81.9,
+     "tri_sub": 6.7,
+     "tri_reads": [
+      "crispy",
+      "cooked",
+      "delicious",
+      "juicy",
+      "crisp"
+     ]
+    }
+   },
+   "26": {
+    "argmax": {
+     "sgl_full": 48.3,
+     "sgl_sub": 10.7,
+     "rank1": 20.9,
+     "tri_full": 19.3,
+     "tri_sub": 2.5,
+     "tri_reads": [
+      "crispy",
+      "charred",
+      "juicy",
+      "delicious",
+      "cooked"
+     ]
+    },
+    "probe": {
+     "sgl_full": 106.5,
+     "sgl_sub": 35.6,
+     "rank1": 121.8,
+     "tri_full": 76.3,
+     "tri_sub": 11.2,
+     "tri_reads": [
+      "crispy",
+      "charred",
+      "juicy",
+      "delicious",
+      "cooked"
+     ]
+    }
+   },
+   "28": {
+    "argmax": {
+     "sgl_full": 95.1,
+     "sgl_sub": 11.9,
+     "rank1": 48.9,
+     "tri_full": 40.2,
+     "tri_sub": 7.5,
+     "tri_reads": [
+      "crispy",
+      "overc",
+      "juicy",
+      "charred",
+      "tast"
+     ]
+    },
+    "probe": {
+     "sgl_full": 96.8,
+     "sgl_sub": 24.2,
+     "rank1": 92.1,
+     "tri_full": 56.9,
+     "tri_sub": 14.5,
+     "tri_reads": [
+      "crispy",
+      "overc",
+      "juicy",
+      "charred",
+      "tast"
+     ]
+    }
+   },
+   "30": {
+    "argmax": {
+     "sgl_full": 90.4,
+     "sgl_sub": 7.1,
+     "rank1": 38.2,
+     "tri_full": 38.4,
+     "tri_sub": 9.7,
+     "tri_reads": [
+      "overc",
+      "tast",
+      "juicy",
+      "charred",
+      "crispy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 99.7,
+     "sgl_sub": 59.1,
+     "rank1": 68.7,
+     "tri_full": 40.3,
+     "tri_sub": 24.8,
+     "tri_reads": [
+      "overc",
+      "tast",
+      "juicy",
+      "charred",
+      "crispy"
+     ]
+    }
+   },
+   "32": {
+    "argmax": {
+     "sgl_full": 100.0,
+     "sgl_sub": 14.0,
+     "rank1": 14.4,
+     "tri_full": 24.4,
+     "tri_sub": 7.3,
+     "tri_reads": [
+      "tast",
+      "juicy",
+      "overc",
+      "Ju",
+      "crispy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.0,
+     "sgl_sub": 66.9,
+     "rank1": 25.3,
+     "tri_full": 11.3,
+     "tri_sub": 17.8,
+     "tri_reads": [
+      "tast",
+      "juicy",
+      "overc",
+      "Ju",
+      "crispy"
+     ]
+    }
+   }
+  }
+ },
+ "hotdog_clean5": {
+  "target": "The hot dog was",
+  "baselines": [
+   "The cold dog was",
+   "The angry dog was",
+   "The old dog was",
+   "The pet dog was",
+   "The stray dog was"
+  ],
+  "published": [
+   11,
+   49
+  ],
+  "layers": {
+   "4": {
+    "argmax": {
+     "sgl_full": 0.9,
+     "sgl_sub": 0.6,
+     "rank1": 0.7,
+     "tri_full": 1.2,
+     "tri_sub": 0.8,
+     "tri_reads": [
+      "hot",
+      "exhaust",
+      "crew",
+      "molten",
+      "filling"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.0,
+     "sgl_sub": 0.0,
+     "rank1": 0.0,
+     "tri_full": 0.1,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "hot",
+      "exhaust",
+      "crew",
+      "molten",
+      "filling"
+     ]
+    }
+   },
+   "6": {
+    "argmax": {
+     "sgl_full": 5.8,
+     "sgl_sub": 0.4,
+     "rank1": 5.1,
+     "tri_full": 6.6,
+     "tri_sub": 0.6,
+     "tri_reads": [
+      "delicious",
+      "tasty",
+      "breakfast",
+      "cris",
+      "cooked"
+     ]
+    },
+    "probe": {
+     "sgl_full": 0.3,
+     "sgl_sub": 0.0,
+     "rank1": 0.3,
+     "tri_full": 0.4,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "delicious",
+      "tasty",
+      "breakfast",
+      "cris",
+      "cooked"
+     ]
+    }
+   },
+   "8": {
+    "argmax": {
+     "sgl_full": 19.7,
+     "sgl_sub": 0.9,
+     "rank1": 15.6,
+     "tri_full": 18.1,
+     "tri_sub": 0.8,
+     "tri_reads": [
+      "crispy",
+      "irc",
+      "option",
+      "sandwiches",
+      "delicious"
+     ]
+    },
+    "probe": {
+     "sgl_full": 1.3,
+     "sgl_sub": 0.0,
+     "rank1": 1.5,
+     "tri_full": 1.9,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "crispy",
+      "irc",
+      "option",
+      "sandwiches",
+      "delicious"
+     ]
+    }
+   },
+   "10": {
+    "argmax": {
+     "sgl_full": 28.9,
+     "sgl_sub": 1.3,
+     "rank1": 29.0,
+     "tri_full": 30.0,
+     "tri_sub": 2.0,
+     "tri_reads": [
+      "ç",
+      "piping",
+      "WF",
+      "Fres",
+      "irc"
+     ]
+    },
+    "probe": {
+     "sgl_full": 3.4,
+     "sgl_sub": 0.0,
+     "rank1": 5.2,
+     "tri_full": 5.6,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "piping",
+      "WF",
+      "Fres",
+      "irc"
+     ]
+    }
+   },
+   "12": {
+    "argmax": {
+     "sgl_full": 41.7,
+     "sgl_sub": 0.9,
+     "rank1": 40.8,
+     "tri_full": 38.1,
+     "tri_sub": 0.8,
+     "tri_reads": [
+      "ç",
+      "crispy",
+      "�",
+      "circular",
+      "Serv"
+     ]
+    },
+    "probe": {
+     "sgl_full": 4.1,
+     "sgl_sub": 0.0,
+     "rank1": 4.9,
+     "tri_full": 4.2,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "crispy",
+      "�",
+      "circular",
+      "Serv"
+     ]
+    }
+   },
+   "14": {
+    "argmax": {
+     "sgl_full": 72.8,
+     "sgl_sub": 3.9,
+     "rank1": 55.2,
+     "tri_full": 52.5,
+     "tri_sub": 2.5,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "itself",
+      "crispy",
+      "circular"
+     ]
+    },
+    "probe": {
+     "sgl_full": 9.9,
+     "sgl_sub": 0.0,
+     "rank1": 9.1,
+     "tri_full": 8.4,
+     "tri_sub": 0.0,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "itself",
+      "crispy",
+      "circular"
+     ]
+    }
+   },
+   "16": {
+    "argmax": {
+     "sgl_full": 60.5,
+     "sgl_sub": 3.2,
+     "rank1": 40.7,
+     "tri_full": 39.5,
+     "tri_sub": 1.6,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "garn",
+      "tantal",
+      "piping"
+     ]
+    },
+    "probe": {
+     "sgl_full": 16.4,
+     "sgl_sub": 0.1,
+     "rank1": 12.3,
+     "tri_full": 11.7,
+     "tri_sub": 0.1,
+     "tri_reads": [
+      "ç",
+      "crisp",
+      "garn",
+      "tantal",
+      "piping"
+     ]
+    }
+   },
+   "18": {
+    "argmax": {
+     "sgl_full": 75.5,
+     "sgl_sub": 2.1,
+     "rank1": 42.7,
+     "tri_full": 41.5,
+     "tri_sub": 3.0,
+     "tri_reads": [
+      "crisp",
+      "garn",
+      "ç",
+      "piping",
+      "preparation"
+     ]
+    },
+    "probe": {
+     "sgl_full": 28.6,
+     "sgl_sub": 0.1,
+     "rank1": 17.7,
+     "tri_full": 17.2,
+     "tri_sub": 0.6,
+     "tri_reads": [
+      "crisp",
+      "garn",
+      "ç",
+      "piping",
+      "preparation"
+     ]
+    }
+   },
+   "20": {
+    "argmax": {
+     "sgl_full": 78.1,
+     "sgl_sub": 8.9,
+     "rank1": 36.7,
+     "tri_full": 36.4,
+     "tri_sub": 5.8,
+     "tri_reads": [
+      "crisp",
+      "tast",
+      "crispy",
+      "tasted",
+      "garn"
+     ]
+    },
+    "probe": {
+     "sgl_full": 55.2,
+     "sgl_sub": 1.1,
+     "rank1": 39.3,
+     "tri_full": 39.1,
+     "tri_sub": 1.3,
+     "tri_reads": [
+      "crisp",
+      "tast",
+      "crispy",
+      "tasted",
+      "garn"
+     ]
+    }
+   },
+   "22": {
+    "argmax": {
+     "sgl_full": 92.0,
+     "sgl_sub": 14.8,
+     "rank1": 35.4,
+     "tri_full": 35.7,
+     "tri_sub": 14.0,
+     "tri_reads": [
+      "tast",
+      "crisp",
+      "crispy",
+      "delicious",
+      "cooked"
+     ]
+    },
+    "probe": {
+     "sgl_full": 64.5,
+     "sgl_sub": 10.5,
+     "rank1": 55.4,
+     "tri_full": 55.9,
+     "tri_sub": 6.2,
+     "tri_reads": [
+      "tast",
+      "crisp",
+      "crispy",
+      "delicious",
+      "cooked"
+     ]
+    }
+   },
+   "24": {
+    "argmax": {
+     "sgl_full": 83.7,
+     "sgl_sub": 11.6,
+     "rank1": 49.1,
+     "tri_full": 49.9,
+     "tri_sub": 13.4,
+     "tri_reads": [
+      "delicious",
+      "tast",
+      "crispy",
+      "appet",
+      "spicy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 94.2,
+     "sgl_sub": 19.0,
+     "rank1": 86.2,
+     "tri_full": 88.9,
+     "tri_sub": 11.2,
+     "tri_reads": [
+      "delicious",
+      "tast",
+      "crispy",
+      "appet",
+      "spicy"
+     ]
+    }
+   },
+   "26": {
+    "argmax": {
+     "sgl_full": 48.3,
+     "sgl_sub": 10.7,
+     "rank1": 21.2,
+     "tri_full": 21.6,
+     "tri_sub": 2.1,
+     "tri_reads": [
+      "delicious",
+      "crispy",
+      "tast",
+      "charred",
+      "overc"
+     ]
+    },
+    "probe": {
+     "sgl_full": 106.5,
+     "sgl_sub": 35.6,
+     "rank1": 91.0,
+     "tri_full": 96.9,
+     "tri_sub": 23.1,
+     "tri_reads": [
+      "delicious",
+      "crispy",
+      "tast",
+      "charred",
+      "overc"
+     ]
+    }
+   },
+   "28": {
+    "argmax": {
+     "sgl_full": 95.1,
+     "sgl_sub": 11.9,
+     "rank1": 54.5,
+     "tri_full": 57.3,
+     "tri_sub": 5.0,
+     "tri_reads": [
+      "tast",
+      "overc",
+      "crispy",
+      "charred",
+      "spicy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 96.8,
+     "sgl_sub": 24.2,
+     "rank1": 76.8,
+     "tri_full": 82.9,
+     "tri_sub": 31.0,
+     "tri_reads": [
+      "tast",
+      "overc",
+      "crispy",
+      "charred",
+      "spicy"
+     ]
+    }
+   },
+   "30": {
+    "argmax": {
+     "sgl_full": 90.4,
+     "sgl_sub": 7.1,
+     "rank1": 46.5,
+     "tri_full": 46.2,
+     "tri_sub": 7.5,
+     "tri_reads": [
+      "tast",
+      "overc",
+      "charred",
+      "spicy",
+      "crispy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 99.7,
+     "sgl_sub": 59.1,
+     "rank1": 62.4,
+     "tri_full": 66.6,
+     "tri_sub": 59.0,
+     "tri_reads": [
+      "tast",
+      "overc",
+      "charred",
+      "spicy",
+      "crispy"
+     ]
+    }
+   },
+   "32": {
+    "argmax": {
+     "sgl_full": 100.0,
+     "sgl_sub": 14.0,
+     "rank1": 14.3,
+     "tri_full": 12.3,
+     "tri_sub": 1.6,
+     "tri_reads": [
+      "tast",
+      "Ju",
+      "overc",
+      "crispy",
+      "juicy"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.0,
+     "sgl_sub": 66.9,
+     "rank1": 31.2,
+     "tri_full": 35.4,
+     "tri_sub": 123.9,
+     "tri_reads": [
+      "tast",
+      "Ju",
+      "overc",
+      "crispy",
+      "juicy"
+     ]
+    }
+   }
+  }
+ },
+ "some_all": {
+  "target": "Some of the students passed the exam, so",
+  "baselines": [
+   "All of the students passed the exam, so",
+   "Most of the students passed the exam, so",
+   "Few of the students passed the exam, so",
+   "None of the students passed the exam, so",
+   "Many of the students passed the exam, so"
+  ],
+  "published": [
+   -40,
+   101
+  ],
+  "layers": {
+   "4": {
+    "argmax": {
+     "sgl_full": 50.1,
+     "sgl_sub": 13.1,
+     "rank1": 29.5,
+     "tri_full": 39.6,
+     "tri_sub": 5.3,
+     "tri_reads": [
+      "maybe",
+      "ection",
+      "may",
+      "ective",
+      "etti"
+     ]
+    },
+    "probe": {
+     "sgl_full": 50.1,
+     "sgl_sub": 13.1,
+     "rank1": 29.5,
+     "tri_full": 39.6,
+     "tri_sub": 5.3,
+     "tri_reads": [
+      "maybe",
+      "ection",
+      "may",
+      "ective",
+      "etti"
+     ]
+    }
+   },
+   "6": {
+    "argmax": {
+     "sgl_full": 57.3,
+     "sgl_sub": 7.0,
+     "rank1": 42.3,
+     "tri_full": 46.3,
+     "tri_sub": -3.5,
+     "tri_reads": [
+      "ami",
+      "ambush",
+      "pex",
+      "INA",
+      "ild"
+     ]
+    },
+    "probe": {
+     "sgl_full": 57.3,
+     "sgl_sub": 7.0,
+     "rank1": 42.3,
+     "tri_full": 46.3,
+     "tri_sub": -3.5,
+     "tri_reads": [
+      "ami",
+      "ambush",
+      "pex",
+      "INA",
+      "ild"
+     ]
+    }
+   },
+   "8": {
+    "argmax": {
+     "sgl_full": 51.4,
+     "sgl_sub": 13.1,
+     "rank1": 36.2,
+     "tri_full": 34.0,
+     "tri_sub": 7.8,
+     "tri_reads": [
+      "McCl",
+      "nicer",
+      "aylor",
+      "Reilly",
+      "might"
+     ]
+    },
+    "probe": {
+     "sgl_full": 51.4,
+     "sgl_sub": 13.1,
+     "rank1": 36.2,
+     "tri_full": 34.0,
+     "tri_sub": 7.8,
+     "tri_reads": [
+      "McCl",
+      "nicer",
+      "aylor",
+      "Reilly",
+      "might"
+     ]
+    }
+   },
+   "10": {
+    "argmax": {
+     "sgl_full": 41.0,
+     "sgl_sub": 12.4,
+     "rank1": 69.4,
+     "tri_full": 65.0,
+     "tri_sub": 1.0,
+     "tri_reads": [
+      "ogg",
+      "unts",
+      "might",
+      "Lia",
+      "oos"
+     ]
+    },
+    "probe": {
+     "sgl_full": 41.0,
+     "sgl_sub": 12.4,
+     "rank1": 69.4,
+     "tri_full": 65.0,
+     "tri_sub": 1.0,
+     "tri_reads": [
+      "ogg",
+      "unts",
+      "might",
+      "Lia",
+      "oos"
+     ]
+    }
+   },
+   "12": {
+    "argmax": {
+     "sgl_full": 49.3,
+     "sgl_sub": 4.9,
+     "rank1": 62.8,
+     "tri_full": 59.2,
+     "tri_sub": -11.0,
+     "tri_reads": [
+      "-,",
+      "Tap",
+      "cht",
+      "NI",
+      "selectively"
+     ]
+    },
+    "probe": {
+     "sgl_full": 49.3,
+     "sgl_sub": 4.9,
+     "rank1": 62.8,
+     "tri_full": 59.2,
+     "tri_sub": -11.0,
+     "tri_reads": [
+      "-,",
+      "Tap",
+      "cht",
+      "NI",
+      "selectively"
+     ]
+    }
+   },
+   "14": {
+    "argmax": {
+     "sgl_full": 67.1,
+     "sgl_sub": 12.1,
+     "rank1": 56.5,
+     "tri_full": 54.2,
+     "tri_sub": -4.5,
+     "tri_reads": [
+      "adr",
+      "opus",
+      "Fil",
+      "ai",
+      "Subscribe"
+     ]
+    },
+    "probe": {
+     "sgl_full": 67.1,
+     "sgl_sub": 12.1,
+     "rank1": 56.5,
+     "tri_full": 54.2,
+     "tri_sub": -4.5,
+     "tri_reads": [
+      "adr",
+      "opus",
+      "Fil",
+      "ai",
+      "Subscribe"
+     ]
+    }
+   },
+   "16": {
+    "argmax": {
+     "sgl_full": 80.7,
+     "sgl_sub": 5.9,
+     "rank1": 78.2,
+     "tri_full": 75.4,
+     "tri_sub": -7.8,
+     "tri_reads": [
+      "Newsletter",
+      "CF",
+      "fil",
+      "Fil",
+      "/_"
+     ]
+    },
+    "probe": {
+     "sgl_full": 80.7,
+     "sgl_sub": 5.9,
+     "rank1": 78.2,
+     "tri_full": 75.4,
+     "tri_sub": -7.8,
+     "tri_reads": [
+      "Newsletter",
+      "CF",
+      "fil",
+      "Fil",
+      "/_"
+     ]
+    }
+   },
+   "18": {
+    "argmax": {
+     "sgl_full": 68.0,
+     "sgl_sub": 8.1,
+     "rank1": 30.4,
+     "tri_full": 35.7,
+     "tri_sub": 21.4,
+     "tri_reads": [
+      "Tool",
+      "overlap",
+      "femin",
+      "CSV",
+      "inct"
+     ]
+    },
+    "probe": {
+     "sgl_full": 68.0,
+     "sgl_sub": 8.1,
+     "rank1": 30.4,
+     "tri_full": 35.7,
+     "tri_sub": 21.4,
+     "tri_reads": [
+      "Tool",
+      "overlap",
+      "femin",
+      "CSV",
+      "inct"
+     ]
+    }
+   },
+   "20": {
+    "argmax": {
+     "sgl_full": 91.6,
+     "sgl_sub": -14.6,
+     "rank1": 80.1,
+     "tri_full": 77.1,
+     "tri_sub": 4.6,
+     "tri_reads": [
+      "Tool",
+      "femin",
+      "femin",
+      "ocumented",
+      "anky"
+     ]
+    },
+    "probe": {
+     "sgl_full": 91.6,
+     "sgl_sub": -14.6,
+     "rank1": 80.1,
+     "tri_full": 77.1,
+     "tri_sub": 4.6,
+     "tri_reads": [
+      "Tool",
+      "femin",
+      "femin",
+      "ocumented",
+      "anky"
+     ]
+    }
+   },
+   "22": {
+    "argmax": {
+     "sgl_full": 100.7,
+     "sgl_sub": -47.2,
+     "rank1": 87.1,
+     "tri_full": 87.9,
+     "tri_sub": -9.3,
+     "tri_reads": [
+      "Tool",
+      "([",
+      "Slot",
+      "femin",
+      "vagina"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.7,
+     "sgl_sub": -47.2,
+     "rank1": 87.1,
+     "tri_full": 87.9,
+     "tri_sub": -9.3,
+     "tri_reads": [
+      "Tool",
+      "([",
+      "Slot",
+      "femin",
+      "vagina"
+     ]
+    }
+   },
+   "24": {
+    "argmax": {
+     "sgl_full": 44.1,
+     "sgl_sub": -2.2,
+     "rank1": 36.9,
+     "tri_full": 36.0,
+     "tri_sub": 11.1,
+     "tri_reads": [
+      "/_",
+      "Tool",
+      "�",
+      "[_",
+      "femin"
+     ]
+    },
+    "probe": {
+     "sgl_full": 44.1,
+     "sgl_sub": -2.2,
+     "rank1": 36.9,
+     "tri_full": 36.0,
+     "tri_sub": 11.1,
+     "tri_reads": [
+      "/_",
+      "Tool",
+      "�",
+      "[_",
+      "femin"
+     ]
+    }
+   },
+   "26": {
+    "argmax": {
+     "sgl_full": 103.2,
+     "sgl_sub": -14.4,
+     "rank1": 116.1,
+     "tri_full": 109.9,
+     "tri_sub": -2.7,
+     "tri_reads": [
+      "\"$",
+      "subscriber",
+      "Cups",
+      "/_",
+      "Fan"
+     ]
+    },
+    "probe": {
+     "sgl_full": 103.2,
+     "sgl_sub": -14.4,
+     "rank1": 116.1,
+     "tri_full": 109.9,
+     "tri_sub": -2.7,
+     "tri_reads": [
+      "\"$",
+      "subscriber",
+      "Cups",
+      "/_",
+      "Fan"
+     ]
+    }
+   },
+   "28": {
+    "argmax": {
+     "sgl_full": 72.4,
+     "sgl_sub": -38.0,
+     "rank1": 76.9,
+     "tri_full": 75.5,
+     "tri_sub": -32.2,
+     "tri_reads": [
+      "\"$",
+      "oli",
+      "subscribe",
+      "Cups",
+      "Prem"
+     ]
+    },
+    "probe": {
+     "sgl_full": 72.4,
+     "sgl_sub": -38.0,
+     "rank1": 76.9,
+     "tri_full": 75.5,
+     "tri_sub": -32.2,
+     "tri_reads": [
+      "\"$",
+      "oli",
+      "subscribe",
+      "Cups",
+      "Prem"
+     ]
+    }
+   },
+   "30": {
+    "argmax": {
+     "sgl_full": 92.4,
+     "sgl_sub": -73.8,
+     "rank1": 79.4,
+     "tri_full": 70.6,
+     "tri_sub": -61.9,
+     "tri_reads": [
+      "x",
+      "Cups",
+      "vine",
+      "variables",
+      "subscribed"
+     ]
+    },
+    "probe": {
+     "sgl_full": 92.4,
+     "sgl_sub": -73.8,
+     "rank1": 79.4,
+     "tri_full": 70.6,
+     "tri_sub": -61.9,
+     "tri_reads": [
+      "x",
+      "Cups",
+      "vine",
+      "variables",
+      "subscribed"
+     ]
+    }
+   },
+   "32": {
+    "argmax": {
+     "sgl_full": 100.0,
+     "sgl_sub": -98.1,
+     "rank1": 103.3,
+     "tri_full": 96.2,
+     "tri_sub": -160.7,
+     "tri_reads": [
+      "x",
+      "subtract",
+      "\"?",
+      "Cups",
+      "\"$"
+     ]
+    },
+    "probe": {
+     "sgl_full": 100.0,
+     "sgl_sub": -98.1,
+     "rank1": 103.3,
+     "tri_full": 96.2,
+     "tri_sub": -160.7,
+     "tri_reads": [
+      "x",
+      "subtract",
+      "\"?",
+      "Cups",
+      "\"$"
+     ]
+    }
+   }
+  }
+ }
+}

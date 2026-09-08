@@ -1,0 +1,50 @@
+{
+ "baseline": {
+  "pos": null,
+  "layer": null,
+  "pfood": 0.161,
+  "greedy": "too spicy for the child,"
+ },
+ "dog@L2": {
+  "pos": 2,
+  "layer": 2,
+  "pfood": 0.001,
+  "greedy": "panting heavily, so the"
+ },
+ "dog@L8": {
+  "pos": 2,
+  "layer": 8,
+  "pfood": 0.016,
+  "greedy": "more appealing to the children than"
+ },
+ "dog@L20": {
+  "pos": 2,
+  "layer": 20,
+  "pfood": 0.131,
+  "greedy": "too spicy for the little girl"
+ },
+ "hot@L2": {
+  "pos": 1,
+  "layer": 2,
+  "pfood": 0.132,
+  "greedy": "too hot to eat, so"
+ },
+ "was@L2": {
+  "pos": 3,
+  "layer": 2,
+  "pfood": 0.156,
+  "greedy": "more expensive than the hamburger"
+ },
+ "was@L12": {
+  "pos": 3,
+  "layer": 12,
+  "pfood": 0.061,
+  "greedy": "placed in the oven to cook"
+ },
+ "was@L20": {
+  "pos": 3,
+  "layer": 20,
+  "pfood": 0.002,
+  "greedy": "shivering in the cold weather"
+ }
+}

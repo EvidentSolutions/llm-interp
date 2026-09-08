@@ -1,0 +1,119 @@
+{
+ "designs": {
+  "very short (Hot dog / Cold dog)": {
+   "12": {
+    "food_rank": 4,
+    "top": "chio, player, Player, drowned, bun, azaki, /_, lantern"
+   },
+   "16": {
+    "food_rank": 6,
+    "top": "player, Shooter, drowned, shooter, Player, Spears, bun, Unicorn"
+   },
+   "20": {
+    "food_rank": 85,
+    "top": "player, drowned, cens, Player, enger, flags, ettes, arde"
+   },
+   "24": {
+    "food_rank": 0,
+    "top": "vendor, Vendor, /$, skew, Flav, maker, Serv, Player"
+   }
+  },
+  "bare matched (The hot / The cold)": {
+   "12": {
+    "food_rank": 8,
+    "top": "ç, Ramos, dé, Rebell, Pap, ris, commenceme, agency"
+   },
+   "16": {
+    "food_rank": 19,
+    "top": "ç, circular, career, tantal, ci, itself, brand, garn"
+   },
+   "20": {
+    "food_rank": 3,
+    "top": "tast, circular, price, flavor, round, flavors, cens, crispy"
+   },
+   "24": {
+    "food_rank": 0,
+    "top": "delicious, tast, flavor, cooked, spicy, charred, taste, flavors"
+   }
+  },
+  "lowercased matched (the hot / the cold)": {
+   "12": {
+    "food_rank": 38,
+    "top": "+), being, ters, circular, asting, iton, iere, beforehand"
+   },
+   "16": {
+    "food_rank": null,
+    "top": "being, circular, brand, ci, de, helicop, planned, competitio"
+   },
+   "20": {
+    "food_rank": 64,
+    "top": "more, choice, double, \", brand, , predec, unnecess"
+   },
+   "24": {
+    "food_rank": 0,
+    "top": "cooked, charred, delicious, overc, spicy, flavorful, grilled, flavors"
+   }
+  },
+  "MISMATCH (The hot / the cold)": {
+   "12": {
+    "food_rank": 6,
+    "top": "iece, amiya, eria, stad, ona, submarine, crispy, aya"
+   },
+   "16": {
+    "food_rank": 50,
+    "top": "subt, aya, circular, pl, submarine, brand, stad, Island"
+   },
+   "20": {
+    "food_rank": 12,
+    "top": "sold, more, circular, round, double, made, crisp, consist"
+   },
+   "24": {
+    "food_rank": 0,
+    "top": "cooked, charred, spicy, grilled, delicious, overc, seasoning, seasoned"
+   }
+  },
+  "preamble (My grandmother said...)": {
+   "12": {
+    "food_rank": 34,
+    "top": "ç, stad, jelly, jam, quad, cens, Rebell, ür"
+   },
+   "16": {
+    "food_rank": 9,
+    "top": "ç, jam, cens, garn, flav, birthplace, tasted, flavour"
+   },
+   "20": {
+    "food_rank": 0,
+    "top": "flavor, tasted, addictive, taste, tast, delicious, flavors, circular"
+   },
+   "24": {
+    "food_rank": 0,
+    "top": "delicious, cooked, tast, spicy, juicy, flavor, charred, fried"
+   }
+  }
+ },
+ "cos_to_preamble": {
+  "very short (Hot dog / Cold dog)": 0.341,
+  "bare matched (The hot / The cold)": 0.845,
+  "lowercased matched (the hot / the cold)": 0.697,
+  "MISMATCH (The hot / the cold)": 0.645,
+  "preamble (My grandmother said...)": 1.0
+ },
+ "capitalization": {
+  "12": {
+   "top": "iece, aito, acca, yson, Pros, ildo, aya, onga",
+   "norm": 33.3
+  },
+  "16": {
+   "top": "yson, ority, anie, resa, onga, etz, ondo, gn",
+   "norm": 38.4
+  },
+  "20": {
+   "top": "NEY, ENE, yson, resa, aniel, ondo, asma, LEASE",
+   "norm": 42.0
+  },
+  "24": {
+   "top": "yson, ENE, umatic, compared, asma, Neal, ilst, NEY",
+   "norm": 47.7
+  }
+ }
+}
