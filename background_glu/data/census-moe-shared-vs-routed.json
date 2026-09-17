@@ -1,0 +1,48 @@
+{
+ "model": "Qwen/Qwen1.5-MoE-A2.7B",
+ "num_experts": 60,
+ "top_k": 4,
+ "layers": [
+  6,
+  12,
+  18
+ ],
+ "results": {
+  "L6": {
+   "n_routed_kept": 60,
+   "shared_gate_over_val": 10.59,
+   "shared_rest_silu": -0.24,
+   "shared_gate_cos_global": 0.1108,
+   "routed_gate_over_val_med": 3.67,
+   "routed_rest_silu_med": -0.1723,
+   "routed_gate_cos_global_med": 0.045,
+   "cos_be_bglobal_med": 0.883,
+   "cos_be_be_med": 0.778,
+   "cos_be_router_med": -0.268
+  },
+  "L12": {
+   "n_routed_kept": 60,
+   "shared_gate_over_val": 3.46,
+   "shared_rest_silu": -0.0915,
+   "shared_gate_cos_global": 0.06,
+   "routed_gate_over_val_med": 1.37,
+   "routed_rest_silu_med": -0.0594,
+   "routed_gate_cos_global_med": 0.0182,
+   "cos_be_bglobal_med": 0.856,
+   "cos_be_be_med": 0.714,
+   "cos_be_router_med": -0.226
+  },
+  "L18": {
+   "n_routed_kept": 60,
+   "shared_gate_over_val": 2.51,
+   "shared_rest_silu": -0.2119,
+   "shared_gate_cos_global": 0.074,
+   "routed_gate_over_val_med": 1.43,
+   "routed_rest_silu_med": -0.0886,
+   "routed_gate_cos_global_med": 0.0189,
+   "cos_be_bglobal_med": 0.856,
+   "cos_be_be_med": 0.74,
+   "cos_be_router_med": -0.197
+  }
+ }
+}

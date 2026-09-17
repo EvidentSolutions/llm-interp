@@ -1,0 +1,126 @@
+{
+ "results": {
+  "HuggingFaceTB/SmolLM2-1.7B": {
+   "n_layers": 24,
+   "d": 2048,
+   "d_ff": 8192,
+   "floor": 0.0176,
+   "n_pos": 2266,
+   "layers": [
+    6,
+    12,
+    18
+   ],
+   "per_layer": {
+    "L6": {
+     "uncoupled": {
+      "n": 2456,
+      "frac": 0.3,
+      "rest_med": -0.1391,
+      "silu_rest_med": -0.0647,
+      "duty_med": 0.345,
+      "constancy_med": 0.373,
+      "cos_gv_med": -0.0006,
+      "svd": {
+       "top1_energy": 0.005,
+       "top3_energy": 0.012,
+       "cos_top_bL": 0.305
+      }
+     },
+     "coupled": {
+      "n": 5736,
+      "frac": 0.7,
+      "rest_med": -0.2631,
+      "silu_rest_med": -0.1143,
+      "duty_med": 0.233,
+      "constancy_med": 0.696,
+      "cos_gv_med": 0.0003,
+      "svd": {
+       "top1_energy": 0.009,
+       "top3_energy": 0.016,
+       "cos_top_bL": 0.615
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.052,
+      0.248,
+      0.585,
+      0.115
+     ]
+    },
+    "L12": {
+     "uncoupled": {
+      "n": 3339,
+      "frac": 0.408,
+      "rest_med": -0.1039,
+      "silu_rest_med": -0.0493,
+      "duty_med": 0.391,
+      "constancy_med": 0.314,
+      "cos_gv_med": -0.0032,
+      "svd": {
+       "top1_energy": 0.005,
+       "top3_energy": 0.013,
+       "cos_top_bL": 0.117
+      }
+     },
+     "coupled": {
+      "n": 4853,
+      "frac": 0.592,
+      "rest_med": -0.5109,
+      "silu_rest_med": -0.1916,
+      "duty_med": 0.14,
+      "constancy_med": 1.113,
+      "cos_gv_med": -0.0016,
+      "svd": {
+       "top1_energy": 0.015,
+       "top3_energy": 0.025,
+       "cos_top_bL": 0.608
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.196,
+      0.212,
+      0.352,
+      0.241
+     ]
+    },
+    "L18": {
+     "uncoupled": {
+      "n": 4923,
+      "frac": 0.601,
+      "rest_med": -0.0696,
+      "silu_rest_med": -0.0336,
+      "duty_med": 0.437,
+      "constancy_med": 0.25,
+      "cos_gv_med": -0.0021,
+      "svd": {
+       "top1_energy": 0.005,
+       "top3_energy": 0.011,
+       "cos_top_bL": 0.085
+      }
+     },
+     "coupled": {
+      "n": 3269,
+      "frac": 0.399,
+      "rest_med": -0.5689,
+      "silu_rest_med": -0.2057,
+      "duty_med": 0.193,
+      "constancy_med": 0.951,
+      "cos_gv_med": -0.0017,
+      "svd": {
+       "top1_energy": 0.013,
+       "top3_energy": 0.02,
+       "cos_top_bL": 0.601
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.337,
+      0.264,
+      0.277,
+      0.122
+     ]
+    }
+   }
+  }
+ }
+}

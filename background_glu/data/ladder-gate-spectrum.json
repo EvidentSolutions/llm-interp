@@ -1,0 +1,78 @@
+{
+ "gelu": {
+  "step": 150000,
+  "layers": [
+   4,
+   6,
+   8
+  ],
+  "rest_med": -2.2013,
+  "rest_p10": -2.9426,
+  "frac_off_by_default": 0.917,
+  "frac_at_knee": 0.01,
+  "duty_med": 0.043,
+  "abscos_med": 0.1492,
+  "abscos_p10": 0.1064,
+  "abscos_p90": 0.1924,
+  "cos_gate_val_med": null,
+  "decoupled_branches": false,
+  "n_units_pooled": 9216
+ },
+ "swiglu": {
+  "step": 150000,
+  "layers": [
+   4,
+   6,
+   8
+  ],
+  "rest_med": -0.8403,
+  "rest_p10": -1.4545,
+  "frac_off_by_default": 0.278,
+  "frac_at_knee": 0.182,
+  "duty_med": 0.214,
+  "abscos_med": 0.1432,
+  "abscos_p10": 0.0415,
+  "abscos_p90": 0.2256,
+  "cos_gate_val_med": -0.0004,
+  "decoupled_branches": true,
+  "n_units_pooled": 6144
+ },
+ "bilinear": {
+  "step": 150000,
+  "layers": [
+   4,
+   6,
+   8
+  ],
+  "rest_med": 0.0007,
+  "rest_p10": -0.1243,
+  "frac_off_by_default": 0.0,
+  "frac_at_knee": 0.958,
+  "duty_med": 0.5,
+  "abscos_med": 0.0305,
+  "abscos_p10": 0.0056,
+  "abscos_p90": 0.0831,
+  "cos_gate_val_med": 0.0007,
+  "decoupled_branches": true,
+  "n_units_pooled": 6144
+ },
+ "relu2": {
+  "step": 150000,
+  "layers": [
+   4,
+   6,
+   8
+  ],
+  "rest_med": -1.4469,
+  "rest_p10": -2.1059,
+  "frac_off_by_default": 0.881,
+  "frac_at_knee": 0.026,
+  "duty_med": 0.049,
+  "abscos_med": 0.1453,
+  "abscos_p10": 0.0896,
+  "abscos_p90": 0.2225,
+  "cos_gate_val_med": null,
+  "decoupled_branches": false,
+  "n_units_pooled": 9216
+ }
+}

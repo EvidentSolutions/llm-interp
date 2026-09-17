@@ -1,0 +1,42 @@
+{
+ "model": "allenai/OLMoE-1B-7B-0924",
+ "num_experts": 64,
+ "top_k": 8,
+ "layers": [
+  4,
+  8,
+  12
+ ],
+ "results": {
+  "L4": {
+   "n_experts_kept": 64,
+   "gate_over_val_ratio_med": 3.97,
+   "rest_silu_med": -0.113,
+   "cos_be_bglobal_med": 0.86,
+   "cos_be_be_med": 0.727,
+   "cos_be_router_med": 0.025,
+   "gate_own_med": 0.0663,
+   "gate_global_med": 0.0655
+  },
+  "L8": {
+   "n_experts_kept": 64,
+   "gate_over_val_ratio_med": 2.28,
+   "rest_silu_med": -0.0758,
+   "cos_be_bglobal_med": 0.819,
+   "cos_be_be_med": 0.651,
+   "cos_be_router_med": -0.003,
+   "gate_own_med": 0.0424,
+   "gate_global_med": 0.0414
+  },
+  "L12": {
+   "n_experts_kept": 64,
+   "gate_over_val_ratio_med": 1.67,
+   "rest_silu_med": -0.092,
+   "cos_be_bglobal_med": 0.787,
+   "cos_be_be_med": 0.606,
+   "cos_be_router_med": 0.013,
+   "gate_own_med": 0.0391,
+   "gate_global_med": 0.0346
+  }
+ }
+}

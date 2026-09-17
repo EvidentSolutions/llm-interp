@@ -1,0 +1,370 @@
+{
+ "results": {
+  "Qwen/Qwen2.5-3B": {
+   "n_layers": 36,
+   "d": 2048,
+   "d_ff": 11008,
+   "floor": 0.0176,
+   "n_pos": 2274,
+   "layers": [
+    9,
+    18,
+    27
+   ],
+   "per_layer": {
+    "L9": {
+     "uncoupled": {
+      "n": 423,
+      "frac": 0.038,
+      "rest_med": -0.7252,
+      "silu_rest_med": -0.2366,
+      "duty_med": 0.193,
+      "constancy_med": 0.84,
+      "cos_gv_med": -0.0045,
+      "svd": {
+       "top1_energy": 0.016,
+       "top3_energy": 0.033,
+       "cos_top_bL": 0.15
+      }
+     },
+     "coupled": {
+      "n": 10585,
+      "frac": 0.962,
+      "rest_med": -4.7926,
+      "silu_rest_med": -0.0394,
+      "duty_med": 0.003,
+      "constancy_med": 3.223,
+      "cos_gv_med": 0.0005,
+      "svd": {
+       "top1_energy": 0.014,
+       "top3_energy": 0.02,
+       "cos_top_bL": 0.7
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.018,
+      0.021,
+      0.223,
+      0.738
+     ]
+    },
+    "L18": {
+     "uncoupled": {
+      "n": 3418,
+      "frac": 0.311,
+      "rest_med": -0.2215,
+      "silu_rest_med": -0.0985,
+      "duty_med": 0.32,
+      "constancy_med": 0.436,
+      "cos_gv_med": -0.0008,
+      "svd": {
+       "top1_energy": 0.006,
+       "top3_energy": 0.014,
+       "cos_top_bL": 0.242
+      }
+     },
+     "coupled": {
+      "n": 7590,
+      "frac": 0.689,
+      "rest_med": -0.6166,
+      "silu_rest_med": -0.2161,
+      "duty_med": 0.132,
+      "constancy_med": 1.104,
+      "cos_gv_med": 0.0012,
+      "svd": {
+       "top1_energy": 0.011,
+       "top3_energy": 0.018,
+       "cos_top_bL": 0.724
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.096,
+      0.215,
+      0.458,
+      0.231
+     ]
+    },
+    "L27": {
+     "uncoupled": {
+      "n": 4297,
+      "frac": 0.39,
+      "rest_med": -0.2275,
+      "silu_rest_med": -0.1008,
+      "duty_med": 0.337,
+      "constancy_med": 0.4,
+      "cos_gv_med": -0.0004,
+      "svd": {
+       "top1_energy": 0.005,
+       "top3_energy": 0.011,
+       "cos_top_bL": 0.216
+      }
+     },
+     "coupled": {
+      "n": 6711,
+      "frac": 0.61,
+      "rest_med": -0.872,
+      "silu_rest_med": -0.2571,
+      "duty_med": 0.108,
+      "constancy_med": 1.26,
+      "cos_gv_med": -0.0007,
+      "svd": {
+       "top1_energy": 0.011,
+       "top3_energy": 0.017,
+       "cos_top_bL": 0.675
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.169,
+      0.221,
+      0.379,
+      0.231
+     ]
+    }
+   }
+  },
+  "Qwen/Qwen2.5-1.5B": {
+   "n_layers": 28,
+   "d": 1536,
+   "d_ff": 8960,
+   "floor": 0.0204,
+   "n_pos": 2274,
+   "layers": [
+    7,
+    14,
+    21
+   ],
+   "per_layer": {
+    "L7": {
+     "uncoupled": {
+      "n": 1129,
+      "frac": 0.126,
+      "rest_med": -0.2323,
+      "silu_rest_med": -0.1027,
+      "duty_med": 0.329,
+      "constancy_med": 0.418,
+      "cos_gv_med": -0.0014,
+      "svd": {
+       "top1_energy": 0.015,
+       "top3_energy": 0.029,
+       "cos_top_bL": 0.019
+      }
+     },
+     "coupled": {
+      "n": 7831,
+      "frac": 0.874,
+      "rest_med": -0.7104,
+      "silu_rest_med": -0.2341,
+      "duty_med": 0.117,
+      "constancy_med": 1.162,
+      "cos_gv_med": 0.0004,
+      "svd": {
+       "top1_energy": 0.012,
+       "top3_energy": 0.018,
+       "cos_top_bL": 0.685
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.046,
+      0.08,
+      0.65,
+      0.224
+     ]
+    },
+    "L14": {
+     "uncoupled": {
+      "n": 3766,
+      "frac": 0.42,
+      "rest_med": -0.1943,
+      "silu_rest_med": -0.0878,
+      "duty_med": 0.332,
+      "constancy_med": 0.401,
+      "cos_gv_med": 0.0031,
+      "svd": {
+       "top1_energy": 0.007,
+       "top3_energy": 0.016,
+       "cos_top_bL": 0.246
+      }
+     },
+     "coupled": {
+      "n": 5194,
+      "frac": 0.58,
+      "rest_med": -0.5697,
+      "silu_rest_med": -0.2058,
+      "duty_med": 0.146,
+      "constancy_med": 1.043,
+      "cos_gv_med": -0.0009,
+      "svd": {
+       "top1_energy": 0.014,
+       "top3_energy": 0.024,
+       "cos_top_bL": 0.768
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.15,
+      0.27,
+      0.374,
+      0.206
+     ]
+    },
+    "L21": {
+     "uncoupled": {
+      "n": 2521,
+      "frac": 0.281,
+      "rest_med": -0.2661,
+      "silu_rest_med": -0.1155,
+      "duty_med": 0.329,
+      "constancy_med": 0.419,
+      "cos_gv_med": 0.0009,
+      "svd": {
+       "top1_energy": 0.006,
+       "top3_energy": 0.015,
+       "cos_top_bL": 0.23
+      }
+     },
+     "coupled": {
+      "n": 6439,
+      "frac": 0.719,
+      "rest_med": -1.0721,
+      "silu_rest_med": -0.2734,
+      "duty_med": 0.089,
+      "constancy_med": 1.391,
+      "cos_gv_med": 0.0002,
+      "svd": {
+       "top1_energy": 0.014,
+       "top3_energy": 0.021,
+       "cos_top_bL": 0.684
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.119,
+      0.163,
+      0.432,
+      0.287
+     ]
+    }
+   }
+  },
+  "TinyLlama/TinyLlama-1.1B-Chat-v1.0": {
+   "n_layers": 22,
+   "d": 2048,
+   "d_ff": 5632,
+   "floor": 0.0176,
+   "n_pos": 2302,
+   "layers": [
+    6,
+    11,
+    16
+   ],
+   "per_layer": {
+    "L6": {
+     "uncoupled": {
+      "n": 901,
+      "frac": 0.16,
+      "rest_med": -0.0376,
+      "silu_rest_med": -0.0184,
+      "duty_med": 0.404,
+      "constancy_med": 0.214,
+      "cos_gv_med": -0.0005,
+      "svd": {
+       "top1_energy": 0.009,
+       "top3_energy": 0.023,
+       "cos_top_bL": 0.001
+      }
+     },
+     "coupled": {
+      "n": 4731,
+      "frac": 0.84,
+      "rest_med": -0.1094,
+      "silu_rest_med": -0.0517,
+      "duty_med": 0.26,
+      "constancy_med": 0.607,
+      "cos_gv_med": -0.0002,
+      "svd": {
+       "top1_energy": 0.013,
+       "top3_energy": 0.022,
+       "cos_top_bL": 0.727
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.047,
+      0.113,
+      0.475,
+      0.365
+     ]
+    },
+    "L11": {
+     "uncoupled": {
+      "n": 1035,
+      "frac": 0.184,
+      "rest_med": -0.0589,
+      "silu_rest_med": -0.0286,
+      "duty_med": 0.396,
+      "constancy_med": 0.236,
+      "cos_gv_med": 0.0049,
+      "svd": {
+       "top1_energy": 0.008,
+       "top3_energy": 0.021,
+       "cos_top_bL": 0.061
+      }
+     },
+     "coupled": {
+      "n": 4597,
+      "frac": 0.816,
+      "rest_med": -0.1888,
+      "silu_rest_med": -0.0855,
+      "duty_med": 0.23,
+      "constancy_med": 0.712,
+      "cos_gv_med": 0.0037,
+      "svd": {
+       "top1_energy": 0.016,
+       "top3_energy": 0.024,
+       "cos_top_bL": 0.732
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.055,
+      0.129,
+      0.434,
+      0.382
+     ]
+    },
+    "L16": {
+     "uncoupled": {
+      "n": 1180,
+      "frac": 0.21,
+      "rest_med": -0.0559,
+      "silu_rest_med": -0.0272,
+      "duty_med": 0.421,
+      "constancy_med": 0.191,
+      "cos_gv_med": -0.0002,
+      "svd": {
+       "top1_energy": 0.006,
+       "top3_energy": 0.016,
+       "cos_top_bL": 0.148
+      }
+     },
+     "coupled": {
+      "n": 4452,
+      "frac": 0.79,
+      "rest_med": -0.3252,
+      "silu_rest_med": -0.1364,
+      "duty_med": 0.196,
+      "constancy_med": 0.835,
+      "cos_gv_med": 0.0034,
+      "svd": {
+       "top1_energy": 0.019,
+       "top3_energy": 0.027,
+       "cos_top_bL": 0.758
+      }
+     },
+     "abscos_bins_<f_<2f_<4f_ge4f": [
+      0.094,
+      0.116,
+      0.29,
+      0.501
+     ]
+    }
+   }
+  }
+ }
+}

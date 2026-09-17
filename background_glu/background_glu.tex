@@ -1,0 +1,617 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+\usepackage{url}
+
+\newcommand{\bl}{b_L}
+\newcommand{\blh}{\hat{b}_L}
+\newcommand{\wg}{w_{\mathrm{g}}}
+\newcommand{\wv}{w_{\mathrm{v}}}
+
+
+\title{The Carried Reference Tunes a Switch--Multiplier\\Continuum in Gated (GLU) MLPs\\
+\large A companion note to \emph{Transformer MLP Gate Thresholds Are Couplings
+to a Carried Reference Direction}}
+\author{Olli Tuomi\\Evident Solutions Oy}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A prior paper showed that a trained transformer implements its MLP gate
+thresholds as a coupling $w\cdot\bl$ to a carried reference direction $\bl$, the
+corpus-mean layer-normalised gate input. We use that reference to give a
+functional reading of the gate in a gated (GLU) MLP. Each gate unit's coupling to
+$\bl$ places it on a continuous \emph{switch--multiplier} spectrum: a unit
+strongly (negatively) coupled to $\bl$ rests closed and behaves as a thresholded
+switch, while a unit orthogonal to $\bl$ rests at the activation's knee and, to
+first order, computes a bilinear product of its two branch reads. The per-unit
+cosine to $\bl$ is the coordinate along that spectrum, and trained SwiGLU
+allocates units continuously across it, shifting toward the multiplier end with
+depth. Supporting this, the coupling localises to the gate branch (across four
+SwiGLU models the \texttt{gate\_proj} rows align with $\bl$ at $4$--$33\times$ the
+\texttt{up\_proj} rows) and lives in the reference's high-variance subspace; a
+bit-identical-init training ladder shows the elementwise nonlinearity is what
+creates the switch end, and that among four feed-forward variants only the gated
+one spans both ends with independent key and value reads. We suggest this
+coverage, rather than any single mode, as a reason the GLU family is an effective
+default, and note the reading extends to the experts of a mixture-of-experts. The
+account is geometric and makes no quality claim.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+A companion paper \citep{tuomi2026background} reported that a trained
+transformer implements its MLP gate thresholds as a coupling to a carried
+reference direction. The reference $\bl$ is the corpus mean of the
+layer-normalised MLP input, the vector the gate rows read; a gate's resting
+pre-activation decomposes exactly as $\langle w\cdot x_{\mathrm{ln}}\rangle + b_n
+= w\cdot\bl + b_n$, and in the models studied the coupling $w\cdot\bl$ carries
+the resting inhibition of more than $99.9\%$ of gates, at $50$--$60\times$ the
+explicit bias parameter. Per read row the coupling is a thin slice of the row's
+norm: factoring each row as $w = c_n\,\blh + w_\perp$ (the anchor paper's own
+notation), the fraction $|c_n|/\lVert w\rVert$ has median $0.07$--$0.12$, so about $99\%$ of every row is
+left free for content. We take this decomposition as established and build on it.
+
+That paper reads the coupling as a threshold. A gated MLP invites a functional
+question the single-matrix picture does not: its read stage factorises into a
+gate branch (carrying the elementwise nonlinearity) and a linear value branch,
+whose product is written out, so a unit's coupling to $\bl$ can vary within a
+layer. We find it varies along one axis. Expanding the SiLU at its knee, a gate
+unit whose operating point $\wg\!\cdot\!\bl$ is deep-negative rests closed and
+fires only above threshold, a \emph{switch}; a unit whose operating point sits at
+the knee ($\wg \perp \bl$) computes, to leading order,
+$\tfrac{1}{2}(\wg\!\cdot\! x)(\wv\!\cdot\! x)$, a bilinear \emph{multiplier} of its
+two reads. A unit's cosine to $\bl$ is its coordinate on this switch--multiplier
+spectrum; trained SwiGLU spreads units continuously along it, and the mix moves
+toward the multiplier end with depth. The rest of the note supports and bounds
+this reading: the coupling localises to the gate branch and to the reference's
+high-variance subspace (\S\ref{sec:localize}); a controlled ladder shows the
+nonlinearity is what creates the switch end, and that of four feed-forward
+variants only the gated one spans the spectrum with independent key and value
+reads (\S\ref{sec:ladder}); freeing the reference from the value branch returns a
+content dimension (\S\ref{sec:capacity}); and we discuss why this coverage suits
+the GLU family, and how the reading should extend inside a mixture-of-experts
+(\S\ref{sec:discussion}).
+
+The claim is geometric, about where a
+shared rank-one direction sits in the read weights, and not a claim about
+quality: whether gating improves the loss is a separate question, addressed
+elsewhere at this feed-forward geometry \citep{shazeer2020}, and we make no
+quality claim here. And what localises to the gate is the shared reference slice
+only: both branches carry content, so
+that freezing either one at its resting value does comparable damage to prediction
+(\S\ref{sec:scope}), as the product of two factors requires.
+
+Throughout, ``gate'' is the branch carrying the elementwise nonlinearity
+($\wg$, \texttt{gate\_proj}), ``value'' the linear branch ($\wv$,
+\texttt{up\_proj}); a SwiGLU MLP writes $W_{\mathrm{down}}\!\left(\mathrm{SiLU}
+(\wg x_{\mathrm{ln}})\odot(\wv x_{\mathrm{ln}})\right)$. We use the reference
+$\bl := \langle x_{\mathrm{ln}}\rangle$ of the anchor paper: the corpus-mean
+layer-normalised MLP input, the direction the gates read. In the RMSNorm models
+$x_{\mathrm{ln}}$ is the RMS-normalised input (no mean subtraction); $\bl$ is
+well defined and is still what the gate rows dot.
+
+\section{The reference coupling places a unit on a switch--multiplier spectrum}
+\label{sec:spectrum}
+
+A SwiGLU unit writes $\mathrm{SiLU}(g)\,v\,d$ with $g=\wg\!\cdot\! x$,
+$v=\wv\!\cdot\! x$, and $d$ its down-projection column. Expanding the SiLU about
+its knee, $\mathrm{SiLU}(z)\approx \tfrac12 z + \tfrac14 z^2$, gives two regimes
+selected by where the unit rests, $g_0=\wg\!\cdot\!\bl$:
+\begin{itemize}
+\item \textbf{Switch.} $g_0\ll 0$: the gate rests closed, $\mathrm{SiLU}(g)\approx
+  0$, and the unit fires only when the input pushes $g$ above threshold, writing
+  its value when it does. A thresholded, off-by-default detector.
+\item \textbf{Multiplier.} $g_0\approx 0$ ($\wg \perp \bl$): the gate rests at the
+  knee, $\mathrm{SiLU}(g)\,v \approx \tfrac12(\wg\!\cdot\! x)(\wv\!\cdot\! x)$, an
+  always-on bilinear product of the two branch reads. This is the object a
+  bilinear MLP is built from \citep{pearce2024}.
+\end{itemize}
+The operating point $g_0$, equivalently a unit's cosine to $\bl$, is therefore a
+coordinate that slides the unit between the two regimes. (This is a per-unit
+coordinate set by the carried reference, not the global activation shape:
+SiLU/Swish interpolate linear-to-ReLU through a shared $\beta$
+\citep{ramachandran2017swish}, whereas here each unit's regime is set by its own
+alignment to $\bl$.)
+
+Trained SwiGLU populates the whole spectrum. Table~\ref{tab:modes} splits gate
+units at three layers of Qwen2.5-3B into the switch end (coupling above
+$2\times$ the random-alignment floor) and the multiplier end (below it), and
+reports each group's \emph{duty} -- the anchor paper's term for the fraction of
+positions at which a unit's pre-activation is positive. The switch units rest
+deep and fire rarely (duty near $0$), with a pre-activation dominated by the
+constant operating point (ratio of $|{\rm mean}|$ to standard deviation well above
+one); the multiplier units rest near the knee, fire about a third of the time
+(duty $\approx 1/3$), and are input-driven (that ratio near zero). The coupling is graded rather than
+bimodal (the cosine distribution is a smooth tail, no gap), predominantly
+inhibitory in sign ($88$--$100\%$ of gate units), and scales with the row norm
+(Spearman $0.55$--$0.66$); the multiplier fraction rises with depth ($4\%\to
+31\%\to 39\%$ here). The multiplier-end units are input-driven content gates, not
+a second reference: their rows share no dominant common axis (top singular value
+$\leq 1.6\%$ of energy) and are not aligned with the value branch
+($\cos(\wg,\wv)\approx 0$).
+
+These labels are behavioural, not only geometric. Comparing each unit's actual
+output $\mathrm{SiLU}(g)\,v$ to the leading bilinear term $g\,v$ on tokens, the
+knee (uncoupled) units are well approximated by the product -- median $R^2$
+$0.55$--$0.83$ and best-fit slope $\approx 0.4$, near the knee's coefficient of
+$\tfrac12$ -- so their output genuinely is the bilinear term. The deeply-coupled
+switch units are not: at the shallowest layer, where switches rest deepest, their
+$R^2$ falls to $0.15$ with slope $\approx 0$, the behaviour of a threshold rather
+than a product. The bilinear fidelity decreases with coupling at every layer
+(Spearman between $R^2$ and $|\cos(\wg,\blh)|$ is $-0.17$ to $-0.42$), so a unit's
+geometric coordinate predicts whether it actually computes a product. The gap is
+sharp at the extremes and graded between them, where softly-resting units track
+the product either way -- the signature of a continuum rather than two classes.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+$L$ & mode & share & rest $\wg\!\cdot\!\bl$ & duty & $|{\rm mean}|/{\rm sd}$ \\
+\midrule
+9  & switch     & 96\% & $-4.79$ & 0.00 & 3.2 \\
+   & multiplier &  4\% & $-0.73$ & 0.19 & 0.8 \\
+18 & switch     & 69\% & $-0.62$ & 0.13 & 1.1 \\
+   & multiplier & 31\% & $-0.22$ & 0.32 & 0.4 \\
+27 & switch     & 61\% & $-0.87$ & 0.11 & 1.3 \\
+   & multiplier & 39\% & $-0.23$ & 0.34 & 0.4 \\
+\bottomrule
+\end{tabular}
+\caption{Gate units at the two ends of the spectrum (Qwen2.5-3B), split by
+coupling to $\bl$. Switch units rest deep-negative, fire rarely, and are
+constant-dominated; multiplier units rest near the knee, fire $\sim\!1/3$ of the
+time, and are input-driven. The multiplier share grows with depth. Source:
+\texttt{census\_gated\_coupling\_dist.py}, \texttt{census\_gated\_uncoupled\_units.py}.}
+\label{tab:modes}
+\end{table}
+
+\section{The coupling localises to the gate branch}
+\label{sec:localize}
+
+The switch end of the spectrum lives in the gate branch, and its geometry is
+visible in the weights alone. For each hidden unit we take the
+cosine of its gate row $\wg$ and its value row $\wv$ with the unit reference
+$\blh$, normalised by the row norm, and read the median over units at three
+mid-stack layers of Qwen2.5-3B (Table~\ref{tab:geom}). The gate rows carry the
+coupling and the value rows do not: $|\cos(\wg,\blh)|$ is $34\times$ the value
+figure at L9 and $7$--$8\times$ deeper, a dissociation of the same quantity the
+companion paper measured inside a single matrix, now split across the two
+projections. The sign is consistent with a threshold: the gate's resting
+pre-activation $\wg\!\cdot\!\bl$ is negative, so the resting gate is closed
+($\mathrm{SiLU}(\wg\!\cdot\!\bl) < 0$ at every layer) and opens conditionally.
+The two branches are mutually orthogonal ($\cos(\wg,\wv)\approx 0$), each reading
+a distinct direction, and the gate rows place more of their energy on the
+high-variance coordinates of $x_{\mathrm{ln}}$ than the value rows do
+($0.03$--$0.04$ against $0.015$, against an isotropic $0.031$), the first sign
+that the coupling lives in the amplitude part of the reference, which the control
+below makes precise. A forward pass agrees, weakly: the gate activation tracks
+$\lVert x_{\mathrm{ln}}\rVert$ across positions at $1.2$--$1.9\times$ the value's
+correlation, strongest at L9.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+$L$ & $|\cos(\wg,\blh)|$ & $|\cos(\wv,\blh)|$ & ratio &
+  resting $\mathrm{SiLU}(\wg\!\cdot\!\bl)$ & $\cos(\wg,\wv)$ \\
+\midrule
+9  & 0.0799 & 0.00232 & 34.4 & $-0.042$ & 0.000 \\
+18 & 0.047 & 0.0056 &  8.4 & $-0.180$ & 0.001 \\
+27 & 0.044 & 0.0062 &  7.1 & $-0.204$ & $-0.001$ \\
+\bottomrule
+\end{tabular}
+\caption{Gate vs.\ value read geometry, Qwen2.5-3B (weights and $\bl$ only,
+mid-stack layers of 36). Gate rows align with the reference $7$--$34\times$ the
+value rows; the gate rests closed; the two branches are mutually orthogonal
+(not self-gating). Gate high-variance-coordinate energy exceeds the value's
+throughout ($0.03$--$0.04$ vs.\ $0.015$ against an isotropic $0.031$).
+Source: \texttt{census\_gated\_gate\_structure.py}, Leg B.}
+\label{tab:geom}
+\end{table}
+
+\paragraph{Where in the reference the coupling sits.}
+On Phi-2 the companion paper finds mid-stack $\bl$ to be a distributed direction,
+distinct from the massive-activation and outlier-coordinate objects
+\citep{tuomi2026background}. The RMSNorm SwiGLU models here are the other case:
+$\bl$ concentrates, with the eight highest-variance coordinates carrying
+$66$--$75\%$ of $\lVert\bl\rVert^2$ across the three layers. This concentration
+reflects the model's massive-activation profile rather than its normalisation
+scheme: across seven models of both normalisation types, $\bl$'s largest
+coordinates coincide with the massive-activation coordinates and its
+concentration tracks their strength, which is why the same reference reads as
+distributed in Phi-2 and concentrated here \citep{sun2024}. Either way, whether
+the gate reads the reference or merely those coordinates has to be settled again
+for these models, and for the branch split in particular. Zeroing the eight
+coordinates and renormalising, so that two-thirds of the reference is discarded,
+the gate still aligns with what remains at $12.8 / 4.0 / 3.2\times$ the value
+(L9/L18/L27) and still rests closed. The localisation narrows as more of the
+high-variance subspace is removed: with the top sixty-four coordinates gone the
+ratio falls to about $1.3$ and the value's alignment rises to meet the gate's in
+the low-variance bulk. The gate carries the reference coupling within the
+reference's high-variance subspace, the same subspace the energy reading above
+points to.
+
+\paragraph{Replication across SwiGLU lineages.}
+The same static reading on three mid-stack layers of four SwiGLU models
+(Table~\ref{tab:xmodel}) puts the coupling in the gate in every one. The gate
+rows align with $\bl$ more than the value rows at all twelve model-layers, and
+the gate rests closed (negative resting SiLU) everywhere; the strength varies by
+lineage, with Qwen sharpest. The clearest soft spot is SmolLM2's deepest sampled
+layer, where the ratio falls to $1.8$ and the gate opens at a third of positions
+rather than a tenth. Splitting SmolLM2's own gate units by the same
+switch/multiplier threshold as Table~\ref{tab:modes} confirms this is a
+population shift, not an unexplained dip: the multiplier-end share rises
+$30\%\to41\%\to60\%$ from the shallowest to the deepest sampled layer, the same
+monotonic climb as Qwen2.5-3B's $4\%\to31\%\to39\%$ (\S\ref{sec:spectrum}), only
+starting and ending further along the spectrum. Across the other eleven layers
+the separation is unambiguous, so the localisation is a property of the SwiGLU
+construction and not of one model, with each model's multiplier-end mixture
+setting how far it softens.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrl}
+\toprule
+model & \multicolumn{3}{c}{gate/value $|\cos(\cdot,\blh)|$ ratio} & resting SiLU \\
+      & $L{\approx}.25$ & $L{\approx}.5$ & $L{\approx}.75$ & \\
+\midrule
+Qwen2.5-1.5B   & 11.6 & 7.3 & 8.0 & all $<0$ \\
+Qwen2.5-3B     & 33.0 & 8.1 & 7.1 & all $<0$ \\
+TinyLlama-1.1B &  4.4 & 5.2 & 4.7 & all $<0$ \\
+SmolLM2-1.7B   &  5.3 & 4.8 & \textbf{1.8} & all $<0$ \\
+\bottomrule
+\end{tabular}
+\caption{Cross-model replication (weights $+\bl$, three mid-stack layers each).
+The reference coupling sits in the gate branch in every model; the gate rests
+closed everywhere. It weakens at SmolLM2's deepest sampled layer (ratio $1.8$,
+gate frac-open $0.34$), the clearest soft spot; splitting SmolLM2's own gate
+units by the switch/multiplier threshold of Table~\ref{tab:modes} confirms a
+population shift toward the multiplier end there ($30\%\to41\%\to60\%$ from
+shallowest to deepest sampled layer).
+Sources: \texttt{census\_gated\_branch\_xmodel.py},
+\texttt{census\_gated\_uncoupled\_smollm2.py}.}
+\label{tab:xmodel}
+\end{table}
+
+\section{The nonlinearity creates the switch end, and only the gated arm spans the spectrum}
+\label{sec:ladder}
+
+The switch end of the spectrum is the part that needs a carried reference: a bare
+product has no off-by-default point. To see that the elementwise nonlinearity is
+what supplies it, and which architectures can reach both ends, we use a controlled
+training ladder. Four feed-forward variants were trained at the 160M
+(Pythia) scale on identical data in identical order under a shared schedule,
+differing only in the feed-forward block: a plain GELU MLP, a SwiGLU, a bilinear
+GLU (the product of two linear branches, with no elementwise nonlinearity), and a
+squared-ReLU MLP. The matched-shape arms share bit-identical initialisation
+(maximum absolute weight difference $0$): the SwiGLU gate and value rows are the
+bilinear arm's two branches at initialisation, and the GELU read matrix is the
+squared-ReLU arm's. The SwiGLU-versus-bilinear pair therefore isolates a single
+edit, adding the SiLU to one branch, and the GELU-versus-squared-ReLU pair
+isolates swapping the elementwise function, each with everything else fixed.
+
+Taking the cross-arm cosine of $\bl$ at matched layers (Table~\ref{tab:reloc}),
+adding the gate relocates the reference while swapping the elementwise function
+leaves it in place: the SwiGLU--bilinear cosine falls to $0.17$ over training
+while the GELU--squared-ReLU cosine holds at $0.74$.\footnote{$\bl$ is the mean
+post-LayerNorm MLP input, matching the anchor's definition. Measuring the mean
+pre-normalisation residual instead gives the same dissociation at a wider spread
+($0.12$ versus $0.93$), so it is not an artifact of the reference's definition.}
+Both pairs begin aligned at initialisation ($0.89$ and $0.97$), so the divergence
+is trained rather than a starting condition. The mechanism is the one the mature
+models show: over the same training the SwiGLU gate develops its gate-over-value
+alignment ratio (rising to about $13$ mid-stack) and its resting gate closes,
+while the bilinear arm's two symmetric branches stay at ratio $1$ with no closed
+rest, a built-in null that differs only by the SiLU. The SiLU places the coupling
+in the gate, and placing it there is what moves the reference.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+pair (edit) & step 0 & step 12k & step 150k \\
+\midrule
+swiglu vs.\ bilinear\ (add a gate)          & 0.89 & 0.22 & \textbf{0.17} \\
+gelu vs.\ relu2\ (swap elementwise fn)      & 0.97 & 0.89 & \textbf{0.74} \\
+\bottomrule
+\end{tabular}
+\caption{Cross-arm cosine of the reference $\bl$ between matched arms trained
+from bit-identical initialisation (median over 12 layers). Adding a gate
+relocates $\bl$; swapping the elementwise function does not. Both pairs start
+aligned; the divergence is trained. At step 20000 a double-gated arm sits at
+$0.72$ from swiglu and $0.18$ from bilinear. Source:
+\texttt{ladder\_gate\_reference.py}.}
+\label{tab:reloc}
+\end{table}
+
+\paragraph{The double-gated arm.}
+A third gated arm, with the SiLU on both branches (again bit-identical
+initialisation to the SwiGLU), shows where the coupling goes when two branches
+carry a threshold rather than one: it splits between them in equal shares. The
+two branches sit at alignment ratio $1$, both rest closed, and each carries $\bl$
+as its top read principal component at about half the single-gate strength; the
+double-gated arm's reference sits at cosine $0.72$ from the SwiGLU and $0.18$ from
+the bilinear. Across the three gated arms the pattern is that the reference
+coupling distributes over every branch that carries a threshold, in equal shares
+by symmetry: one gate takes the coupling and leaves the value branch free, two
+gates split it and free neither, and the ungated bilinear product anchors it to
+neither branch. This arm is measured at a single training checkpoint.
+
+\paragraph{Which architectures reach which ends.}
+Reading the operating point of each arm's gate/read branch at step 150000
+(Table~\ref{tab:spectrum}) places the four architectures on the same axis. The
+non-gated arms (GELU, squared-ReLU) are almost entirely switches: $88$--$92\%$ of
+their units rest off-by-default, but a single read matrix ties key to value, so
+they cannot occupy the multiplier end with independent reads. The bilinear arm is
+the mirror image: with no off-state, $96\%$ of its units sit at the knee and none
+rest closed, so it reaches only the multiplier end. Only SwiGLU carries mass at
+both ends ($28\%$ off-by-default, $18\%$ at the knee, the rest in between) with a
+wide coupling spread and two independent branches. Reading the median resting
+point down the arms gives a monotone march from all-switch (GELU $-2.2$) to
+all-multiplier (bilinear $0.0$), with SwiGLU between them. So the gated
+architecture is the one that spans the switch--multiplier spectrum with a
+decoupled key and value.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrl}
+\toprule
+arm & rest (med) & off-by-default & at knee & key/value decoupled \\
+\midrule
+gelu     & $-2.20$ & 92\% &  1\% & no \\
+relu2    & $-1.45$ & 88\% &  3\% & no \\
+swiglu   & $-0.84$ & 28\% & 18\% & yes \\
+bilinear & $+0.00$ &  0\% & 96\% & yes \\
+\bottomrule
+\end{tabular}
+\caption{Operating-point spectrum across the ladder arms (step 150000, gate/read
+branch, pooled over three mid-stack layers). Off-by-default is the fraction of
+units with duty $<0.15$; at-knee is duty in $[0.35,0.65]$. Only the gated SwiGLU
+carries mass at both ends with independent branches. Source:
+\texttt{census\_ladder\_gate\_spectrum.py}.}
+\label{tab:spectrum}
+\end{table}
+
+\section{Freeing the reference returns a content dimension}
+\label{sec:capacity}
+
+The reference coupling is a rank-one overhead shared by every read row: the same
+direction $\blh$ enters each row's decomposition, so across the read matrix it
+occupies one shared axis rather than per-row capacity. In the non-gated arms that
+axis is the read matrix's top principal component (Table~\ref{tab:capacity}):
+$\bl$ aligns with the first singular direction of the GELU and squared-ReLU read
+matrices at $|\cos| \approx 0.85$, carrying read energy about $17$--$20\times$ the
+isotropic share. SwiGLU moves that axis into the gate, where $\bl$ is again the
+top component, and leaves the value branch without it: there $\bl$ is only the
+matrix's $78$th principal component, at the isotropic floor. The value branch is a
+content read matrix with the shared reference removed, and removing it returns the
+branch's top principal direction to content. The recovered capacity is real but
+small on this measure -- the value branch's effective rank is about $1.5\%$ of $d$
+above the GELU read matrix's, matching a GELU matrix with $\bl$ projected out. This
+sharpens the anchor's per-row coupling figure, locating the shared slice as the
+top read component rather than a diffuse per-row tax; it is a structural
+statement, not a performance gain, which this setup does not measure.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+arm : branch & tax & shared/iso & $\bl$ PC\# & PC $|\cos|$ \\
+\midrule
+gelu : read     & 0.15 & 19.7 & \textbf{1}  & 0.85 \\
+relu2 : read    & 0.14 & 16.4 & \textbf{1}  & 0.83 \\
+swiglu : gate   & 0.11 & 14.0 & \textbf{1}  & 0.71 \\
+swiglu : value  & 0.02 &  1.7 & \textbf{78} & 0.32 \\
+bilinear : a/b  & 0.03 & $\sim$2.5 & 2 & 0.40 \\
+\bottomrule
+\end{tabular}
+\caption{Where the shared reference sits in the read matrix (ladder, step
+150000, medians over layers). In non-gated arms $\bl$ is the top principal
+component of the single read matrix; SwiGLU moves it into the gate and leaves
+the value branch's top component free for content. Source:
+\texttt{ladder\_content\_capacity.py}.}
+\label{tab:capacity}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{A reason the GLU family is an effective default.}
+The spectrum suggests why gating is a safe architectural choice, as a coverage
+argument rather than a quality one. A language model uses both thresholded
+detectors and multiplicative features; one GLU unit type reaches either, its
+position set after the fact by training, whereas the bilinear MLP reaches only
+the multiplier end (no off-state) and a single ReLU/GELU unit reaches only the
+switch end (a multiplier needs about two units, by the polarisation identity
+$ab=\tfrac14[(a{+}b)^2-(a{-}b)^2]$). The gated unit and the bilinear MLP spend
+the same per-unit budget -- two reads and a down-projection write, $3d$
+parameters -- but only the gated unit covers both ends, because its SiLU sits
+on exactly one of the two reads: that read's coupling to $\bl$ can rest the
+unit closed, which neither of the bilinear MLP's two linear reads can do, so it
+always multiplies. A single ReLU/GELU unit spends less ($2d$: one read, one
+write) and is pinned to the switch end for the complementary reason -- it has no
+second read to multiply against. This is a capability statement,
+not a prediction of lower loss; why our ladder cannot adjudicate one, and where
+the loss comparison at this feed-forward geometry is made instead, is in
+\S\ref{sec:scope}. The coverage argument speaks to what each architecture can
+represent, not to a measured win.
+
+\paragraph{Every trained unit uses both reads.}
+One thing the measurements settle is that the switch--multiplier split is not a
+split into single-read and two-read units. Trained SwiGLU has independent key and
+value reads on essentially every unit ($\cos(\wg,\wv)\approx 0$ throughout),
+switch-end units included, so a unit's coupling to the reference sets its
+operating point, not whether it uses its second read. That value read earns its
+keep across the whole population, not only at the multiplier end, which is the
+substance behind the $3d$-versus-$2d$ accounting GLU implementations use to
+match a non-gated MLP's width. Oskin's NC-FFN (\S\ref{sec:related}), a GELU
+highway with a minority of multiplicative operand units \citep{oskin2026}, ties
+GELU, a fully-multiplicative version fails to train, and its operators prefer a
+soft, graded regime whose crisp two-operand logic erodes over training (his
+\S7.6).
+That preference matches the drift toward the soft, near-knee end we observe, with
+one difference worth stating: his imposed second operand decays toward
+single-operand gating, whereas SwiGLU's value branch stays informative
+(\S\ref{sec:scope}), so the soft units here remain genuine two-read multipliers.
+
+\paragraph{The reading extends inside mixture-of-experts experts.}
+Each expert in an MoE is itself a gated MLP, and an expert sees only the tokens
+routed to it, so its carried reference should be the mean over its \emph{own}
+routed tokens rather than a global mean. A pilot on OLMoE-1B-7B (64 experts,
+top-8; three mid-stack layers) bears this out with two qualifications. The
+per-expert reading holds: within each expert the coupling localises to the gate
+branch (gate/value alignment ratio $4.0/2.3/1.7$, weakening with depth as in the
+dense soft spot), and each expert's gate rests closed on its \emph{own} routed
+reference ($\mathrm{SiLU}(\wg\!\cdot\!\bl^{(e)})<0$). The reference is
+expert-conditional but shared-dominated: an expert's routed mean sits at cosine
+$0.79$--$0.86$ to the global mean and $0.61$--$0.73$ to other experts' references,
+a per-expert tilt on a common reference that grows with depth. Most cleanly, the
+routed reference is essentially orthogonal to the expert's router direction
+($\cos \approx 0.00$--$0.03$): the computation-stage reference and the
+selection-stage routing vector are distinct objects, which makes the separation
+from \citet{li2026confadaptive} -- who project the gate weight onto the router
+direction as a per-token confidence bias -- an empirical finding rather than only
+a conceptual one.
+
+A second pilot on Qwen1.5-MoE-A2.7B (60 routed experts top-4 plus one shared
+expert) adds the contrast OLMoE lacks. The shared expert, which processes every
+token, reads the most like a dense MLP against the global reference: its
+gate/value coupling ratio ($2.5$--$10.6\times$ across the three layers) exceeds
+the routed experts' ($1.4$--$3.7\times$), it aligns to the global reference more
+than they do, and it rests closed. The routed experts instead couple to their own
+tilted references (cosine $0.86$--$0.88$ to the global mean, $0.71$--$0.78$ across
+experts), and the routed-reference-versus-router-direction cosine is again small
+(here mildly negative, $-0.20$ to $-0.27$, against $\approx 0$ in OLMoE), far from
+the value coincidence would give. So across two MoE families the always-on expert
+carries the global reference while routed experts specialise to their routed ones,
+and the two-level separation holds. These are single-seed pilots on two models;
+the depth and cross-family details are not pinned down.
+
+\section{Scope and limitations}
+\label{sec:scope}
+
+\begin{itemize}
+\item \textbf{Both branches carry content.} What localises to the gate is the
+  shared reference slice, and only that. The gate branch carries content as well:
+  its row is the coupling $c_n\,\blh$ plus a content remainder $w_\perp$ that is
+  about $99\%$ of the row, exactly as in the anchor's per-row anatomy. Freezing
+  either branch at its resting value does comparable damage to prediction
+  (value-over-gate top-1 flip $0.84$--$1.18$ and $\Delta$NLL $0.5$--$1.8\times$
+  across the three layers), as a product of two factors requires.
+\item \textbf{The coupling sits in the reference's high-variance subspace.} As
+  \S\ref{sec:localize} reports, the localisation survives removing the eight
+  massive coordinates (ratio $3$--$13\times$) but narrows toward parity once the
+  top sixty-four variance coordinates are gone. The claim is a high-variance-%
+  subspace coupling, not a coupling to the reference as a whole.
+\item \textbf{The multiplier reading is leading-order.} A knee-resting unit is
+  bilinear only to first order in the SiLU expansion; the curvature term and
+  finite pre-activation add higher-order structure, so it approximates rather than
+  equals a product. The within-model spectrum (Table~\ref{tab:modes}) is a single
+  model (Qwen2.5-3B); the cross-architecture span (Table~\ref{tab:spectrum}) is
+  the 160M ladder.
+\item \textbf{Quality is out of scope, and our ladder cannot speak to it.} The
+  ladder is 160M and trained only to a few billion tokens, so it grounds the
+  geometric relocation but is far too small and short to adjudicate loss
+  differences; we draw no quality conclusion from it, in either direction. The
+  loss comparison at this feed-forward geometry is elsewhere \citep{shazeer2020};
+  our claim is about where a shared reference sits in the two branches.
+\item \textbf{Two seeds on the ladder relocation.} The relocation reproduces at a
+  second initialisation: at step 12000 (about $80\%$ of the effect) the
+  SwiGLU--bilinear cosine is $0.30$ against the GELU--squared-ReLU control's
+  $0.84$, the same dissociation as the first seed ($0.22$ versus $0.89$ at that
+  step). The full-horizon replicate and further seeds are not run.
+\item \textbf{The reference is input-conditioned and rotates across depth.}
+  Inherited from the anchor: $\bl$ shifts with the input distribution (prose to
+  code cosine $0.76$--$0.84$, orthogonal for a degenerate repeated token) and
+  rotates slowly across the stack. Every statement here is per layer and for the
+  reading distribution rather than about a single global direction.
+\end{itemize}
+
+\section{Related work}
+\label{sec:related}
+
+This note extends \citet{tuomi2026background}: that paper establishes the
+coupling $w\cdot\bl$ within a single read matrix, and the result here is that in a
+gated MLP the coupling sits in the gate branch while the value branch is free of
+it, a two-branch contrast the single-matrix treatment does not make.
+
+Gated linear units were introduced by \citet{dauphin2017}; \citet{shazeer2020}
+evaluates GLU variants, including SwiGLU and the bilinear MLP, in the
+Transformer feed-forward layer, finding them at least matching GELU and
+offering no account of why; the
+object here is functional, where each unit sits on the switch--multiplier
+spectrum. The multiplier end is the bilinear MLP that \citet{pearce2024} analyse
+as a product with no elementwise nonlinearity; our reading places ordinary SwiGLU
+units on a continuum whose far end is that bilinear object, indexed by coupling to
+$\bl$. The nearest architecture that assigns the two roles to separate unit types
+by construction is Oskin's NC-FFN \citep{oskin2026}; we compare its trained
+behaviour to the depth-wise drift we measure once the switch--multiplier
+coordinate is defined, in \S\ref{sec:discussion}. The global activation shape
+gives a different, shared interpolation:
+SiLU/Swish move from linear to ReLU through one parameter $\beta$
+\citep{ramachandran2017swish}, whereas our coordinate is per unit and set by the
+carried reference. The closest mechanism is \citet{li2026confadaptive}, who split
+an expert gate weight into a component along the router direction (a per-token
+``confidence'' bias that slides a unit along the SiLU curve) and an orthogonal
+remainder; we differ in the reference (a carried corpus-mean, not a learned router
+vector), the setting (trained dense models, not a proposed MoE architecture), the
+coordinate (per unit and static, not per token), and in naming the multiplier
+pole. Weight-based taxonomies of gated neurons are adjacent: \citet{gerstner2025}
+classify units by input--output weight cosine with a depth trend (a different
+cosine, measuring residual read/write alignment) and \citet{gluscope2026} by the
+four gate/value sign regimes; neither uses a carried reference. Finally, massive
+activations have been read as carried near-constant components with a bias-like
+role \citep{sun2024} and MLP units as binary routers \citep{balogh2026}; the
+reading here is consistent with both, and \S\ref{sec:localize} identifies the
+reference-carrying coordinates as the massive ones.
+
+\section*{Reproducibility}
+{\raggedright
+Scripts and JSON artifacts (fixed seeds, public checkpoints where applicable):
+\texttt{census\_gated\_gate\_structure.py} (Table~\ref{tab:geom}, gate/value
+geometry), \texttt{census\_gated\_massive\_control.py} (the massive-coordinate control,
+\S\ref{sec:localize}), \texttt{census\_gated\_branch\_xmodel.py} and
+\texttt{census\_gated\_uncoupled\_smollm2.py} (Table~\ref{tab:xmodel}),
+\texttt{census\_bL\_shape\_xarch.py} (the cross-%
+architecture $\bl$-shape measurement, \S\ref{sec:localize}),
+\texttt{census\_gated\_coupling\_dist.py} and
+\texttt{census\_gated\_uncoupled\_units.py} (Table~\ref{tab:modes}, the
+switch--multiplier split and the content-gate characterisation),
+\texttt{census\_gate\_bilinear\_fidelity.py} (the behavioural bilinear-fidelity
+check, \S\ref{sec:spectrum}),
+\texttt{census\_gated\_value\_content.py} (\S\ref{sec:scope}),
+\texttt{ladder\_gate\_reference.py} (Table~\ref{tab:reloc}),
+\texttt{census\_ladder\_gate\_spectrum.py} (Table~\ref{tab:spectrum}) and
+\texttt{ladder\_content\_capacity.py} (Table~\ref{tab:capacity}), with the
+feed-forward variants in \texttt{ffn\_variants.py}. The training ladder is the
+bit-identical-initialisation four-arm set of \citet{tuomi2026background}'s
+companion GLU study; the seed replicate uses \texttt{run\_glu\_matched.py} with a
+second initialisation and \texttt{measure\_seed1\_relocation.py}. The
+mixture-of-experts pilots are \texttt{census\_moe\_expert\_reference.py} (OLMoE)
+and \texttt{census\_moe\_shared\_vs\_routed.py} (Qwen1.5-MoE), \S\ref{sec:discussion}.
+Code and data are available at
+\url{https://github.com/EvidentSolutions/llm-interp/tree/main/background_glu}
+and archived on Zenodo.
+\par}
+
+\section*{Use of AI Assistants}
+Large language models were used as assistive tools for coding, running
+experiments, and drafting text. All research questions, experimental design, and
+reported claims were directed and verified by the author.
+
+\bibliographystyle{plainnat}
+\bibliography{background_glu}
+
+\end{document}
