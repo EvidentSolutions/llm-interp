@@ -10,7 +10,8 @@ spectrum, and that trained SwiGLU spreads units across the whole spectrum,
 shifting toward the multiplier end with depth.
 
 **Paper:** [`background_glu.pdf`](background_glu.pdf) &nbsp;·&nbsp;
-**Archive:** Zenodo DOI pending (v1 upload in progress) &nbsp;·&nbsp;
+**DOI:** [10.5281/zenodo.22813298](https://doi.org/10.5281/zenodo.22813298) &nbsp;·&nbsp;
+**arXiv:** submitted, under review (arXiv ID pending) &nbsp;·&nbsp;
 **Author:** Olli Tuomi, Evident Solutions Oy
 ([ORCID 0009-0006-2042-1576](https://orcid.org/0009-0006-2042-1576))
 
@@ -106,7 +107,8 @@ checkpoints.
 
 ## Citation
 
-Zenodo DOI pending. Once assigned:
+Archived on Zenodo; also on arXiv (under review, arXiv ID pending — add the
+`eprint` field once assigned).
 
 ```bibtex
 @misc{tuomi2026backgroundglu,
@@ -115,8 +117,8 @@ Zenodo DOI pending. Once assigned:
                Gated (GLU) MLPs},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {PENDING},
-  url       = {PENDING}
+  doi       = {10.5281/zenodo.22813298},
+  url       = {https://doi.org/10.5281/zenodo.22813298}
 }
 ```
 
