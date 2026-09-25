@@ -1,0 +1,91 @@
+{
+ "config": {
+  "n_docs": 39,
+  "k_rand": 50,
+  "seed": 0
+ },
+ "trained": {
+  "6": {
+   "duty_median": 0.0359,
+   "rho_bL": 0.9456,
+   "rho_coupling_no_bias": 0.9454,
+   "rho_random_median": 0.0581,
+   "rho_random_p95": 0.1754,
+   "rho_random_max": 0.2116,
+   "rho_rownorm": -0.8784,
+   "rho_bias_only": 0.8137
+  },
+  "10": {
+   "duty_median": 0.0543,
+   "rho_bL": 0.9623,
+   "rho_coupling_no_bias": 0.961,
+   "rho_random_median": 0.0717,
+   "rho_random_p95": 0.1655,
+   "rho_random_max": 0.2226,
+   "rho_rownorm": -0.8956,
+   "rho_bias_only": 0.8137
+  },
+  "14": {
+   "duty_median": 0.0625,
+   "rho_bL": 0.9639,
+   "rho_coupling_no_bias": 0.9629,
+   "rho_random_median": 0.0845,
+   "rho_random_p95": 0.1921,
+   "rho_random_max": 0.2136,
+   "rho_rownorm": -0.8938,
+   "rho_bias_only": 0.8104
+  },
+  "22": {
+   "duty_median": 0.0626,
+   "rho_bL": 0.9586,
+   "rho_coupling_no_bias": 0.9579,
+   "rho_random_median": 0.0726,
+   "rho_random_p95": 0.155,
+   "rho_random_max": 0.1606,
+   "rho_rownorm": -0.8857,
+   "rho_bias_only": 0.8293
+  }
+ },
+ "random": {
+  "6": {
+   "duty_median": 0.5012,
+   "rho_bL": 0.9981,
+   "rho_coupling_no_bias": 0.9981,
+   "rho_random_median": 0.0123,
+   "rho_random_p95": 0.0433,
+   "rho_random_max": 0.0589,
+   "rho_rownorm": -0.0096,
+   "rho_bias_only": NaN
+  },
+  "10": {
+   "duty_median": 0.503,
+   "rho_bL": 0.9985,
+   "rho_coupling_no_bias": 0.9985,
+   "rho_random_median": 0.0135,
+   "rho_random_p95": 0.0428,
+   "rho_random_max": 0.046,
+   "rho_rownorm": 0.0066,
+   "rho_bias_only": NaN
+  },
+  "14": {
+   "duty_median": 0.4985,
+   "rho_bL": 0.9987,
+   "rho_coupling_no_bias": 0.9987,
+   "rho_random_median": 0.0148,
+   "rho_random_p95": 0.0408,
+   "rho_random_max": 0.0479,
+   "rho_rownorm": 0.0061,
+   "rho_bias_only": NaN
+  },
+  "22": {
+   "duty_median": 0.502,
+   "rho_bL": 0.9989,
+   "rho_coupling_no_bias": 0.9989,
+   "rho_random_median": 0.0166,
+   "rho_random_p95": 0.0452,
+   "rho_random_max": 0.0547,
+   "rho_rownorm": -0.0022,
+   "rho_bias_only": NaN
+  }
+ }
+}

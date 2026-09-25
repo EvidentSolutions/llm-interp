@@ -1,0 +1,5041 @@
+{
+ "config": {
+  "smoke": false,
+  "n_docs": 40,
+  "skip": 16,
+  "layers": [
+   6,
+   10,
+   14,
+   22
+  ],
+  "seed": 0,
+  "corpora": [
+   "prose",
+   "code",
+   "prose_alt",
+   "random_tok",
+   "repeat_tok"
+  ]
+ },
+ "trained": {
+  "6": {
+   "presence": {
+    "prose": {
+     "mean": 0.3549,
+     "std": 0.0535,
+     "min": -0.028,
+     "p01": 0.245,
+     "p50": 0.3537,
+     "p99": 0.4727,
+     "max": 0.5118,
+     "frac_above_0.5": 0.0011,
+     "b_norm": 7.575,
+     "x_norm_mean": 21.427
+    },
+    "code": {
+     "mean": 0.412,
+     "std": 0.0621,
+     "min": -0.0422,
+     "p01": 0.264,
+     "p50": 0.4134,
+     "p99": 0.547,
+     "max": 0.5894,
+     "frac_above_0.5": 0.0671,
+     "b_norm": 8.863,
+     "x_norm_mean": 21.566
+    },
+    "prose_alt": {
+     "mean": 0.3511,
+     "std": 0.0513,
+     "min": -0.0252,
+     "p01": 0.2463,
+     "p50": 0.3491,
+     "p99": 0.4622,
+     "max": 0.4898,
+     "frac_above_0.5": 0.0,
+     "b_norm": 7.543,
+     "x_norm_mean": 21.531
+    },
+    "random_tok": {
+     "mean": 0.5205,
+     "std": 0.0668,
+     "min": 0.0334,
+     "p01": 0.3779,
+     "p50": 0.519,
+     "p99": 0.6464,
+     "max": 0.6881,
+     "frac_above_0.5": 0.6255,
+     "b_norm": 11.592,
+     "x_norm_mean": 22.203
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 5.955,
+     "x_norm_mean": 5.955
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.8422,
+     "prose_alt": 0.9844,
+     "random_tok": 0.5187,
+     "repeat_tok": 0.0318
+    },
+    "code": {
+     "prose": 0.8422,
+     "code": 1.0,
+     "prose_alt": 0.8259,
+     "random_tok": 0.4897,
+     "repeat_tok": 0.0171
+    },
+    "prose_alt": {
+     "prose": 0.9844,
+     "code": 0.8259,
+     "prose_alt": 1.0,
+     "random_tok": 0.5282,
+     "repeat_tok": 0.0304
+    },
+    "random_tok": {
+     "prose": 0.5187,
+     "code": 0.4897,
+     "prose_alt": 0.5282,
+     "random_tok": 1.0,
+     "repeat_tok": 0.0189
+    },
+    "repeat_tok": {
+     "prose": 0.0318,
+     "code": 0.0171,
+     "prose_alt": 0.0304,
+     "random_tok": 0.0189,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9656,
+    "code": 0.9918,
+    "prose_alt": 0.9337,
+    "random_tok": 0.9954,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.7471,
+      "splithalf_floor": 0.8092,
+      "dev_norm_over_b": 0.9085,
+      "dev_decode": [
+       "″",
+       " billion",
+       " million",
+       "0000",
+       "%,",
+       " 000",
+       "th",
+       " trillion"
+      ],
+      "dev_decode_maxcos": 0.1657
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.6982,
+      "splithalf_floor": 0.9634,
+      "dev_norm_over_b": 1.0726,
+      "dev_decode": [
+       " tricky",
+       "\u001a",
+       " accol",
+       ">>>",
+       "\u0018",
+       " unfortunate",
+       " Mulcair",
+       "\u0012"
+      ],
+      "dev_decode_maxcos": 0.1071
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.8979,
+      "splithalf_floor": 0.9573,
+      "dev_norm_over_b": 0.5402,
+      "dev_decode": [
+       " although",
+       " whereas",
+       " thereby",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       " dmg",
+       " regardless",
+       " etc",
+       " namely"
+      ],
+      "dev_decode_maxcos": 0.147
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.5973,
+      "splithalf_floor": 0.7559,
+      "dev_norm_over_b": 1.4457,
+      "dev_decode": [
+       " xml",
+       "'m",
+       "#",
+       " unfair",
+       "arrett",
+       " SPORTS",
+       "'t",
+       " Cavern"
+      ],
+      "dev_decode_maxcos": 0.0927
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9223,
+      "splithalf_floor": 0.9355,
+      "dev_norm_over_b": 0.3916,
+      "dev_decode": [
+       "-",
+       "®",
+       ",.",
+       " &",
+       " vs",
+       " versus",
+       "™",
+       "/"
+      ],
+      "dev_decode_maxcos": 0.1343
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9829,
+      "splithalf_floor": 0.9606,
+      "dev_norm_over_b": 0.1874,
+      "dev_decode": [
+       ":(",
+       "—",
+       ":'",
+       ".(",
+       " «",
+       ":-",
+       "―",
+       " either"
+      ],
+      "dev_decode_maxcos": 0.099
+     },
+     "_pairwise": {
+      "digit|newline": 0.4959,
+      "digit|punct": 0.6756,
+      "digit|space": 0.4901,
+      "digit|subword": 0.732,
+      "digit|word_init": 0.6923,
+      "newline|punct": 0.7296,
+      "newline|space": 0.5868,
+      "newline|subword": 0.5893,
+      "newline|word_init": 0.6193,
+      "punct|space": 0.5881,
+      "punct|subword": 0.7786,
+      "punct|word_init": 0.8281,
+      "space|subword": 0.5321,
+      "space|word_init": 0.5461,
+      "subword|word_init": 0.8808
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.7405,
+      "splithalf_floor": 0.8572,
+      "dev_norm_over_b": 0.8558,
+      "dev_decode": [
+       "″",
+       "️",
+       "125",
+       " billion",
+       "D",
+       "b",
+       "200",
+       "000000"
+      ],
+      "dev_decode_maxcos": 0.1347
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.6888,
+      "splithalf_floor": 0.9882,
+      "dev_norm_over_b": 1.0341,
+      "dev_decode": [
+       "\u001a",
+       "                ",
+       "        ",
+       "\u0012",
+       "    ",
+       "ongyang",
+       "                    ",
+       "────────"
+      ],
+      "dev_decode_maxcos": 0.1142
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9323,
+      "splithalf_floor": 0.9904,
+      "dev_norm_over_b": 0.4178,
+      "dev_decode": [
+       "?????-",
+       " EntityItem",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       "pmwiki",
+       " guiName",
+       "catentry",
+       " \"$:/",
+       "ItemTracker"
+      ],
+      "dev_decode_maxcos": 0.1174
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.6889,
+      "splithalf_floor": 0.9759,
+      "dev_norm_over_b": 1.086,
+      "dev_decode": [
+       "#",
+       "return",
+       "\u001a",
+       "................",
+       "Returns",
+       " SPORTS",
+       "FTWARE",
+       "isites"
+      ],
+      "dev_decode_maxcos": 0.1294
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9453,
+      "splithalf_floor": 0.9864,
+      "dev_norm_over_b": 0.3298,
+      "dev_decode": [
+       "_",
+       " and",
+       "-",
+       ",.",
+       ",",
+       ")",
+       " or",
+       " &"
+      ],
+      "dev_decode_maxcos": 0.1486
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9629,
+      "splithalf_floor": 0.9866,
+      "dev_norm_over_b": 0.2811,
+      "dev_decode": [
+       ".(",
+       ":(",
+       " (&",
+       "Fuck",
+       " preceding",
+       ".\",",
+       ".*",
+       ":'"
+      ],
+      "dev_decode_maxcos": 0.0847
+     },
+     "_pairwise": {
+      "digit|newline": 0.5205,
+      "digit|punct": 0.6864,
+      "digit|space": 0.5275,
+      "digit|subword": 0.7136,
+      "digit|word_init": 0.6815,
+      "newline|punct": 0.6653,
+      "newline|space": 0.668,
+      "newline|subword": 0.5631,
+      "newline|word_init": 0.5837,
+      "punct|space": 0.6657,
+      "punct|subword": 0.8119,
+      "punct|word_init": 0.8381,
+      "space|subword": 0.5775,
+      "space|word_init": 0.5868,
+      "subword|word_init": 0.9124
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " dilig",
+      " actionGroup",
+      " Adinida",
+      "inventoryQuantity",
+      "cffffcc",
+      " サーティワン",
+      " conclud",
+      "assetsadobe"
+     ],
+     "maxcos": 0.1299
+    },
+    "code": {
+     "top": [
+      " actionGroup",
+      " EntityItem",
+      "soType",
+      " dilig",
+      " PsyNet",
+      " Adinida",
+      " looph",
+      " \"$:/"
+     ],
+     "maxcos": 0.1186
+    },
+    "prose_alt": {
+     "top": [
+      " actionGroup",
+      " Adinida",
+      "inventoryQuantity",
+      "cffffcc",
+      " conclud",
+      " サーティワン",
+      "assetsadobe",
+      " SetFontSize"
+     ],
+     "maxcos": 0.1388
+    },
+    "random_tok": {
+     "top": [
+      " unlaw",
+      " looph",
+      " challeng",
+      " confir",
+      " referen",
+      " showc",
+      "oshenko",
+      " sshd"
+     ],
+     "maxcos": 0.0792
+    },
+    "repeat_tok": {
+     "top": [
+      "Home",
+      ",.",
+      "User",
+      "Title",
+      "Inst",
+      "Researchers",
+      " Besides",
+      "Task"
+     ],
+     "maxcos": 0.1285
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": " CD",
+     "cls": "word_init",
+     "pos": 217,
+     "ctx": "associated molecules such as CD25 and",
+     "cos_own_bhat": 0.3614,
+     "cos_prose_bhat": 0.3614,
+     "coef": 8.003,
+     "x_norm": 22.143
+    },
+    {
+     "corpus": "prose",
+     "tok": " structure",
+     "cls": "word_init",
+     "pos": 215,
+     "ctx": "to details of the electronic and crystal",
+     "cos_own_bhat": 0.3367,
+     "cos_prose_bhat": 0.3367,
+     "coef": 7.37,
+     "x_norm": 21.891
+    },
+    {
+     "corpus": "prose",
+     "tok": " Such",
+     "cls": "word_init",
+     "pos": 248,
+     "ctx": " database within or without the EMS.",
+     "cos_own_bhat": 0.3885,
+     "cos_prose_bhat": 0.3885,
+     "coef": 8.405,
+     "x_norm": 21.636
+    },
+    {
+     "corpus": "code",
+     "tok": "\",",
+     "cls": "punct",
+     "pos": 82,
+     "ctx": " can't answer \"who did it",
+     "cos_own_bhat": 0.4793,
+     "cos_prose_bhat": 0.4198,
+     "coef": 9.326,
+     "x_norm": 19.457
+    },
+    {
+     "corpus": "code",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 58,
+     "ctx": "over pre-RoPE query at",
+     "cos_own_bhat": 0.4301,
+     "cos_prose_bhat": 0.3686,
+     "coef": 9.098,
+     "x_norm": 21.152
+    },
+    {
+     "corpus": "code",
+     "tok": ",",
+     "cls": "punct",
+     "pos": 105,
+     "ctx": "attachment is the natural-language",
+     "cos_own_bhat": 0.4379,
+     "cos_prose_bhat": 0.415,
+     "coef": 8.679,
+     "x_norm": 19.82
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " by",
+     "cls": "word_init",
+     "pos": 104,
+     "ctx": " multiple Commercial Licenses authorized",
+     "cos_own_bhat": 0.382,
+     "cos_prose_bhat": 0.3862,
+     "coef": 8.098,
+     "x_norm": 21.201
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " his",
+     "cls": "word_init",
+     "pos": 138,
+     "ctx": " having to play the flute for",
+     "cos_own_bhat": 0.3805,
+     "cos_prose_bhat": 0.3724,
+     "coef": 7.72,
+     "x_norm": 20.291
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " O",
+     "cls": "word_init",
+     "pos": 125,
+     "ctx": "] Sex Tips That Will Make Her",
+     "cos_own_bhat": 0.3235,
+     "cos_prose_bhat": 0.3205,
+     "coef": 6.932,
+     "x_norm": 21.424
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " 800",
+     "cls": "digit",
+     "pos": 57,
+     "ctx": "�fuel Surveillanceives Quadro DoubleIll",
+     "cos_own_bhat": 0.5581,
+     "cos_prose_bhat": 0.3046,
+     "coef": 12.544,
+     "x_norm": 22.476
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "real",
+     "cls": "subword",
+     "pos": 139,
+     "ctx": "egregatedONDON students curric finalized",
+     "cos_own_bhat": 0.5357,
+     "cos_prose_bhat": 0.2562,
+     "coef": 12.014,
+     "x_norm": 22.428
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " Huma",
+     "cls": "word_init",
+     "pos": 207,
+     "ctx": "gn Jaguar funn narrowed 1977acca melanch",
+     "cos_own_bhat": 0.4925,
+     "cos_prose_bhat": 0.243,
+     "coef": 11.001,
+     "x_norm": 22.337
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.3549,
+     "std": 0.0535,
+     "min": -0.028,
+     "p01": 0.245,
+     "p50": 0.3537,
+     "p99": 0.4727,
+     "max": 0.5118,
+     "frac_above_0.5": 0.0011
+    },
+    "code": {
+     "mean": 0.3472,
+     "std": 0.0524,
+     "min": -0.0289,
+     "p01": 0.244,
+     "p50": 0.3435,
+     "p99": 0.4626,
+     "max": 0.4939,
+     "frac_above_0.5": 0.0
+    },
+    "prose_alt": {
+     "mean": 0.3458,
+     "std": 0.0522,
+     "min": -0.0269,
+     "p01": 0.2392,
+     "p50": 0.3436,
+     "p99": 0.461,
+     "max": 0.503,
+     "frac_above_0.5": 0.0001
+    },
+    "random_tok": {
+     "mean": 0.2701,
+     "std": 0.0271,
+     "min": -0.0028,
+     "p01": 0.211,
+     "p50": 0.271,
+     "p99": 0.3242,
+     "max": 0.3772,
+     "frac_above_0.5": 0.0
+    },
+    "repeat_tok": {
+     "mean": 0.0318,
+     "std": 0.0,
+     "min": 0.0318,
+     "p01": 0.0318,
+     "p50": 0.0318,
+     "p99": 0.0318,
+     "max": 0.0318,
+     "frac_above_0.5": 0.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.3535,
+     "poscond_share_mean": 0.3855,
+     "poscond_share_p05": 0.3719,
+     "poscond_share_p95": 0.4019,
+     "cos_poscond_to_pooled_mean": 0.9178,
+     "resid_after_removing_bL_mean": 0.3962,
+     "splithalf_floor_mean": 0.722
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.411,
+     "poscond_share_mean": 0.4447,
+     "poscond_share_p05": 0.4271,
+     "poscond_share_p95": 0.462,
+     "cos_poscond_to_pooled_mean": 0.9242,
+     "resid_after_removing_bL_mean": 0.3807,
+     "splithalf_floor_mean": 0.7622
+    }
+   }
+  },
+  "10": {
+   "presence": {
+    "prose": {
+     "mean": 0.3262,
+     "std": 0.0445,
+     "min": -0.0116,
+     "p01": 0.2349,
+     "p50": 0.3258,
+     "p99": 0.4236,
+     "max": 0.4647,
+     "frac_above_0.5": 0.0,
+     "b_norm": 6.848,
+     "x_norm_mean": 21.046
+    },
+    "code": {
+     "mean": 0.3838,
+     "std": 0.0603,
+     "min": -0.0274,
+     "p01": 0.222,
+     "p50": 0.3893,
+     "p99": 0.502,
+     "max": 0.5465,
+     "frac_above_0.5": 0.0118,
+     "b_norm": 8.063,
+     "x_norm_mean": 21.046
+    },
+    "prose_alt": {
+     "mean": 0.3227,
+     "std": 0.0431,
+     "min": -0.0114,
+     "p01": 0.2342,
+     "p50": 0.3228,
+     "p99": 0.4128,
+     "max": 0.4499,
+     "frac_above_0.5": 0.0,
+     "b_norm": 6.819,
+     "x_norm_mean": 21.143
+    },
+    "random_tok": {
+     "mean": 0.5719,
+     "std": 0.0719,
+     "min": 0.0355,
+     "p01": 0.399,
+     "p50": 0.5714,
+     "p99": 0.702,
+     "max": 0.7453,
+     "frac_above_0.5": 0.8834,
+     "b_norm": 12.472,
+     "x_norm_mean": 21.745
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 6.844,
+     "x_norm_mean": 6.844
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.8141,
+     "prose_alt": 0.9793,
+     "random_tok": 0.4801,
+     "repeat_tok": 0.0184
+    },
+    "code": {
+     "prose": 0.8141,
+     "code": 1.0,
+     "prose_alt": 0.7932,
+     "random_tok": 0.4734,
+     "repeat_tok": 0.0049
+    },
+    "prose_alt": {
+     "prose": 0.9793,
+     "code": 0.7932,
+     "prose_alt": 1.0,
+     "random_tok": 0.4914,
+     "repeat_tok": 0.017
+    },
+    "random_tok": {
+     "prose": 0.4801,
+     "code": 0.4734,
+     "prose_alt": 0.4914,
+     "random_tok": 1.0,
+     "repeat_tok": 0.0189
+    },
+    "repeat_tok": {
+     "prose": 0.0184,
+     "code": 0.0049,
+     "prose_alt": 0.017,
+     "random_tok": 0.0189,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9543,
+    "code": 0.9897,
+    "prose_alt": 0.9173,
+    "random_tok": 0.9958,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.7311,
+      "splithalf_floor": 0.7523,
+      "dev_norm_over_b": 0.9429,
+      "dev_decode": [
+       "″",
+       " billion",
+       " million",
+       " trillion",
+       " 000",
+       "rd",
+       "th",
+       "%,"
+      ],
+      "dev_decode_maxcos": 0.1583
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.7174,
+      "splithalf_floor": 0.9384,
+      "dev_norm_over_b": 1.0154,
+      "dev_decode": [
+       " accol",
+       ">>>",
+       "\"\"\"",
+       "juries",
+       "\u001a",
+       "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯",
+       " tricky",
+       " Mulcair"
+      ],
+      "dev_decode_maxcos": 0.1012
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9037,
+      "splithalf_floor": 0.9435,
+      "dev_norm_over_b": 0.5136,
+      "dev_decode": [
+       " although",
+       " whereas",
+       "000",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       " thereby",
+       " etc",
+       " strikeouts",
+       " namely"
+      ],
+      "dev_decode_maxcos": 0.143
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.5863,
+      "splithalf_floor": 0.7305,
+      "dev_norm_over_b": 1.4856,
+      "dev_decode": [
+       "'m",
+       " multiplayer",
+       " SPORTS",
+       " allege",
+       " literal",
+       " sensations",
+       "'re",
+       " xml"
+      ],
+      "dev_decode_maxcos": 0.0925
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9222,
+      "splithalf_floor": 0.9236,
+      "dev_norm_over_b": 0.4,
+      "dev_decode": [
+       "-",
+       "®",
+       " &",
+       "™",
+       "/",
+       " vs",
+       " and",
+       ",."
+      ],
+      "dev_decode_maxcos": 0.1409
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9826,
+      "splithalf_floor": 0.9466,
+      "dev_norm_over_b": 0.1878,
+      "dev_decode": [
+       ":(",
+       " «",
+       " particular",
+       " either",
+       ":-",
+       " relatively",
+       " two",
+       ":'"
+      ],
+      "dev_decode_maxcos": 0.1012
+     },
+     "_pairwise": {
+      "digit|newline": 0.4924,
+      "digit|punct": 0.6699,
+      "digit|space": 0.4589,
+      "digit|subword": 0.7219,
+      "digit|word_init": 0.6716,
+      "newline|punct": 0.7468,
+      "newline|space": 0.609,
+      "newline|subword": 0.6119,
+      "newline|word_init": 0.6426,
+      "punct|space": 0.5997,
+      "punct|subword": 0.789,
+      "punct|word_init": 0.8365,
+      "space|subword": 0.5134,
+      "space|word_init": 0.5317,
+      "subword|word_init": 0.8758
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.7272,
+      "splithalf_floor": 0.8317,
+      "dev_norm_over_b": 0.8765,
+      "dev_decode": [
+       "″",
+       "️",
+       " 000",
+       " million",
+       "200",
+       " thousand",
+       "000000",
+       " billion"
+      ],
+      "dev_decode_maxcos": 0.1166
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.6879,
+      "splithalf_floor": 0.9794,
+      "dev_norm_over_b": 1.033,
+      "dev_decode": [
+       "        ",
+       "                ",
+       "    ",
+       "            ",
+       "\u001a",
+       "                    ",
+       "                               ",
+       "             "
+      ],
+      "dev_decode_maxcos": 0.1126
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9338,
+      "splithalf_floor": 0.9877,
+      "dev_norm_over_b": 0.4059,
+      "dev_decode": [
+       "?????-",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       " EntityItem",
+       "pmwiki",
+       " guiName",
+       "catentry",
+       " \"$:/",
+       " Adinida"
+      ],
+      "dev_decode_maxcos": 0.1276
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.6973,
+      "splithalf_floor": 0.9664,
+      "dev_norm_over_b": 1.0584,
+      "dev_decode": [
+       "\u001a",
+       "#",
+       "return",
+       "if",
+       " SPORTS",
+       "\t\t\t\t\t\t\t",
+       "َ",
+       "\u0016"
+      ],
+      "dev_decode_maxcos": 0.1168
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9441,
+      "splithalf_floor": 0.9843,
+      "dev_norm_over_b": 0.3358,
+      "dev_decode": [
+       "_",
+       "-",
+       ",",
+       ",.",
+       " and",
+       " &",
+       "的",
+       "."
+      ],
+      "dev_decode_maxcos": 0.1644
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9631,
+      "splithalf_floor": 0.9843,
+      "dev_norm_over_b": 0.2804,
+      "dev_decode": [
+       ".(",
+       ".*",
+       "-",
+       "—\"",
+       ".\",",
+       ":'",
+       " preceding",
+       " dynamically"
+      ],
+      "dev_decode_maxcos": 0.0795
+     },
+     "_pairwise": {
+      "digit|newline": 0.525,
+      "digit|punct": 0.6827,
+      "digit|space": 0.5351,
+      "digit|subword": 0.6904,
+      "digit|word_init": 0.6652,
+      "newline|punct": 0.6636,
+      "newline|space": 0.7235,
+      "newline|subword": 0.5584,
+      "newline|word_init": 0.5808,
+      "punct|space": 0.6918,
+      "punct|subword": 0.812,
+      "punct|word_init": 0.842,
+      "space|subword": 0.5698,
+      "space|word_init": 0.587,
+      "subword|word_init": 0.9109
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " dilig",
+      " showc",
+      " conclud",
+      " glim",
+      " unnecess",
+      " enthusi",
+      " actionGroup",
+      " predec"
+     ],
+     "maxcos": 0.1231
+    },
+    "code": {
+     "top": [
+      " dilig",
+      " looph",
+      " surpr",
+      " attm",
+      " sshd",
+      " predec",
+      " referen",
+      " aggro"
+     ],
+     "maxcos": 0.1113
+    },
+    "prose_alt": {
+     "top": [
+      " dilig",
+      " showc",
+      " conclud",
+      " actionGroup",
+      " glim",
+      " enthusi",
+      " Adinida",
+      " challeng"
+     ],
+     "maxcos": 0.1257
+    },
+    "random_tok": {
+     "top": [
+      "oshenko",
+      " tits",
+      " welf",
+      " unlaw",
+      "Pol",
+      " calculus",
+      " Hud",
+      "ourt"
+     ],
+     "maxcos": 0.0676
+    },
+    "repeat_tok": {
+     "top": [
+      "Home",
+      ",.",
+      "User",
+      "Title",
+      "Inst",
+      "Researchers",
+      "QUEST",
+      "IN"
+     ],
+     "maxcos": 0.1365
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": " abnormal",
+     "cls": "word_init",
+     "pos": 129,
+     "ctx": " the termination of ACTH therapy the",
+     "cos_own_bhat": 0.3148,
+     "cos_prose_bhat": 0.3148,
+     "coef": 6.379,
+     "x_norm": 20.264
+    },
+    {
+     "corpus": "prose",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 158,
+     "ctx": "\" NAME: \"Shipped\"}",
+     "cos_own_bhat": 0.4015,
+     "cos_prose_bhat": 0.4015,
+     "coef": 8.269,
+     "x_norm": 20.595
+    },
+    {
+     "corpus": "prose",
+     "tok": "is",
+     "cls": "subword",
+     "pos": 241,
+     "ctx": " initially to follow a saturable Michael",
+     "cos_own_bhat": 0.2499,
+     "cos_prose_bhat": 0.2499,
+     "coef": 5.588,
+     "x_norm": 22.362
+    },
+    {
+     "corpus": "code",
+     "tok": "(",
+     "cls": "punct",
+     "pos": 211,
+     "ctx": ":\n        for j in range",
+     "cos_own_bhat": 0.3345,
+     "cos_prose_bhat": 0.3293,
+     "coef": 7.237,
+     "x_norm": 21.638
+    },
+    {
+     "corpus": "code",
+     "tok": " =",
+     "cls": "punct",
+     "pos": 195,
+     "ctx": "  : refl_pref",
+     "cos_own_bhat": 0.4738,
+     "cos_prose_bhat": 0.3652,
+     "coef": 9.526,
+     "x_norm": 20.105
+    },
+    {
+     "corpus": "code",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 193,
+     "ctx": " shared single-token pool.\n",
+     "cos_own_bhat": 0.4105,
+     "cos_prose_bhat": 0.3511,
+     "coef": 9.007,
+     "x_norm": 21.944
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " and",
+     "cls": "word_init",
+     "pos": 163,
+     "ctx": "sing characteristics of the compositions",
+     "cos_own_bhat": 0.375,
+     "cos_prose_bhat": 0.3965,
+     "coef": 7.377,
+     "x_norm": 19.671
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " career",
+     "cls": "word_init",
+     "pos": 52,
+     "ctx": " 2018.\n\nEarly life and",
+     "cos_own_bhat": 0.2823,
+     "cos_prose_bhat": 0.2656,
+     "coef": 6.21,
+     "x_norm": 22.002
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": "2",
+     "cls": "digit",
+     "pos": 157,
+     "ctx": "% (p=0.04",
+     "cos_own_bhat": 0.3097,
+     "cos_prose_bhat": 0.2948,
+     "coef": 6.849,
+     "x_norm": 22.114
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " HAR",
+     "cls": "word_init",
+     "pos": 47,
+     "ctx": " lifomnia probabilities unclear declined",
+     "cos_own_bhat": 0.5749,
+     "cos_prose_bhat": 0.2771,
+     "coef": 12.53,
+     "x_norm": 21.793
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "Sharp",
+     "cls": "subword",
+     "pos": 159,
+     "ctx": "xoner Five entertainingarently compose-)",
+     "cos_own_bhat": 0.4834,
+     "cos_prose_bhat": 0.2544,
+     "coef": 10.617,
+     "x_norm": 21.962
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "fork",
+     "cls": "subword",
+     "pos": 210,
+     "ctx": "ITYractedkl keyboards Caucasus describes",
+     "cos_own_bhat": 0.5288,
+     "cos_prose_bhat": 0.2381,
+     "coef": 11.546,
+     "x_norm": 21.833
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.3262,
+     "std": 0.0445,
+     "min": -0.0116,
+     "p01": 0.2349,
+     "p50": 0.3258,
+     "p99": 0.4236,
+     "max": 0.4647,
+     "frac_above_0.5": 0.0
+    },
+    "code": {
+     "mean": 0.3124,
+     "std": 0.044,
+     "min": -0.0132,
+     "p01": 0.2226,
+     "p50": 0.3105,
+     "p99": 0.406,
+     "max": 0.4376,
+     "frac_above_0.5": 0.0
+    },
+    "prose_alt": {
+     "mean": 0.3163,
+     "std": 0.0441,
+     "min": -0.0116,
+     "p01": 0.2262,
+     "p50": 0.3151,
+     "p99": 0.4138,
+     "max": 0.4584,
+     "frac_above_0.5": 0.0
+    },
+    "random_tok": {
+     "mean": 0.2746,
+     "std": 0.0301,
+     "min": 0.0365,
+     "p01": 0.2114,
+     "p50": 0.2738,
+     "p99": 0.3334,
+     "max": 0.3651,
+     "frac_above_0.5": 0.0
+    },
+    "repeat_tok": {
+     "mean": 0.0184,
+     "std": 0.0,
+     "min": 0.0184,
+     "p01": 0.0184,
+     "p50": 0.0184,
+     "p99": 0.0184,
+     "max": 0.0184,
+     "frac_above_0.5": 0.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.3254,
+     "poscond_share_mean": 0.3602,
+     "poscond_share_p05": 0.3491,
+     "poscond_share_p95": 0.3728,
+     "cos_poscond_to_pooled_mean": 0.9037,
+     "resid_after_removing_bL_mean": 0.427,
+     "splithalf_floor_mean": 0.6813
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.3831,
+     "poscond_share_mean": 0.4202,
+     "poscond_share_p05": 0.4056,
+     "poscond_share_p95": 0.4354,
+     "cos_poscond_to_pooled_mean": 0.9116,
+     "resid_after_removing_bL_mean": 0.4096,
+     "splithalf_floor_mean": 0.7313
+    }
+   }
+  },
+  "14": {
+   "presence": {
+    "prose": {
+     "mean": 0.3277,
+     "std": 0.0412,
+     "min": 0.0255,
+     "p01": 0.2426,
+     "p50": 0.3271,
+     "p99": 0.4218,
+     "max": 0.4772,
+     "frac_above_0.5": 0.0,
+     "b_norm": 6.898,
+     "x_norm_mean": 21.099
+    },
+    "code": {
+     "mean": 0.3859,
+     "std": 0.0615,
+     "min": 0.0066,
+     "p01": 0.2223,
+     "p50": 0.3942,
+     "p99": 0.5,
+     "max": 0.5344,
+     "frac_above_0.5": 0.01,
+     "b_norm": 8.1,
+     "x_norm_mean": 21.027
+    },
+    "prose_alt": {
+     "mean": 0.322,
+     "std": 0.038,
+     "min": 0.0255,
+     "p01": 0.2412,
+     "p50": 0.3216,
+     "p99": 0.4067,
+     "max": 0.446,
+     "frac_above_0.5": 0.0,
+     "b_norm": 6.823,
+     "x_norm_mean": 21.206
+    },
+    "random_tok": {
+     "mean": 0.5862,
+     "std": 0.0768,
+     "min": 0.0545,
+     "p01": 0.3964,
+     "p50": 0.5937,
+     "p99": 0.717,
+     "max": 0.7577,
+     "frac_above_0.5": 0.8842,
+     "b_norm": 12.789,
+     "x_norm_mean": 21.757
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 7.18,
+     "x_norm_mean": 7.18
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.8076,
+     "prose_alt": 0.9779,
+     "random_tok": 0.4911,
+     "repeat_tok": 0.0503
+    },
+    "code": {
+     "prose": 0.8076,
+     "code": 1.0,
+     "prose_alt": 0.7875,
+     "random_tok": 0.4832,
+     "repeat_tok": 0.0304
+    },
+    "prose_alt": {
+     "prose": 0.9779,
+     "code": 0.7875,
+     "prose_alt": 1.0,
+     "random_tok": 0.5014,
+     "repeat_tok": 0.0492
+    },
+    "random_tok": {
+     "prose": 0.4911,
+     "code": 0.4832,
+     "prose_alt": 0.5014,
+     "random_tok": 1.0,
+     "repeat_tok": 0.0379
+    },
+    "repeat_tok": {
+     "prose": 0.0503,
+     "code": 0.0304,
+     "prose_alt": 0.0492,
+     "random_tok": 0.0379,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9535,
+    "code": 0.9882,
+    "prose_alt": 0.9157,
+    "random_tok": 0.996,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.7345,
+      "splithalf_floor": 0.7376,
+      "dev_norm_over_b": 0.9177,
+      "dev_decode": [
+       "″",
+       " million",
+       " 000",
+       " billion",
+       " trillion",
+       " kg",
+       "rd",
+       "th"
+      ],
+      "dev_decode_maxcos": 0.1636
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.7243,
+      "splithalf_floor": 0.9281,
+      "dev_norm_over_b": 0.9462,
+      "dev_decode": [
+       "This",
+       "\"\"\"",
+       "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯",
+       "There",
+       "    ",
+       ">>>",
+       " accol",
+       "\u001a"
+      ],
+      "dev_decode_maxcos": 0.1153
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9089,
+      "splithalf_floor": 0.9404,
+      "dev_norm_over_b": 0.484,
+      "dev_decode": [
+       " although",
+       " whereas",
+       "000",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       "where",
+       " etc",
+       " strikeouts",
+       " regardless"
+      ],
+      "dev_decode_maxcos": 0.1447
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.5688,
+      "splithalf_floor": 0.6857,
+      "dev_norm_over_b": 1.4282,
+      "dev_decode": [
+       "'m",
+       " literal",
+       " unnamed",
+       " sensations",
+       "'re",
+       " allege",
+       " meshes",
+       " voic"
+      ],
+      "dev_decode_maxcos": 0.0887
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9279,
+      "splithalf_floor": 0.9283,
+      "dev_norm_over_b": 0.3888,
+      "dev_decode": [
+       "-",
+       " &",
+       "®",
+       "/",
+       "™",
+       " and",
+       "_",
+       "'s"
+      ],
+      "dev_decode_maxcos": 0.1553
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9834,
+      "splithalf_floor": 0.9458,
+      "dev_norm_over_b": 0.1844,
+      "dev_decode": [
+       " relatively",
+       ":(",
+       " «",
+       ".�",
+       ".\",\"",
+       ":-",
+       " either",
+       " particular"
+      ],
+      "dev_decode_maxcos": 0.1071
+     },
+     "_pairwise": {
+      "digit|newline": 0.5064,
+      "digit|punct": 0.6821,
+      "digit|space": 0.4533,
+      "digit|subword": 0.7275,
+      "digit|word_init": 0.6747,
+      "newline|punct": 0.7654,
+      "newline|space": 0.6139,
+      "newline|subword": 0.6273,
+      "newline|word_init": 0.6504,
+      "punct|space": 0.5983,
+      "punct|subword": 0.8047,
+      "punct|word_init": 0.8443,
+      "space|subword": 0.5002,
+      "space|word_init": 0.5125,
+      "subword|word_init": 0.8823
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.7434,
+      "splithalf_floor": 0.8237,
+      "dev_norm_over_b": 0.8392,
+      "dev_decode": [
+       "″",
+       "️",
+       " 000",
+       "000000",
+       "200",
+       " onwards",
+       " million",
+       " billion"
+      ],
+      "dev_decode_maxcos": 0.1153
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.6971,
+      "splithalf_floor": 0.9741,
+      "dev_norm_over_b": 0.9773,
+      "dev_decode": [
+       "    ",
+       "        ",
+       "                ",
+       "                               ",
+       "            ",
+       "                              ",
+       "                    ",
+       "       "
+      ],
+      "dev_decode_maxcos": 0.1375
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9382,
+      "splithalf_floor": 0.9859,
+      "dev_norm_over_b": 0.3861,
+      "dev_decode": [
+       "?????-",
+       "pmwiki",
+       "ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ",
+       " EntityItem",
+       "catentry",
+       " looph",
+       " guiName",
+       " \"$:/"
+      ],
+      "dev_decode_maxcos": 0.1417
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.7108,
+      "splithalf_floor": 0.9623,
+      "dev_norm_over_b": 0.9958,
+      "dev_decode": [
+       "\u001a",
+       "#",
+       "return",
+       "\u0016",
+       "\t\t\t\t\t\t\t",
+       "if",
+       "\t\t\t\t\t\t\t\t",
+       "\u0014"
+      ],
+      "dev_decode_maxcos": 0.1247
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9484,
+      "splithalf_floor": 0.984,
+      "dev_norm_over_b": 0.3239,
+      "dev_decode": [
+       "_",
+       ",",
+       ",.",
+       "-",
+       ".",
+       " and",
+       " &",
+       ")"
+      ],
+      "dev_decode_maxcos": 0.1859
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9661,
+      "splithalf_floor": 0.9836,
+      "dev_norm_over_b": 0.2699,
+      "dev_decode": [
+       "-",
+       "—\"",
+       "-,",
+       ".(",
+       " ($)",
+       ".\",",
+       "-\"",
+       "‑"
+      ],
+      "dev_decode_maxcos": 0.0896
+     },
+     "_pairwise": {
+      "digit|newline": 0.5466,
+      "digit|punct": 0.704,
+      "digit|space": 0.5561,
+      "digit|subword": 0.7078,
+      "digit|word_init": 0.6829,
+      "newline|punct": 0.6765,
+      "newline|space": 0.7286,
+      "newline|subword": 0.5781,
+      "newline|word_init": 0.5948,
+      "punct|space": 0.7137,
+      "punct|subword": 0.8242,
+      "punct|word_init": 0.8534,
+      "space|subword": 0.5876,
+      "space|word_init": 0.6062,
+      "subword|word_init": 0.9168
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " dilig",
+      " withd",
+      " proport",
+      " conclud",
+      " showc",
+      " encount",
+      " unnecess",
+      " enthusi"
+     ],
+     "maxcos": 0.1244
+    },
+    "code": {
+     "top": [
+      " dilig",
+      " surpr",
+      " confir",
+      " predec",
+      " fuckin",
+      " referen",
+      " aggro",
+      " entreprene"
+     ],
+     "maxcos": 0.1107
+    },
+    "prose_alt": {
+     "top": [
+      " dilig",
+      " showc",
+      " conclud",
+      " enthusi",
+      " proport",
+      " withd",
+      " glim",
+      " challeng"
+     ],
+     "maxcos": 0.1258
+    },
+    "random_tok": {
+     "top": [
+      " quotes",
+      "Typ",
+      " welf",
+      " unlaw",
+      " agency",
+      "oshenko",
+      " intellectual",
+      " Hud"
+     ],
+     "maxcos": 0.0618
+    },
+    "repeat_tok": {
+     "top": [
+      "Home",
+      ",.",
+      "User",
+      "Title",
+      "Inst",
+      "Researchers",
+      "QUEST",
+      "IN"
+     ],
+     "maxcos": 0.1396
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": " back",
+     "cls": "word_init",
+     "pos": 210,
+     "ctx": " rearward angular movement of the seat",
+     "cos_own_bhat": 0.3352,
+     "cos_prose_bhat": 0.3352,
+     "coef": 7.116,
+     "x_norm": 21.228
+    },
+    {
+     "corpus": "prose",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 80,
+     "ctx": " Telugu theatre.\n\nHistory",
+     "cos_own_bhat": 0.3465,
+     "cos_prose_bhat": 0.3465,
+     "coef": 7.482,
+     "x_norm": 21.591
+    },
+    {
+     "corpus": "prose",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 198,
+     "ctx": " char *buf, int size);",
+     "cos_own_bhat": 0.3565,
+     "cos_prose_bhat": 0.3565,
+     "coef": 7.91,
+     "x_norm": 22.186
+    },
+    {
+     "corpus": "code",
+     "tok": "%",
+     "cls": "punct",
+     "pos": 79,
+     "ctx": " 1% single-pair -> 77",
+     "cos_own_bhat": 0.381,
+     "cos_prose_bhat": 0.3272,
+     "coef": 7.773,
+     "x_norm": 20.404
+    },
+    {
+     "corpus": "code",
+     "tok": " the",
+     "cls": "word_init",
+     "pos": 121,
+     "ctx": "ically-cued) version of",
+     "cos_own_bhat": 0.4306,
+     "cos_prose_bhat": 0.3921,
+     "coef": 8.28,
+     "x_norm": 19.23
+    },
+    {
+     "corpus": "code",
+     "tok": " {",
+     "cls": "punct",
+     "pos": 188,
+     "ctx": ".\n    attn period->",
+     "cos_own_bhat": 0.4233,
+     "cos_prose_bhat": 0.2948,
+     "coef": 8.94,
+     "x_norm": 21.118
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " {",
+     "cls": "punct",
+     "pos": 214,
+     "ctx": "\n\t\t}\n\n\t\th3",
+     "cos_own_bhat": 0.3275,
+     "cos_prose_bhat": 0.2948,
+     "coef": 7.297,
+     "x_norm": 22.282
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " ded",
+     "cls": "word_init",
+     "pos": 106,
+     "ctx": " in length. The amino acid sequence",
+     "cos_own_bhat": 0.2986,
+     "cos_prose_bhat": 0.3051,
+     "coef": 6.51,
+     "x_norm": 21.799
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " imagination",
+     "cls": "word_init",
+     "pos": 230,
+     "ctx": " Medieval Society\n\nIn the popular",
+     "cos_own_bhat": 0.2648,
+     "cos_prose_bhat": 0.2673,
+     "coef": 5.694,
+     "x_norm": 21.504
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " Econom",
+     "cls": "word_init",
+     "pos": 66,
+     "ctx": "rsspectiveWASHINGTON▓iscopal DOWN incomp",
+     "cos_own_bhat": 0.5586,
+     "cos_prose_bhat": 0.2521,
+     "coef": 12.323,
+     "x_norm": 22.063
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " trades",
+     "cls": "word_init",
+     "pos": 86,
+     "ctx": "rump lacking triangular awa characterize",
+     "cos_own_bhat": 0.5706,
+     "cos_prose_bhat": 0.2757,
+     "coef": 12.394,
+     "x_norm": 21.721
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " seconds",
+     "cls": "word_init",
+     "pos": 49,
+     "ctx": "y spectacularoustic creeps 1918 Facalled",
+     "cos_own_bhat": 0.6848,
+     "cos_prose_bhat": 0.3235,
+     "coef": 14.931,
+     "x_norm": 21.804
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.3277,
+     "std": 0.0412,
+     "min": 0.0255,
+     "p01": 0.2426,
+     "p50": 0.3271,
+     "p99": 0.4218,
+     "max": 0.4772,
+     "frac_above_0.5": 0.0
+    },
+    "code": {
+     "mean": 0.3116,
+     "std": 0.037,
+     "min": 0.0242,
+     "p01": 0.2322,
+     "p50": 0.3111,
+     "p99": 0.3927,
+     "max": 0.4416,
+     "frac_above_0.5": 0.0
+    },
+    "prose_alt": {
+     "mean": 0.3152,
+     "std": 0.041,
+     "min": 0.0253,
+     "p01": 0.2275,
+     "p50": 0.3139,
+     "p99": 0.4135,
+     "max": 0.4608,
+     "frac_above_0.5": 0.0
+    },
+    "random_tok": {
+     "mean": 0.288,
+     "std": 0.0318,
+     "min": 0.0679,
+     "p01": 0.2162,
+     "p50": 0.2877,
+     "p99": 0.3488,
+     "max": 0.3787,
+     "frac_above_0.5": 0.0
+    },
+    "repeat_tok": {
+     "mean": 0.0503,
+     "std": 0.0,
+     "min": 0.0503,
+     "p01": 0.0503,
+     "p50": 0.0503,
+     "p99": 0.0503,
+     "max": 0.0503,
+     "frac_above_0.5": 0.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.3269,
+     "poscond_share_mean": 0.3616,
+     "poscond_share_p05": 0.3525,
+     "poscond_share_p95": 0.3722,
+     "cos_poscond_to_pooled_mean": 0.9041,
+     "resid_after_removing_bL_mean": 0.4263,
+     "splithalf_floor_mean": 0.6838
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.3852,
+     "poscond_share_mean": 0.4228,
+     "poscond_share_p05": 0.407,
+     "poscond_share_p95": 0.4378,
+     "cos_poscond_to_pooled_mean": 0.9111,
+     "resid_after_removing_bL_mean": 0.4104,
+     "splithalf_floor_mean": 0.7337
+    }
+   }
+  },
+  "22": {
+   "presence": {
+    "prose": {
+     "mean": 0.3266,
+     "std": 0.049,
+     "min": -0.0105,
+     "p01": 0.217,
+     "p50": 0.3267,
+     "p99": 0.4337,
+     "max": 0.4744,
+     "frac_above_0.5": 0.0,
+     "b_norm": 7.305,
+     "x_norm_mean": 22.467
+    },
+    "code": {
+     "mean": 0.4082,
+     "std": 0.0829,
+     "min": -0.0219,
+     "p01": 0.1985,
+     "p50": 0.4207,
+     "p99": 0.5605,
+     "max": 0.6096,
+     "frac_above_0.5": 0.1118,
+     "b_norm": 8.944,
+     "x_norm_mean": 22.068
+    },
+    "prose_alt": {
+     "mean": 0.3184,
+     "std": 0.0436,
+     "min": -0.0114,
+     "p01": 0.2236,
+     "p50": 0.3194,
+     "p99": 0.4162,
+     "max": 0.4688,
+     "frac_above_0.5": 0.0,
+     "b_norm": 7.19,
+     "x_norm_mean": 22.64
+    },
+    "random_tok": {
+     "mean": 0.5951,
+     "std": 0.1063,
+     "min": 0.0442,
+     "p01": 0.3427,
+     "p50": 0.6256,
+     "p99": 0.7443,
+     "max": 0.7879,
+     "frac_above_0.5": 0.7889,
+     "b_norm": 13.593,
+     "x_norm_mean": 22.85
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 6.468,
+     "x_norm_mean": 6.468
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.7566,
+     "prose_alt": 0.9709,
+     "random_tok": 0.4871,
+     "repeat_tok": 0.0387
+    },
+    "code": {
+     "prose": 0.7566,
+     "code": 1.0,
+     "prose_alt": 0.7367,
+     "random_tok": 0.4623,
+     "repeat_tok": 0.02
+    },
+    "prose_alt": {
+     "prose": 0.9709,
+     "code": 0.7367,
+     "prose_alt": 1.0,
+     "random_tok": 0.498,
+     "repeat_tok": 0.0397
+    },
+    "random_tok": {
+     "prose": 0.4871,
+     "code": 0.4623,
+     "prose_alt": 0.498,
+     "random_tok": 1.0,
+     "repeat_tok": 0.027
+    },
+    "repeat_tok": {
+     "prose": 0.0387,
+     "code": 0.02,
+     "prose_alt": 0.0397,
+     "random_tok": 0.027,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9375,
+    "code": 0.9884,
+    "prose_alt": 0.903,
+    "random_tok": 0.9963,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.7262,
+      "splithalf_floor": 0.774,
+      "dev_norm_over_b": 0.9654,
+      "dev_decode": [
+       "″",
+       " million",
+       "b",
+       "th",
+       "′",
+       "x",
+       "½",
+       "+"
+      ],
+      "dev_decode_maxcos": 0.186
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.6811,
+      "splithalf_floor": 0.9229,
+      "dev_norm_over_b": 0.9886,
+      "dev_decode": [
+       "This",
+       "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯",
+       "The",
+       "When",
+       "There",
+       "If",
+       "You",
+       "\"\"\""
+      ],
+      "dev_decode_maxcos": 0.1955
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.8956,
+      "splithalf_floor": 0.927,
+      "dev_norm_over_b": 0.5057,
+      "dev_decode": [
+       " although",
+       " whereas",
+       " However",
+       "000",
+       " This",
+       " Although",
+       "which",
+       " Additionally"
+      ],
+      "dev_decode_maxcos": 0.1387
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.5301,
+      "splithalf_floor": 0.6991,
+      "dev_norm_over_b": 1.5574,
+      "dev_decode": [
+       "'m",
+       "#",
+       "\"",
+       "'t",
+       "etc",
+       " literal",
+       "'d",
+       "'re"
+      ],
+      "dev_decode_maxcos": 0.111
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9267,
+      "splithalf_floor": 0.9223,
+      "dev_norm_over_b": 0.3961,
+      "dev_decode": [
+       "-",
+       "_",
+       "®",
+       "/",
+       "™",
+       " &",
+       " aka",
+       "'s"
+      ],
+      "dev_decode_maxcos": 0.1764
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9828,
+      "splithalf_floor": 0.9265,
+      "dev_norm_over_b": 0.1894,
+      "dev_decode": [
+       " encount",
+       " relatively",
+       " unnecess",
+       " proport",
+       " withd",
+       " the",
+       " behavi",
+       " both"
+      ],
+      "dev_decode_maxcos": 0.1436
+     },
+     "_pairwise": {
+      "digit|newline": 0.4707,
+      "digit|punct": 0.6613,
+      "digit|space": 0.4122,
+      "digit|subword": 0.7195,
+      "digit|word_init": 0.6653,
+      "newline|punct": 0.7197,
+      "newline|space": 0.6081,
+      "newline|subword": 0.581,
+      "newline|word_init": 0.6041,
+      "punct|space": 0.5638,
+      "punct|subword": 0.787,
+      "punct|word_init": 0.8267,
+      "space|subword": 0.4623,
+      "space|word_init": 0.4687,
+      "subword|word_init": 0.8809
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.7257,
+      "splithalf_floor": 0.8424,
+      "dev_norm_over_b": 0.8736,
+      "dev_decode": [
+       ")",
+       "″",
+       "b",
+       " million",
+       "D",
+       "️",
+       "200",
+       "."
+      ],
+      "dev_decode_maxcos": 0.132
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.6585,
+      "splithalf_floor": 0.9775,
+      "dev_norm_over_b": 0.9851,
+      "dev_decode": [
+       "    ",
+       "        ",
+       "            ",
+       "\"\"\"",
+       "                ",
+       "\u001a",
+       "       ",
+       "     "
+      ],
+      "dev_decode_maxcos": 0.2099
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9345,
+      "splithalf_floor": 0.9853,
+      "dev_norm_over_b": 0.3953,
+      "dev_decode": [
+       "sbm",
+       "the",
+       "?????-",
+       "pmwiki",
+       " ����",
+       "similar",
+       "א",
+       " )"
+      ],
+      "dev_decode_maxcos": 0.1329
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.7128,
+      "splithalf_floor": 0.9653,
+      "dev_norm_over_b": 0.9635,
+      "dev_decode": [
+       "#",
+       "\u001a",
+       "return",
+       "if",
+       "for",
+       "aditional",
+       "\u0016",
+       "isSpecial"
+      ],
+      "dev_decode_maxcos": 0.1483
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9479,
+      "splithalf_floor": 0.9845,
+      "dev_norm_over_b": 0.3259,
+      "dev_decode": [
+       "_",
+       ",",
+       ".",
+       "-",
+       ")",
+       "=",
+       " =",
+       "/"
+      ],
+      "dev_decode_maxcos": 0.2148
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9674,
+      "splithalf_floor": 0.9847,
+      "dev_norm_over_b": 0.2711,
+      "dev_decode": [
+       " encount",
+       ":'",
+       ".\",",
+       "-",
+       "-,",
+       " given",
+       " ('",
+       ".}"
+      ],
+      "dev_decode_maxcos": 0.0914
+     },
+     "_pairwise": {
+      "digit|newline": 0.5236,
+      "digit|punct": 0.67,
+      "digit|space": 0.5208,
+      "digit|subword": 0.7095,
+      "digit|word_init": 0.6637,
+      "newline|punct": 0.6378,
+      "newline|space": 0.674,
+      "newline|subword": 0.5489,
+      "newline|word_init": 0.5538,
+      "punct|space": 0.715,
+      "punct|subword": 0.8141,
+      "punct|word_init": 0.8523,
+      "space|subword": 0.5967,
+      "space|word_init": 0.6139,
+      "subword|word_init": 0.917
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " in",
+      " (",
+      ",",
+      " as",
+      " and",
+      " a",
+      " for",
+      " at"
+     ],
+     "maxcos": 0.1888
+    },
+    "code": {
+     "top": [
+      " (",
+      " *",
+      " in",
+      "_",
+      " for",
+      " +",
+      " un",
+      " 1"
+     ],
+     "maxcos": 0.1369
+    },
+    "prose_alt": {
+     "top": [
+      " in",
+      " as",
+      ",",
+      " (",
+      " a",
+      " for",
+      " and",
+      " at"
+     ],
+     "maxcos": 0.1868
+    },
+    "random_tok": {
+     "top": [
+      " f",
+      " g",
+      "/",
+      " and",
+      " or",
+      " re",
+      " h",
+      " welf"
+     ],
+     "maxcos": 0.0807
+    },
+    "repeat_tok": {
+     "top": [
+      "Home",
+      ",.",
+      "User",
+      "Title",
+      "Inst",
+      "QUEST",
+      "Researchers",
+      "Task"
+     ],
+     "maxcos": 0.1399
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": "ushing",
+     "cls": "subword",
+     "pos": 58,
+     "ctx": ". The most common complications are C",
+     "cos_own_bhat": 0.2513,
+     "cos_prose_bhat": 0.2513,
+     "coef": 6.041,
+     "x_norm": 24.037
+    },
+    {
+     "corpus": "prose",
+     "tok": " -",
+     "cls": "punct",
+     "pos": 151,
+     "ctx": " \\-the\n       \\-NN",
+     "cos_own_bhat": 0.313,
+     "cos_prose_bhat": 0.313,
+     "coef": 7.316,
+     "x_norm": 23.371
+    },
+    {
+     "corpus": "prose",
+     "tok": "42",
+     "cls": "digit",
+     "pos": 223,
+     "ctx": "de19-15e4-",
+     "cos_own_bhat": 0.3011,
+     "cos_prose_bhat": 0.3011,
+     "coef": 7.25,
+     "x_norm": 24.082
+    },
+    {
+     "corpus": "code",
+     "tok": " (",
+     "cls": "punct",
+     "pos": 44,
+     "ctx": "decode BOTH the subject identity",
+     "cos_own_bhat": 0.5316,
+     "cos_prose_bhat": 0.3668,
+     "coef": 10.976,
+     "x_norm": 20.647
+    },
+    {
+     "corpus": "code",
+     "tok": "  ",
+     "cls": "space",
+     "pos": 153,
+     "ctx": " matched norm -> pure norm control\n",
+     "cos_own_bhat": 0.4109,
+     "cos_prose_bhat": 0.3295,
+     "coef": 9.535,
+     "x_norm": 23.206
+    },
+    {
+     "corpus": "code",
+     "tok": " mean",
+     "cls": "word_init",
+     "pos": 131,
+     "ctx": "IVE role axis w_p =",
+     "cos_own_bhat": 0.4011,
+     "cos_prose_bhat": 0.3111,
+     "coef": 9.453,
+     "x_norm": 23.57
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 83,
+     "ctx": "x.net\"\n                  },",
+     "cos_own_bhat": 0.3813,
+     "cos_prose_bhat": 0.352,
+     "coef": 8.817,
+     "x_norm": 23.122
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " Y",
+     "cls": "word_init",
+     "pos": 216,
+     "ctx": "asm: YpX1 =",
+     "cos_own_bhat": 0.3572,
+     "cos_prose_bhat": 0.3445,
+     "coef": 7.655,
+     "x_norm": 21.432
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " c",
+     "cls": "word_init",
+     "pos": 91,
+     "ctx": "Act). The insert fragment of this",
+     "cos_own_bhat": 0.3588,
+     "cos_prose_bhat": 0.3695,
+     "coef": 7.995,
+     "x_norm": 22.284
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "abilia",
+     "cls": "subword",
+     "pos": 234,
+     "ctx": "r Present Knock disadvant AAPolit engulf",
+     "cos_own_bhat": 0.7053,
+     "cos_prose_bhat": 0.3463,
+     "coef": 16.033,
+     "x_norm": 22.733
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " pity",
+     "cls": "word_init",
+     "pos": 160,
+     "ctx": "ortunities Mara548 unbearable NoteSn ARM",
+     "cos_own_bhat": 0.6991,
+     "cos_prose_bhat": 0.3031,
+     "coef": 16.069,
+     "x_norm": 22.985
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "ゴ",
+     "cls": "subword",
+     "pos": 181,
+     "ctx": "sozanne bulkyountain anal coward impacts",
+     "cos_own_bhat": 0.3486,
+     "cos_prose_bhat": 0.2114,
+     "coef": 8.377,
+     "x_norm": 24.033
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.3266,
+     "std": 0.049,
+     "min": -0.0105,
+     "p01": 0.217,
+     "p50": 0.3267,
+     "p99": 0.4337,
+     "max": 0.4744,
+     "frac_above_0.5": 0.0
+    },
+    "code": {
+     "mean": 0.3081,
+     "std": 0.0444,
+     "min": -0.0132,
+     "p01": 0.2091,
+     "p50": 0.3108,
+     "p99": 0.3967,
+     "max": 0.4304,
+     "frac_above_0.5": 0.0
+    },
+    "prose_alt": {
+     "mean": 0.3096,
+     "std": 0.0492,
+     "min": -0.0116,
+     "p01": 0.2079,
+     "p50": 0.3095,
+     "p99": 0.4172,
+     "max": 0.4822,
+     "frac_above_0.5": 0.0
+    },
+    "random_tok": {
+     "mean": 0.2897,
+     "std": 0.0308,
+     "min": 0.0539,
+     "p01": 0.2207,
+     "p50": 0.2946,
+     "p99": 0.3435,
+     "max": 0.3685,
+     "frac_above_0.5": 0.0
+    },
+    "repeat_tok": {
+     "mean": 0.0387,
+     "std": 0.0,
+     "min": 0.0387,
+     "p01": 0.0387,
+     "p50": 0.0387,
+     "p99": 0.0387,
+     "max": 0.0387,
+     "frac_above_0.5": 0.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.3252,
+     "poscond_share_mean": 0.3589,
+     "poscond_share_p05": 0.3466,
+     "poscond_share_p95": 0.3735,
+     "cos_poscond_to_pooled_mean": 0.9069,
+     "resid_after_removing_bL_mean": 0.4202,
+     "splithalf_floor_mean": 0.6783
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.4053,
+     "poscond_share_mean": 0.4403,
+     "poscond_share_p05": 0.4206,
+     "poscond_share_p95": 0.4646,
+     "cos_poscond_to_pooled_mean": 0.9203,
+     "resid_after_removing_bL_mean": 0.3892,
+     "splithalf_floor_mean": 0.7569
+    }
+   }
+  }
+ },
+ "random": {
+  "6": {
+   "presence": {
+    "prose": {
+     "mean": 0.6702,
+     "std": 0.0194,
+     "min": 0.5907,
+     "p01": 0.6221,
+     "p50": 0.6709,
+     "p99": 0.716,
+     "max": 0.7259,
+     "frac_above_0.5": 1.0,
+     "b_norm": 33.91,
+     "x_norm_mean": 50.596
+    },
+    "code": {
+     "mean": 0.6734,
+     "std": 0.02,
+     "min": 0.5947,
+     "p01": 0.6259,
+     "p50": 0.6731,
+     "p99": 0.7208,
+     "max": 0.7256,
+     "frac_above_0.5": 1.0,
+     "b_norm": 34.072,
+     "x_norm_mean": 50.596
+    },
+    "prose_alt": {
+     "mean": 0.6696,
+     "std": 0.0197,
+     "min": 0.5827,
+     "p01": 0.6214,
+     "p50": 0.6699,
+     "p99": 0.7173,
+     "max": 0.7216,
+     "frac_above_0.5": 1.0,
+     "b_norm": 33.878,
+     "x_norm_mean": 50.596
+    },
+    "random_tok": {
+     "mean": 0.6706,
+     "std": 0.017,
+     "min": 0.5996,
+     "p01": 0.6248,
+     "p50": 0.6719,
+     "p99": 0.7056,
+     "max": 0.7292,
+     "frac_above_0.5": 1.0,
+     "b_norm": 33.931,
+     "x_norm_mean": 50.596
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 50.597,
+     "x_norm_mean": 50.597
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.9935,
+     "prose_alt": 0.9986,
+     "random_tok": 0.9858,
+     "repeat_tok": 0.5067
+    },
+    "code": {
+     "prose": 0.9935,
+     "code": 1.0,
+     "prose_alt": 0.9934,
+     "random_tok": 0.9844,
+     "repeat_tok": 0.5185
+    },
+    "prose_alt": {
+     "prose": 0.9986,
+     "code": 0.9934,
+     "prose_alt": 1.0,
+     "random_tok": 0.9861,
+     "repeat_tok": 0.5069
+    },
+    "random_tok": {
+     "prose": 0.9858,
+     "code": 0.9844,
+     "prose_alt": 0.9861,
+     "random_tok": 1.0,
+     "repeat_tok": 0.4714
+    },
+    "repeat_tok": {
+     "prose": 0.5067,
+     "code": 0.5185,
+     "prose_alt": 0.5069,
+     "random_tok": 0.4714,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9968,
+    "code": 0.9972,
+    "prose_alt": 0.9948,
+    "random_tok": 0.9978,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.9816,
+      "splithalf_floor": 0.9663,
+      "dev_norm_over_b": 0.1946,
+      "dev_decode": [
+       " spont",
+       " arche",
+       " Gos",
+       "chwitz",
+       "                        ",
+       "210",
+       "ossom",
+       "0000000000000000"
+      ],
+      "dev_decode_maxcos": 0.0839
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.7286,
+      "splithalf_floor": 0.9967,
+      "dev_norm_over_b": 0.9936,
+      "dev_decode": [
+       " shaft",
+       " Being",
+       "amber",
+       " Shall",
+       " Chick",
+       " starring",
+       " synchronization",
+       " Gender"
+      ],
+      "dev_decode_maxcos": 0.1019
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9503,
+      "splithalf_floor": 0.9906,
+      "dev_norm_over_b": 0.3326,
+      "dev_decode": [
+       "undai",
+       " provocative",
+       " ants",
+       " correlated",
+       " voc",
+       " Derby",
+       " Garg",
+       " injuring"
+      ],
+      "dev_decode_maxcos": 0.0846
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.8705,
+      "splithalf_floor": 0.9355,
+      "dev_norm_over_b": 0.5518,
+      "dev_decode": [
+       " Sir",
+       "ensitivity",
+       "",
+       " Keith",
+       " Need",
+       "anguage",
+       " Huh",
+       " incapac"
+      ],
+      "dev_decode_maxcos": 0.0884
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9949,
+      "splithalf_floor": 0.9937,
+      "dev_norm_over_b": 0.1009,
+      "dev_decode": [
+       " NES",
+       " loan",
+       " Gos",
+       " Ley",
+       " biologist",
+       "inelli",
+       "iron",
+       "cop"
+      ],
+      "dev_decode_maxcos": 0.0787
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9966,
+      "splithalf_floor": 0.9966,
+      "dev_norm_over_b": 0.0821,
+      "dev_decode": [
+       " sugg",
+       "():",
+       " includes",
+       "sts",
+       " motors",
+       " approves",
+       " metric",
+       " physicist"
+      ],
+      "dev_decode_maxcos": 0.0895
+     },
+     "_pairwise": {
+      "digit|newline": 0.6885,
+      "digit|punct": 0.9185,
+      "digit|space": 0.8573,
+      "digit|subword": 0.9847,
+      "digit|word_init": 0.9803,
+      "newline|punct": 0.6599,
+      "newline|space": 0.6193,
+      "newline|subword": 0.6979,
+      "newline|word_init": 0.698,
+      "punct|space": 0.8142,
+      "punct|subword": 0.9332,
+      "punct|word_init": 0.929,
+      "space|subword": 0.8701,
+      "space|word_init": 0.8685,
+      "subword|word_init": 0.9939
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.9552,
+      "splithalf_floor": 0.9563,
+      "dev_norm_over_b": 0.3109,
+      "dev_decode": [
+       " Hammond",
+       " appeals",
+       " Zhang",
+       "Clock",
+       " Cyn",
+       " poetic",
+       " ;;",
+       " Norton"
+      ],
+      "dev_decode_maxcos": 0.0799
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.7438,
+      "splithalf_floor": 0.9976,
+      "dev_norm_over_b": 0.9506,
+      "dev_decode": [
+       " shaft",
+       " Being",
+       "amber",
+       " synchronization",
+       " Shall",
+       " starring",
+       " Gender",
+       " lack"
+      ],
+      "dev_decode_maxcos": 0.1008
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9822,
+      "splithalf_floor": 0.9952,
+      "dev_norm_over_b": 0.1921,
+      "dev_decode": [
+       " Earlier",
+       " voc",
+       " provocative",
+       " Garg",
+       "eries",
+       " TO",
+       " elector",
+       " collapse"
+      ],
+      "dev_decode_maxcos": 0.089
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.9122,
+      "splithalf_floor": 0.9801,
+      "dev_norm_over_b": 0.4419,
+      "dev_decode": [
+       " Need",
+       "",
+       "か",
+       " Keith",
+       " Nokia",
+       "ensitivity",
+       " Orbit",
+       "oses"
+      ],
+      "dev_decode_maxcos": 0.0776
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.995,
+      "splithalf_floor": 0.9963,
+      "dev_norm_over_b": 0.1002,
+      "dev_decode": [
+       " mammals",
+       "functional",
+       " NES",
+       "GRE",
+       " balanced",
+       "creator",
+       " scheme",
+       " 980"
+      ],
+      "dev_decode_maxcos": 0.0774
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9942,
+      "splithalf_floor": 0.9958,
+      "dev_norm_over_b": 0.1075,
+      "dev_decode": [
+       "sts",
+       " immensely",
+       " ro",
+       "akia",
+       "015",
+       " sugg",
+       "aye",
+       " exaggeration"
+      ],
+      "dev_decode_maxcos": 0.1062
+     },
+     "_pairwise": {
+      "digit|newline": 0.6807,
+      "digit|punct": 0.9304,
+      "digit|space": 0.8694,
+      "digit|subword": 0.9571,
+      "digit|word_init": 0.9528,
+      "newline|punct": 0.6864,
+      "newline|space": 0.6508,
+      "newline|subword": 0.7122,
+      "newline|word_init": 0.7115,
+      "punct|space": 0.8827,
+      "punct|subword": 0.9707,
+      "punct|word_init": 0.966,
+      "space|subword": 0.9065,
+      "space|word_init": 0.905,
+      "subword|word_init": 0.9916
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " agre",
+      "Mr",
+      " talking",
+      " Highlands",
+      " dil",
+      "041",
+      "nc",
+      " sideways"
+     ],
+     "maxcos": 0.0956
+    },
+    "code": {
+     "top": [
+      " agre",
+      "Mr",
+      " talking",
+      " Highlands",
+      " dil",
+      "041",
+      " White",
+      "ress"
+     ],
+     "maxcos": 0.0954
+    },
+    "prose_alt": {
+     "top": [
+      " agre",
+      "Mr",
+      " talking",
+      " dil",
+      " Highlands",
+      "041",
+      "nc",
+      "Honest"
+     ],
+     "maxcos": 0.0946
+    },
+    "random_tok": {
+     "top": [
+      " agre",
+      "Mr",
+      " talking",
+      "041",
+      " dil",
+      " Highlands",
+      "ress",
+      "sw"
+     ],
+     "maxcos": 0.0908
+    },
+    "repeat_tok": {
+     "top": [
+      " Highlands",
+      "pleted",
+      "handle",
+      " Stock",
+      " Zeit",
+      "program",
+      " wrist",
+      "imo"
+     ],
+     "maxcos": 0.0788
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": "ars",
+     "cls": "subword",
+     "pos": 60,
+     "ctx": " awards to smooching their cost",
+     "cos_own_bhat": 0.6518,
+     "cos_prose_bhat": 0.6518,
+     "coef": 32.978,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose",
+     "tok": "0",
+     "cls": "digit",
+     "pos": 149,
+     "ctx": " cells in different concentrations (p <",
+     "cos_own_bhat": 0.6473,
+     "cos_prose_bhat": 0.6473,
+     "coef": 32.752,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 67,
+     "ctx": "\nAdult/Couples Therapy",
+     "cos_own_bhat": 0.7032,
+     "cos_prose_bhat": 0.7032,
+     "coef": 35.579,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "code",
+     "tok": "red",
+     "cls": "subword",
+     "pos": 233,
+     "ctx": " the top attention writer: (ing",
+     "cos_own_bhat": 0.6826,
+     "cos_prose_bhat": 0.6809,
+     "coef": 34.535,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "code",
+     "tok": "n",
+     "cls": "subword",
+     "pos": 98,
+     "ctx": "Test whether the centered map s(",
+     "cos_own_bhat": 0.7007,
+     "cos_prose_bhat": 0.6911,
+     "coef": 35.451,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "code",
+     "tok": "|",
+     "cls": "punct",
+     "pos": 200,
+     "ctx": "MANIFOLD (max|cos",
+     "cos_own_bhat": 0.6551,
+     "cos_prose_bhat": 0.6478,
+     "coef": 33.144,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": ":",
+     "cls": "punct",
+     "pos": 180,
+     "ctx": " */\n\n/* qhasm",
+     "cos_own_bhat": 0.6604,
+     "cos_prose_bhat": 0.6546,
+     "coef": 33.412,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " of",
+     "cls": "word_init",
+     "pos": 169,
+     "ctx": "ization and self-esteem are some",
+     "cos_own_bhat": 0.6869,
+     "cos_prose_bhat": 0.6883,
+     "coef": 34.755,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": "2",
+     "cls": "digit",
+     "pos": 238,
+     "ctx": "NlulaMuP3n",
+     "cos_own_bhat": 0.659,
+     "cos_prose_bhat": 0.657,
+     "coef": 33.343,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " 525",
+     "cls": "digit",
+     "pos": 113,
+     "ctx": "Initialized All 490urse quarrel Meshikes",
+     "cos_own_bhat": 0.6646,
+     "cos_prose_bhat": 0.6558,
+     "coef": 33.624,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " Buch",
+     "cls": "word_init",
+     "pos": 253,
+     "ctx": "Returngive CARD.: Memoryittens Tau",
+     "cos_own_bhat": 0.685,
+     "cos_prose_bhat": 0.6745,
+     "coef": 34.66,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "hid",
+     "cls": "subword",
+     "pos": 164,
+     "ctx": "ring genuineains paycheckinner patriotic",
+     "cos_own_bhat": 0.6792,
+     "cos_prose_bhat": 0.667,
+     "coef": 34.366,
+     "x_norm": 50.596
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.6702,
+     "std": 0.0194,
+     "min": 0.5907,
+     "p01": 0.6221,
+     "p50": 0.6709,
+     "p99": 0.716,
+     "max": 0.7259,
+     "frac_above_0.5": 1.0
+    },
+    "code": {
+     "mean": 0.669,
+     "std": 0.0204,
+     "min": 0.5916,
+     "p01": 0.6179,
+     "p50": 0.67,
+     "p99": 0.715,
+     "max": 0.724,
+     "frac_above_0.5": 1.0
+    },
+    "prose_alt": {
+     "mean": 0.6686,
+     "std": 0.0197,
+     "min": 0.5828,
+     "p01": 0.6206,
+     "p50": 0.669,
+     "p99": 0.7147,
+     "max": 0.7203,
+     "frac_above_0.5": 1.0
+    },
+    "random_tok": {
+     "mean": 0.6611,
+     "std": 0.017,
+     "min": 0.5918,
+     "p01": 0.6157,
+     "p50": 0.6624,
+     "p99": 0.6961,
+     "max": 0.714,
+     "frac_above_0.5": 1.0
+    },
+    "repeat_tok": {
+     "mean": 0.5067,
+     "std": 0.0,
+     "min": 0.5067,
+     "p01": 0.5067,
+     "p50": 0.5067,
+     "p99": 0.5067,
+     "max": 0.5067,
+     "frac_above_0.5": 1.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.6702,
+     "poscond_share_mean": 0.6812,
+     "poscond_share_p05": 0.6617,
+     "poscond_share_p95": 0.6928,
+     "cos_poscond_to_pooled_mean": 0.9843,
+     "resid_after_removing_bL_mean": 0.176,
+     "splithalf_floor_mean": 0.9376
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.6734,
+     "poscond_share_mean": 0.6862,
+     "poscond_share_p05": 0.6671,
+     "poscond_share_p95": 0.6969,
+     "cos_poscond_to_pooled_mean": 0.9813,
+     "resid_after_removing_bL_mean": 0.1922,
+     "splithalf_floor_mean": 0.9269
+    }
+   }
+  },
+  "10": {
+   "presence": {
+    "prose": {
+     "mean": 0.7071,
+     "std": 0.0194,
+     "min": 0.6098,
+     "p01": 0.6551,
+     "p50": 0.7079,
+     "p99": 0.7531,
+     "max": 0.7631,
+     "frac_above_0.5": 1.0,
+     "b_norm": 35.777,
+     "x_norm_mean": 50.596
+    },
+    "code": {
+     "mean": 0.7108,
+     "std": 0.0191,
+     "min": 0.6162,
+     "p01": 0.66,
+     "p50": 0.7116,
+     "p99": 0.7581,
+     "max": 0.7642,
+     "frac_above_0.5": 1.0,
+     "b_norm": 35.966,
+     "x_norm_mean": 50.596
+    },
+    "prose_alt": {
+     "mean": 0.7066,
+     "std": 0.0196,
+     "min": 0.6267,
+     "p01": 0.6566,
+     "p50": 0.7075,
+     "p99": 0.7559,
+     "max": 0.7612,
+     "frac_above_0.5": 1.0,
+     "b_norm": 35.751,
+     "x_norm_mean": 50.596
+    },
+    "random_tok": {
+     "mean": 0.7097,
+     "std": 0.0177,
+     "min": 0.6243,
+     "p01": 0.6592,
+     "p50": 0.7117,
+     "p99": 0.7435,
+     "max": 0.7617,
+     "frac_above_0.5": 1.0,
+     "b_norm": 35.906,
+     "x_norm_mean": 50.596
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 50.596,
+     "x_norm_mean": 50.596
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.9933,
+     "prose_alt": 0.9985,
+     "random_tok": 0.9861,
+     "repeat_tok": 0.5068
+    },
+    "code": {
+     "prose": 0.9933,
+     "code": 1.0,
+     "prose_alt": 0.9931,
+     "random_tok": 0.9852,
+     "repeat_tok": 0.5213
+    },
+    "prose_alt": {
+     "prose": 0.9985,
+     "code": 0.9931,
+     "prose_alt": 1.0,
+     "random_tok": 0.9864,
+     "repeat_tok": 0.5068
+    },
+    "random_tok": {
+     "prose": 0.9861,
+     "code": 0.9852,
+     "prose_alt": 0.9864,
+     "random_tok": 1.0,
+     "repeat_tok": 0.4764
+    },
+    "repeat_tok": {
+     "prose": 0.5068,
+     "code": 0.5213,
+     "prose_alt": 0.5068,
+     "random_tok": 0.4764,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9965,
+    "code": 0.9966,
+    "prose_alt": 0.9938,
+    "random_tok": 0.9973,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.9844,
+      "splithalf_floor": 0.9701,
+      "dev_norm_over_b": 0.1787,
+      "dev_decode": [
+       "\"]",
+       "tar",
+       " airport",
+       "ava",
+       " Fallon",
+       " Clinton",
+       " Interactive",
+       " SHAR"
+      ],
+      "dev_decode_maxcos": 0.0806
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.7698,
+      "splithalf_floor": 0.9962,
+      "dev_norm_over_b": 0.873,
+      "dev_decode": [
+       " shaft",
+       " accuser",
+       " expenditures",
+       " bag",
+       "bones",
+       " overl",
+       " enzyme",
+       " starring"
+      ],
+      "dev_decode_maxcos": 0.076
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9604,
+      "splithalf_floor": 0.9914,
+      "dev_norm_over_b": 0.2938,
+      "dev_decode": [
+       " provocative",
+       " Garg",
+       " ants",
+       "unctions",
+       " Analyst",
+       " cultured",
+       " fans",
+       "undai"
+      ],
+      "dev_decode_maxcos": 0.0848
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.8932,
+      "splithalf_floor": 0.9403,
+      "dev_norm_over_b": 0.4945,
+      "dev_decode": [
+       " Need",
+       " preferential",
+       "ribly",
+       "022",
+       " skeptical",
+       "debian",
+       " mantle",
+       "Jake"
+      ],
+      "dev_decode_maxcos": 0.09
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9962,
+      "splithalf_floor": 0.9938,
+      "dev_norm_over_b": 0.0875,
+      "dev_decode": [
+       " Gos",
+       " immedi",
+       "Different",
+       " Ley",
+       " Ult",
+       "aan",
+       " WikiLeaks",
+       " indications"
+      ],
+      "dev_decode_maxcos": 0.0898
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9974,
+      "splithalf_floor": 0.9963,
+      "dev_norm_over_b": 0.0722,
+      "dev_decode": [
+       " adjud",
+       " Artemis",
+       "():",
+       " ann",
+       "mg",
+       " Serious",
+       "sts",
+       " splendid"
+      ],
+      "dev_decode_maxcos": 0.0858
+     },
+     "_pairwise": {
+      "digit|newline": 0.7365,
+      "digit|punct": 0.9336,
+      "digit|space": 0.8847,
+      "digit|subword": 0.9871,
+      "digit|word_init": 0.9833,
+      "newline|punct": 0.7078,
+      "newline|space": 0.6764,
+      "newline|subword": 0.7471,
+      "newline|word_init": 0.7452,
+      "punct|space": 0.847,
+      "punct|subword": 0.9475,
+      "punct|word_init": 0.9439,
+      "space|subword": 0.894,
+      "space|word_init": 0.891,
+      "subword|word_init": 0.9951
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.9625,
+      "splithalf_floor": 0.9618,
+      "dev_norm_over_b": 0.2808,
+      "dev_decode": [
+       " notebook",
+       " Miguel",
+       " BMW",
+       "ictions",
+       "Try",
+       " wear",
+       " resign",
+       " VR"
+      ],
+      "dev_decode_maxcos": 0.0768
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.783,
+      "splithalf_floor": 0.9969,
+      "dev_norm_over_b": 0.8354,
+      "dev_decode": [
+       " overl",
+       " shaft",
+       " expenditures",
+       " object",
+       "bones",
+       " bag",
+       " likened",
+       " accuser"
+      ],
+      "dev_decode_maxcos": 0.0771
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9855,
+      "splithalf_floor": 0.9951,
+      "dev_norm_over_b": 0.1734,
+      "dev_decode": [
+       " provocative",
+       " Garg",
+       " Earlier",
+       " Infinity",
+       "orld",
+       " neat",
+       " confessions",
+       " Diary"
+      ],
+      "dev_decode_maxcos": 0.09
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.9309,
+      "splithalf_floor": 0.982,
+      "dev_norm_over_b": 0.3877,
+      "dev_decode": [
+       " Need",
+       " Katy",
+       "022",
+       " Barney",
+       " preferential",
+       "metics",
+       "oses",
+       " automotive"
+      ],
+      "dev_decode_maxcos": 0.0906
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.996,
+      "splithalf_floor": 0.9959,
+      "dev_norm_over_b": 0.0891,
+      "dev_decode": [
+       "functional",
+       " 181",
+       " grounded",
+       "183",
+       " extrater",
+       " 980",
+       " frustration",
+       " mammals"
+      ],
+      "dev_decode_maxcos": 0.0819
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9952,
+      "splithalf_floor": 0.9953,
+      "dev_norm_over_b": 0.0978,
+      "dev_decode": [
+       "sts",
+       " sugg",
+       "icating",
+       " Feeling",
+       " ann",
+       "org",
+       " injured",
+       "akia"
+      ],
+      "dev_decode_maxcos": 0.1036
+     },
+     "_pairwise": {
+      "digit|newline": 0.728,
+      "digit|punct": 0.9407,
+      "digit|space": 0.8945,
+      "digit|subword": 0.9644,
+      "digit|word_init": 0.9613,
+      "newline|punct": 0.7343,
+      "newline|space": 0.7059,
+      "newline|subword": 0.7585,
+      "newline|word_init": 0.7562,
+      "punct|space": 0.9064,
+      "punct|subword": 0.976,
+      "punct|word_init": 0.972,
+      "space|subword": 0.9273,
+      "space|word_init": 0.9244,
+      "subword|word_init": 0.9928
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      "Mr",
+      " agre",
+      " 1968",
+      " spider",
+      " Balk",
+      " Climate",
+      " modified",
+      " Kraft"
+     ],
+     "maxcos": 0.0963
+    },
+    "code": {
+     "top": [
+      "Mr",
+      " agre",
+      " Climate",
+      " spider",
+      " Balk",
+      " modified",
+      "haus",
+      " ore"
+     ],
+     "maxcos": 0.0954
+    },
+    "prose_alt": {
+     "top": [
+      "Mr",
+      " agre",
+      " 1968",
+      " spider",
+      " Balk",
+      " Climate",
+      " Kraft",
+      " modified"
+     ],
+     "maxcos": 0.0945
+    },
+    "random_tok": {
+     "top": [
+      "Mr",
+      " agre",
+      " Climate",
+      " 1968",
+      " modified",
+      " earthqu",
+      " spider",
+      " ore"
+     ],
+     "maxcos": 0.0986
+    },
+    "repeat_tok": {
+     "top": [
+      "civil",
+      " Press",
+      " Fol",
+      " controversy",
+      " imaging",
+      " beware",
+      "pleted",
+      " jun"
+     ],
+     "maxcos": 0.0809
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": "er",
+     "cls": "subword",
+     "pos": 133,
+     "ctx": " The Huffington Post.\n\nCare",
+     "cos_own_bhat": 0.6878,
+     "cos_prose_bhat": 0.6878,
+     "coef": 34.798,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose",
+     "tok": " P",
+     "cls": "word_init",
+     "pos": 113,
+     "ctx": ", FCM; the expression of",
+     "cos_own_bhat": 0.6981,
+     "cos_prose_bhat": 0.6981,
+     "coef": 35.319,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose",
+     "tok": "ric",
+     "cls": "subword",
+     "pos": 87,
+     "ctx": " immunized animals, intragast",
+     "cos_own_bhat": 0.6954,
+     "cos_prose_bhat": 0.6954,
+     "coef": 35.186,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": " residual",
+     "cls": "word_init",
+     "pos": 26,
+     "ctx": ", cos with the mover's",
+     "cos_own_bhat": 0.6749,
+     "cos_prose_bhat": 0.6745,
+     "coef": 34.149,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "code",
+     "tok": "_",
+     "cls": "punct",
+     "pos": 161,
+     "ctx": "target_text, add_special",
+     "cos_own_bhat": 0.7092,
+     "cos_prose_bhat": 0.6917,
+     "coef": 35.883,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "code",
+     "tok": "pret",
+     "cls": "subword",
+     "pos": 58,
+     "ctx": " = AutoTokenizer.from_",
+     "cos_own_bhat": 0.7187,
+     "cos_prose_bhat": 0.7156,
+     "coef": 36.362,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": "O",
+     "cls": "subword",
+     "pos": 102,
+     "ctx": " as co-chair of the CIS",
+     "cos_own_bhat": 0.7145,
+     "cos_prose_bhat": 0.7139,
+     "coef": 36.15,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " 4000",
+     "cls": "digit",
+     "pos": 190,
+     "ctx": " proposal at Turin was awarded a",
+     "cos_own_bhat": 0.7096,
+     "cos_prose_bhat": 0.71,
+     "coef": 35.905,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": "J",
+     "cls": "subword",
+     "pos": 246,
+     "ctx": "brvKWEqk/",
+     "cos_own_bhat": 0.7231,
+     "cos_prose_bhat": 0.723,
+     "coef": 36.585,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "hitting",
+     "cls": "subword",
+     "pos": 113,
+     "ctx": " True neoISA aidicro FIRST num",
+     "cos_own_bhat": 0.7195,
+     "cos_prose_bhat": 0.7088,
+     "coef": 36.404,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "pres",
+     "cls": "subword",
+     "pos": 48,
+     "ctx": " scraping Hong Coin Wah DatECA25",
+     "cos_own_bhat": 0.6801,
+     "cos_prose_bhat": 0.6667,
+     "coef": 34.411,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " pessim",
+     "cls": "word_init",
+     "pos": 120,
+     "ctx": " jaws Peach qualifiers Soundersocese Pix",
+     "cos_own_bhat": 0.7148,
+     "cos_prose_bhat": 0.7086,
+     "coef": 36.168,
+     "x_norm": 50.597
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.7071,
+     "std": 0.0194,
+     "min": 0.6098,
+     "p01": 0.6551,
+     "p50": 0.7079,
+     "p99": 0.7531,
+     "max": 0.7631,
+     "frac_above_0.5": 1.0
+    },
+    "code": {
+     "mean": 0.7061,
+     "std": 0.0195,
+     "min": 0.6135,
+     "p01": 0.655,
+     "p50": 0.7066,
+     "p99": 0.7544,
+     "max": 0.7615,
+     "frac_above_0.5": 1.0
+    },
+    "prose_alt": {
+     "mean": 0.7055,
+     "std": 0.0197,
+     "min": 0.6228,
+     "p01": 0.6548,
+     "p50": 0.7065,
+     "p99": 0.7535,
+     "max": 0.7593,
+     "frac_above_0.5": 1.0
+    },
+    "random_tok": {
+     "mean": 0.6998,
+     "std": 0.0178,
+     "min": 0.6177,
+     "p01": 0.6499,
+     "p50": 0.7018,
+     "p99": 0.7342,
+     "max": 0.7496,
+     "frac_above_0.5": 1.0
+    },
+    "repeat_tok": {
+     "mean": 0.5068,
+     "std": 0.0,
+     "min": 0.5068,
+     "p01": 0.5068,
+     "p50": 0.5068,
+     "p99": 0.5068,
+     "max": 0.5068,
+     "frac_above_0.5": 1.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.7071,
+     "poscond_share_mean": 0.7166,
+     "poscond_share_p05": 0.6936,
+     "poscond_share_p95": 0.7286,
+     "cos_poscond_to_pooled_mean": 0.9873,
+     "resid_after_removing_bL_mean": 0.1584,
+     "splithalf_floor_mean": 0.9487
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.7108,
+     "poscond_share_mean": 0.7217,
+     "poscond_share_p05": 0.6961,
+     "poscond_share_p95": 0.733,
+     "cos_poscond_to_pooled_mean": 0.9849,
+     "resid_after_removing_bL_mean": 0.1728,
+     "splithalf_floor_mean": 0.9394
+    }
+   }
+  },
+  "14": {
+   "presence": {
+    "prose": {
+     "mean": 0.7362,
+     "std": 0.0201,
+     "min": 0.6416,
+     "p01": 0.6807,
+     "p50": 0.7374,
+     "p99": 0.7838,
+     "max": 0.7941,
+     "frac_above_0.5": 1.0,
+     "b_norm": 37.249,
+     "x_norm_mean": 50.596
+    },
+    "code": {
+     "mean": 0.7406,
+     "std": 0.0194,
+     "min": 0.6433,
+     "p01": 0.6864,
+     "p50": 0.7417,
+     "p99": 0.7877,
+     "max": 0.7942,
+     "frac_above_0.5": 1.0,
+     "b_norm": 37.469,
+     "x_norm_mean": 50.596
+    },
+    "prose_alt": {
+     "mean": 0.7363,
+     "std": 0.0203,
+     "min": 0.6502,
+     "p01": 0.6831,
+     "p50": 0.7375,
+     "p99": 0.7859,
+     "max": 0.7906,
+     "frac_above_0.5": 1.0,
+     "b_norm": 37.252,
+     "x_norm_mean": 50.596
+    },
+    "random_tok": {
+     "mean": 0.7402,
+     "std": 0.018,
+     "min": 0.6537,
+     "p01": 0.6864,
+     "p50": 0.7427,
+     "p99": 0.7731,
+     "max": 0.7916,
+     "frac_above_0.5": 1.0,
+     "b_norm": 37.451,
+     "x_norm_mean": 50.596
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 50.596,
+     "x_norm_mean": 50.596
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.9936,
+     "prose_alt": 0.9985,
+     "random_tok": 0.987,
+     "repeat_tok": 0.5093
+    },
+    "code": {
+     "prose": 0.9936,
+     "code": 1.0,
+     "prose_alt": 0.9932,
+     "random_tok": 0.9865,
+     "repeat_tok": 0.5243
+    },
+    "prose_alt": {
+     "prose": 0.9985,
+     "code": 0.9932,
+     "prose_alt": 1.0,
+     "random_tok": 0.9873,
+     "repeat_tok": 0.5093
+    },
+    "random_tok": {
+     "prose": 0.987,
+     "code": 0.9865,
+     "prose_alt": 0.9873,
+     "random_tok": 1.0,
+     "repeat_tok": 0.4836
+    },
+    "repeat_tok": {
+     "prose": 0.5093,
+     "code": 0.5243,
+     "prose_alt": 0.5093,
+     "random_tok": 0.4836,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9965,
+    "code": 0.9963,
+    "prose_alt": 0.9934,
+    "random_tok": 0.997,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.9866,
+      "splithalf_floor": 0.9715,
+      "dev_norm_over_b": 0.1654,
+      "dev_decode": [
+       " reputation",
+       " Clinton",
+       "KNOWN",
+       " consequential",
+       " looked",
+       " Yosemite",
+       " Guns",
+       " Pesh"
+      ],
+      "dev_decode_maxcos": 0.0784
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.8026,
+      "splithalf_floor": 0.9957,
+      "dev_norm_over_b": 0.7823,
+      "dev_decode": [
+       "481",
+       " darker",
+       "anged",
+       " bag",
+       " Fed",
+       " overl",
+       "WB",
+       " likened"
+      ],
+      "dev_decode_maxcos": 0.0803
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9674,
+      "splithalf_floor": 0.9919,
+      "dev_norm_over_b": 0.2649,
+      "dev_decode": [
+       " provocative",
+       " gadgets",
+       "undai",
+       " incrim",
+       " Garg",
+       " quarterback",
+       " patri",
+       " dom"
+      ],
+      "dev_decode_maxcos": 0.0887
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.9113,
+      "splithalf_floor": 0.9445,
+      "dev_norm_over_b": 0.4466,
+      "dev_decode": [
+       " preferential",
+       " Need",
+       " territory",
+       " nom",
+       " xml",
+       "cium",
+       "aped",
+       "gb"
+      ],
+      "dev_decode_maxcos": 0.091
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9969,
+      "splithalf_floor": 0.9942,
+      "dev_norm_over_b": 0.0789,
+      "dev_decode": [
+       " immedi",
+       " Ley",
+       " Gos",
+       "",
+       " LI",
+       " textual",
+       " WikiLeaks",
+       "ettel"
+      ],
+      "dev_decode_maxcos": 0.083
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9979,
+      "splithalf_floor": 0.9963,
+      "dev_norm_over_b": 0.0652,
+      "dev_decode": [
+       "liam",
+       " tast",
+       " adjud",
+       " assessments",
+       " URL",
+       " soared",
+       " Before",
+       " ann"
+      ],
+      "dev_decode_maxcos": 0.081
+     },
+     "_pairwise": {
+      "digit|newline": 0.7717,
+      "digit|punct": 0.945,
+      "digit|space": 0.9052,
+      "digit|subword": 0.9889,
+      "digit|word_init": 0.9857,
+      "newline|punct": 0.7497,
+      "newline|space": 0.7212,
+      "newline|subword": 0.783,
+      "newline|word_init": 0.7823,
+      "punct|space": 0.8695,
+      "punct|subword": 0.9572,
+      "punct|word_init": 0.9538,
+      "space|subword": 0.9131,
+      "space|word_init": 0.91,
+      "subword|word_init": 0.996
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.9685,
+      "splithalf_floor": 0.9657,
+      "dev_norm_over_b": 0.2561,
+      "dev_decode": [
+       " BMW",
+       " demands",
+       " food",
+       " enqu",
+       " consequential",
+       " abuse",
+       " subcommittee",
+       "pie"
+      ],
+      "dev_decode_maxcos": 0.0815
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.8141,
+      "splithalf_floor": 0.9966,
+      "dev_norm_over_b": 0.7485,
+      "dev_decode": [
+       " likened",
+       " darker",
+       "481",
+       " Fed",
+       " overl",
+       " object",
+       " Vaughan",
+       "Oct"
+      ],
+      "dev_decode_maxcos": 0.0786
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.988,
+      "splithalf_floor": 0.9951,
+      "dev_norm_over_b": 0.157,
+      "dev_decode": [
+       " provocative",
+       "igrant",
+       " NASL",
+       " Often",
+       "cue",
+       " overcrowd",
+       " effectively",
+       " saints"
+      ],
+      "dev_decode_maxcos": 0.0996
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.9426,
+      "splithalf_floor": 0.9838,
+      "dev_norm_over_b": 0.3508,
+      "dev_decode": [
+       " Huh",
+       " preferential",
+       " Need",
+       "metics",
+       "})",
+       "",
+       " circumstances",
+       " hunting"
+      ],
+      "dev_decode_maxcos": 0.0826
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9967,
+      "splithalf_floor": 0.9957,
+      "dev_norm_over_b": 0.0809,
+      "dev_decode": [
+       "osa",
+       " 181",
+       "cens",
+       " grounded",
+       " 980",
+       "req",
+       "183",
+       "1999"
+      ],
+      "dev_decode_maxcos": 0.08
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9961,
+      "splithalf_floor": 0.9951,
+      "dev_norm_over_b": 0.0881,
+      "dev_decode": [
+       "sts",
+       " criminally",
+       " tast",
+       " sugg",
+       " loneliness",
+       " bum",
+       " grit",
+       " adjud"
+      ],
+      "dev_decode_maxcos": 0.0869
+     },
+     "_pairwise": {
+      "digit|newline": 0.7624,
+      "digit|punct": 0.9506,
+      "digit|space": 0.9102,
+      "digit|subword": 0.9704,
+      "digit|word_init": 0.9679,
+      "newline|punct": 0.7725,
+      "newline|space": 0.746,
+      "newline|subword": 0.7936,
+      "newline|word_init": 0.7922,
+      "punct|space": 0.9222,
+      "punct|subword": 0.9802,
+      "punct|word_init": 0.977,
+      "space|subword": 0.9401,
+      "space|word_init": 0.9372,
+      "subword|word_init": 0.994
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      "IVE",
+      " spider",
+      "reens",
+      " colored",
+      " designs",
+      "Mr",
+      " tons",
+      "aths"
+     ],
+     "maxcos": 0.0939
+    },
+    "code": {
+     "top": [
+      "IVE",
+      " spider",
+      "reens",
+      " colored",
+      "Mr",
+      " designs",
+      " handled",
+      " tons"
+     ],
+     "maxcos": 0.0929
+    },
+    "prose_alt": {
+     "top": [
+      "IVE",
+      " spider",
+      "reens",
+      " colored",
+      " designs",
+      "Mr",
+      " tons",
+      " mistress"
+     ],
+     "maxcos": 0.0935
+    },
+    "random_tok": {
+     "top": [
+      "IVE",
+      " spider",
+      "reens",
+      " colored",
+      "Mr",
+      " handled",
+      " designs",
+      "aths"
+     ],
+     "maxcos": 0.0845
+    },
+    "repeat_tok": {
+     "top": [
+      " jun",
+      " unman",
+      " beware",
+      "improve",
+      "Will",
+      " controversy",
+      " Cavs",
+      "cloneembedreportprint"
+     ],
+     "maxcos": 0.0876
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": "4",
+     "cls": "digit",
+     "pos": 160,
+     "ctx": "5a-6d54-",
+     "cos_own_bhat": 0.7149,
+     "cos_prose_bhat": 0.7149,
+     "coef": 36.174,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose",
+     "tok": "MAN",
+     "cls": "subword",
+     "pos": 200,
+     "ctx": "{ID: 2 CODE: \"",
+     "cos_own_bhat": 0.7426,
+     "cos_prose_bhat": 0.7426,
+     "coef": 37.571,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose",
+     "tok": "by",
+     "cls": "subword",
+     "pos": 100,
+     "ctx": " Origins of the Black Act\n\n",
+     "cos_own_bhat": 0.728,
+     "cos_prose_bhat": 0.728,
+     "coef": 36.833,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": "OS",
+     "cls": "subword",
+     "pos": 186,
+     "ctx": " period / preamble / B",
+     "cos_own_bhat": 0.7418,
+     "cos_prose_bhat": 0.7404,
+     "coef": 37.533,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": "\n",
+     "cls": "newline",
+     "pos": 122,
+     "ctx": "...] on the - side.\n",
+     "cos_own_bhat": 0.7856,
+     "cos_prose_bhat": 0.7841,
+     "coef": 39.75,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": " pre",
+     "cls": "word_init",
+     "pos": 181,
+     "ctx": " / 'by' / period /",
+     "cos_own_bhat": 0.7737,
+     "cos_prose_bhat": 0.7761,
+     "coef": 39.148,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " project",
+     "cls": "word_init",
+     "pos": 44,
+     "ctx": " use MSBuild.exe to build",
+     "cos_own_bhat": 0.7237,
+     "cos_prose_bhat": 0.7214,
+     "coef": 36.619,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " storage",
+     "cls": "word_init",
+     "pos": 218,
+     "ctx": "-driven company with a mix of",
+     "cos_own_bhat": 0.731,
+     "cos_prose_bhat": 0.7296,
+     "coef": 36.987,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " accept",
+     "cls": "word_init",
+     "pos": 76,
+     "ctx": "ation contained herein. All readers must",
+     "cos_own_bhat": 0.7432,
+     "cos_prose_bhat": 0.7416,
+     "coef": 37.603,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " eg",
+     "cls": "word_init",
+     "pos": 180,
+     "ctx": "PSP environments faresridges demonic cod",
+     "cos_own_bhat": 0.7428,
+     "cos_prose_bhat": 0.7332,
+     "coef": 37.581,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " exhib",
+     "cls": "word_init",
+     "pos": 38,
+     "ctx": "ed583rition selecting §§ branchingyright",
+     "cos_own_bhat": 0.7038,
+     "cos_prose_bhat": 0.6932,
+     "coef": 35.61,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": "ad",
+     "cls": "subword",
+     "pos": 196,
+     "ctx": "lties Alm collectors fend investigates ↑",
+     "cos_own_bhat": 0.7424,
+     "cos_prose_bhat": 0.7314,
+     "coef": 37.561,
+     "x_norm": 50.597
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.7362,
+     "std": 0.0201,
+     "min": 0.6416,
+     "p01": 0.6807,
+     "p50": 0.7374,
+     "p99": 0.7838,
+     "max": 0.7941,
+     "frac_above_0.5": 1.0
+    },
+    "code": {
+     "mean": 0.7358,
+     "std": 0.0199,
+     "min": 0.6363,
+     "p01": 0.6811,
+     "p50": 0.7363,
+     "p99": 0.7858,
+     "max": 0.792,
+     "frac_above_0.5": 1.0
+    },
+    "prose_alt": {
+     "mean": 0.7351,
+     "std": 0.0204,
+     "min": 0.6435,
+     "p01": 0.6821,
+     "p50": 0.7364,
+     "p99": 0.7849,
+     "max": 0.7892,
+     "frac_above_0.5": 1.0
+    },
+    "random_tok": {
+     "mean": 0.7306,
+     "std": 0.0181,
+     "min": 0.6466,
+     "p01": 0.6771,
+     "p50": 0.7331,
+     "p99": 0.764,
+     "max": 0.7846,
+     "frac_above_0.5": 1.0
+    },
+    "repeat_tok": {
+     "mean": 0.5093,
+     "std": 0.0,
+     "min": 0.5093,
+     "p01": 0.5093,
+     "p50": 0.5093,
+     "p99": 0.5093,
+     "max": 0.5093,
+     "frac_above_0.5": 1.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.7362,
+     "poscond_share_mean": 0.7446,
+     "poscond_share_p05": 0.7191,
+     "poscond_share_p95": 0.7572,
+     "cos_poscond_to_pooled_mean": 0.9894,
+     "resid_after_removing_bL_mean": 0.1449,
+     "splithalf_floor_mean": 0.9565
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.7406,
+     "poscond_share_mean": 0.75,
+     "poscond_share_p05": 0.7222,
+     "poscond_share_p95": 0.7627,
+     "cos_poscond_to_pooled_mean": 0.9874,
+     "resid_after_removing_bL_mean": 0.158,
+     "splithalf_floor_mean": 0.9484
+    }
+   }
+  },
+  "22": {
+   "presence": {
+    "prose": {
+     "mean": 0.7646,
+     "std": 0.0203,
+     "min": 0.6602,
+     "p01": 0.7039,
+     "p50": 0.7672,
+     "p99": 0.8034,
+     "max": 0.813,
+     "frac_above_0.5": 1.0,
+     "b_norm": 38.688,
+     "x_norm_mean": 50.596
+    },
+    "code": {
+     "mean": 0.7706,
+     "std": 0.019,
+     "min": 0.6783,
+     "p01": 0.7128,
+     "p50": 0.773,
+     "p99": 0.8075,
+     "max": 0.8159,
+     "frac_above_0.5": 1.0,
+     "b_norm": 38.987,
+     "x_norm_mean": 50.596
+    },
+    "prose_alt": {
+     "mean": 0.7644,
+     "std": 0.0201,
+     "min": 0.6694,
+     "p01": 0.7081,
+     "p50": 0.7667,
+     "p99": 0.8039,
+     "max": 0.8096,
+     "frac_above_0.5": 1.0,
+     "b_norm": 38.675,
+     "x_norm_mean": 50.596
+    },
+    "random_tok": {
+     "mean": 0.77,
+     "std": 0.0188,
+     "min": 0.6668,
+     "p01": 0.7127,
+     "p50": 0.7732,
+     "p99": 0.8019,
+     "max": 0.8218,
+     "frac_above_0.5": 1.0,
+     "b_norm": 38.961,
+     "x_norm_mean": 50.596
+    },
+    "repeat_tok": {
+     "mean": 1.0,
+     "std": 0.0,
+     "min": 1.0,
+     "p01": 1.0,
+     "p50": 1.0,
+     "p99": 1.0,
+     "max": 1.0,
+     "frac_above_0.5": 1.0,
+     "b_norm": 50.596,
+     "x_norm_mean": 50.596
+    }
+   },
+   "identity": {
+    "prose": {
+     "prose": 1.0,
+     "code": 0.9933,
+     "prose_alt": 0.9984,
+     "random_tok": 0.9873,
+     "repeat_tok": 0.5249
+    },
+    "code": {
+     "prose": 0.9933,
+     "code": 1.0,
+     "prose_alt": 0.993,
+     "random_tok": 0.987,
+     "repeat_tok": 0.5431
+    },
+    "prose_alt": {
+     "prose": 0.9984,
+     "code": 0.993,
+     "prose_alt": 1.0,
+     "random_tok": 0.9877,
+     "repeat_tok": 0.5242
+    },
+    "random_tok": {
+     "prose": 0.9873,
+     "code": 0.987,
+     "prose_alt": 0.9877,
+     "random_tok": 1.0,
+     "repeat_tok": 0.5018
+    },
+    "repeat_tok": {
+     "prose": 0.5249,
+     "code": 0.5431,
+     "prose_alt": 0.5242,
+     "random_tok": 0.5018,
+     "repeat_tok": 1.0
+    }
+   },
+   "splithalf": {
+    "prose": 0.9962,
+    "code": 0.9956,
+    "prose_alt": 0.9924,
+    "random_tok": 0.9966,
+    "repeat_tok": 1.0
+   },
+   "classes": {
+    "prose": {
+     "digit": {
+      "n": 268,
+      "cos_to_global": 0.9883,
+      "splithalf_floor": 0.9733,
+      "dev_norm_over_b": 0.1542,
+      "dev_decode": [
+       " Transit",
+       " rooms",
+       " diversion",
+       " indications",
+       " triangle",
+       " Wine",
+       "omination",
+       " bir"
+      ],
+      "dev_decode_maxcos": 0.0776
+     },
+     "newline": {
+      "n": 360,
+      "cos_to_global": 0.8236,
+      "splithalf_floor": 0.9949,
+      "dev_norm_over_b": 0.7119,
+      "dev_decode": [
+       " overl",
+       "",
+       " expenditures",
+       " darker",
+       "WB",
+       "\u0017",
+       " defenseman",
+       " Hawai"
+      ],
+      "dev_decode_maxcos": 0.0881
+     },
+     "punct": {
+      "n": 1315,
+      "cos_to_global": 0.9736,
+      "splithalf_floor": 0.9921,
+      "dev_norm_over_b": 0.2371,
+      "dev_decode": [
+       " Fully",
+       " Quarterly",
+       " ├──",
+       " overcrowd",
+       " provocative",
+       " Analyst",
+       "",
+       "ashington"
+      ],
+      "dev_decode_maxcos": 0.0855
+     },
+     "space": {
+      "n": 52,
+      "cos_to_global": 0.9253,
+      "splithalf_floor": 0.945,
+      "dev_norm_over_b": 0.4072,
+      "dev_decode": [
+       " Need",
+       " preferential",
+       "cium",
+       " dominate",
+       " Huh",
+       "oper",
+       " territory",
+       "uden"
+      ],
+      "dev_decode_maxcos": 0.0889
+     },
+     "subword": {
+      "n": 1586,
+      "cos_to_global": 0.9974,
+      "splithalf_floor": 0.9943,
+      "dev_norm_over_b": 0.0726,
+      "dev_decode": [
+       "\"]",
+       "",
+       " SAT",
+       "material",
+       " Ult",
+       " ocean",
+       " burgeoning",
+       " subord"
+      ],
+      "dev_decode_maxcos": 0.0785
+     },
+     "word_init": {
+      "n": 5287,
+      "cos_to_global": 0.9983,
+      "splithalf_floor": 0.996,
+      "dev_norm_over_b": 0.0589,
+      "dev_decode": [
+       " soared",
+       " drone",
+       " splendid",
+       "inki",
+       " adjud",
+       " Imperial",
+       "outing",
+       "Tar"
+      ],
+      "dev_decode_maxcos": 0.0869
+     },
+     "_pairwise": {
+      "digit|newline": 0.7955,
+      "digit|punct": 0.9548,
+      "digit|space": 0.9212,
+      "digit|subword": 0.9901,
+      "digit|word_init": 0.9875,
+      "newline|punct": 0.7803,
+      "newline|space": 0.7544,
+      "newline|subword": 0.806,
+      "newline|word_init": 0.8059,
+      "punct|space": 0.8918,
+      "punct|subword": 0.9651,
+      "punct|word_init": 0.9625,
+      "space|subword": 0.9264,
+      "space|word_init": 0.9237,
+      "subword|word_init": 0.9966
+     }
+    },
+    "code": {
+     "digit": {
+      "n": 94,
+      "cos_to_global": 0.9749,
+      "splithalf_floor": 0.9685,
+      "dev_norm_over_b": 0.2275,
+      "dev_decode": [
+       " demands",
+       "isher",
+       " bodily",
+       " roses",
+       "",
+       " consequential",
+       " soundtrack",
+       " nuisance"
+      ],
+      "dev_decode_maxcos": 0.0808
+     },
+     "newline": {
+      "n": 354,
+      "cos_to_global": 0.835,
+      "splithalf_floor": 0.9958,
+      "dev_norm_over_b": 0.6791,
+      "dev_decode": [
+       " overl",
+       "\u0017",
+       "",
+       " darker",
+       " expenditures",
+       "WB",
+       " defenseman",
+       "grad"
+      ],
+      "dev_decode_maxcos": 0.0902
+     },
+     "punct": {
+      "n": 1876,
+      "cos_to_global": 0.9903,
+      "splithalf_floor": 0.9947,
+      "dev_norm_over_b": 0.141,
+      "dev_decode": [
+       " effectively",
+       " provocative",
+       " NASL",
+       " Infinity",
+       " Sparkle",
+       " Analyst",
+       " particles",
+       " overcrowd"
+      ],
+      "dev_decode_maxcos": 0.0856
+     },
+     "space": {
+      "n": 260,
+      "cos_to_global": 0.9537,
+      "splithalf_floor": 0.9855,
+      "dev_norm_over_b": 0.3142,
+      "dev_decode": [
+       " supposed",
+       " Need",
+       " preferential",
+       "oper",
+       " adoptive",
+       "ICS",
+       "rentices",
+       " indisc"
+      ],
+      "dev_decode_maxcos": 0.0855
+     },
+     "subword": {
+      "n": 2024,
+      "cos_to_global": 0.9974,
+      "splithalf_floor": 0.9952,
+      "dev_norm_over_b": 0.0726,
+      "dev_decode": [
+       "osa",
+       " calmed",
+       " pamphlet",
+       "req",
+       "cens",
+       " grounded",
+       "):",
+       "hao"
+      ],
+      "dev_decode_maxcos": 0.0774
+     },
+     "word_init": {
+      "n": 2592,
+      "cos_to_global": 0.9969,
+      "splithalf_floor": 0.9944,
+      "dev_norm_over_b": 0.0784,
+      "dev_decode": [
+       " historically",
+       " puberty",
+       "Tar",
+       " rigged",
+       " criminally",
+       " impede",
+       "read",
+       " 1919"
+      ],
+      "dev_decode_maxcos": 0.0817
+     },
+     "_pairwise": {
+      "digit|newline": 0.7923,
+      "digit|punct": 0.9611,
+      "digit|space": 0.9282,
+      "digit|subword": 0.9761,
+      "digit|word_init": 0.9742,
+      "newline|punct": 0.799,
+      "newline|space": 0.7773,
+      "newline|subword": 0.8179,
+      "newline|word_init": 0.8164,
+      "punct|space": 0.9378,
+      "punct|subword": 0.9839,
+      "punct|word_init": 0.9816,
+      "space|subword": 0.9514,
+      "space|word_init": 0.9492,
+      "subword|word_init": 0.9953
+     }
+    }
+   },
+   "decode": {
+    "prose": {
+     "top": [
+      " designs",
+      " kins",
+      "IDES",
+      " Cavs",
+      " Had",
+      " Islands",
+      " Dick",
+      "ody"
+     ],
+     "maxcos": 0.0939
+    },
+    "code": {
+     "top": [
+      " designs",
+      " kins",
+      "IDES",
+      " Cavs",
+      " available",
+      "agonal",
+      " Islands",
+      " Had"
+     ],
+     "maxcos": 0.093
+    },
+    "prose_alt": {
+     "top": [
+      " designs",
+      " kins",
+      "IDES",
+      " Cavs",
+      " Had",
+      "agonal",
+      " Dick",
+      "ody"
+     ],
+     "maxcos": 0.0925
+    },
+    "random_tok": {
+     "top": [
+      " designs",
+      "IDES",
+      " kins",
+      "agonal",
+      "ocese",
+      "ody",
+      " Cavs",
+      " Had"
+     ],
+     "maxcos": 0.0946
+    },
+    "repeat_tok": {
+     "top": [
+      "improve",
+      " jun",
+      " beware",
+      " Cavs",
+      " \".",
+      " Policies",
+      "achel",
+      " tert"
+     ],
+     "maxcos": 0.0894
+    }
+   },
+   "examples": [
+    {
+     "corpus": "prose",
+     "tok": " and",
+     "cls": "word_init",
+     "pos": 46,
+     "ctx": "ow and previously served as speechwriter",
+     "cos_own_bhat": 0.7287,
+     "cos_prose_bhat": 0.7287,
+     "coef": 36.872,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose",
+     "tok": " and",
+     "cls": "word_init",
+     "pos": 216,
+     "ctx": " copy of the GNU General Public License",
+     "cos_own_bhat": 0.7625,
+     "cos_prose_bhat": 0.7625,
+     "coef": 38.579,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose",
+     "tok": " to",
+     "cls": "word_init",
+     "pos": 35,
+     "ctx": ", which will allow him to return",
+     "cos_own_bhat": 0.7447,
+     "cos_prose_bhat": 0.7447,
+     "coef": 37.678,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": "(",
+     "cls": "punct",
+     "pos": 97,
+     "ctx": "    Test whether the centered map s",
+     "cos_own_bhat": 0.7973,
+     "cos_prose_bhat": 0.7779,
+     "coef": 40.34,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": "gender",
+     "cls": "subword",
+     "pos": 45,
+     "ctx": ",B (so token identity/",
+     "cos_own_bhat": 0.7615,
+     "cos_prose_bhat": 0.7567,
+     "coef": 38.531,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "code",
+     "tok": " 4",
+     "cls": "digit",
+     "pos": 84,
+     "ctx": "). Counterfactual item has all",
+     "cos_own_bhat": 0.7505,
+     "cos_prose_bhat": 0.7484,
+     "coef": 37.972,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " in",
+     "cls": "word_init",
+     "pos": 187,
+     "ctx": " ratios of being a primary caregiver",
+     "cos_own_bhat": 0.7703,
+     "cos_prose_bhat": 0.7668,
+     "coef": 38.976,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " class",
+     "cls": "word_init",
+     "pos": 158,
+     "ctx": "u->title}}  <span",
+     "cos_own_bhat": 0.77,
+     "cos_prose_bhat": 0.766,
+     "coef": 38.96,
+     "x_norm": 50.597
+    },
+    {
+     "corpus": "prose_alt",
+     "tok": " class",
+     "cls": "word_init",
+     "pos": 227,
+     "ctx": "/p>\n                               <span",
+     "cos_own_bhat": 0.7717,
+     "cos_prose_bhat": 0.7676,
+     "coef": 39.046,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " ar",
+     "cls": "word_init",
+     "pos": 169,
+     "ctx": "501 corresponding empowermenticz clashes",
+     "cos_own_bhat": 0.7623,
+     "cos_prose_bhat": 0.7548,
+     "coef": 38.569,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " universally",
+     "cls": "word_init",
+     "pos": 149,
+     "ctx": "gious intoxication HOME noisy Es tens.\",",
+     "cos_own_bhat": 0.7808,
+     "cos_prose_bhat": 0.7673,
+     "coef": 39.508,
+     "x_norm": 50.596
+    },
+    {
+     "corpus": "random_tok",
+     "tok": " Ave",
+     "cls": "word_init",
+     "pos": 188,
+     "ctx": "d paramed salmonHaving Bucs contagverson",
+     "cos_own_bhat": 0.7739,
+     "cos_prose_bhat": 0.7644,
+     "coef": 39.156,
+     "x_norm": 50.596
+    }
+   ],
+   "prose_ref_presence": {
+    "prose": {
+     "mean": 0.7646,
+     "std": 0.0203,
+     "min": 0.6602,
+     "p01": 0.7039,
+     "p50": 0.7672,
+     "p99": 0.8034,
+     "max": 0.813,
+     "frac_above_0.5": 1.0
+    },
+    "code": {
+     "mean": 0.7654,
+     "std": 0.0193,
+     "min": 0.673,
+     "p01": 0.7076,
+     "p50": 0.7674,
+     "p99": 0.8045,
+     "max": 0.8114,
+     "frac_above_0.5": 1.0
+    },
+    "prose_alt": {
+     "mean": 0.7632,
+     "std": 0.0201,
+     "min": 0.6634,
+     "p01": 0.707,
+     "p50": 0.7656,
+     "p99": 0.8022,
+     "max": 0.8087,
+     "frac_above_0.5": 1.0
+    },
+    "random_tok": {
+     "mean": 0.7602,
+     "std": 0.0189,
+     "min": 0.6552,
+     "p01": 0.7035,
+     "p50": 0.7634,
+     "p99": 0.7928,
+     "max": 0.8162,
+     "frac_above_0.5": 1.0
+    },
+    "repeat_tok": {
+     "mean": 0.5249,
+     "std": 0.0,
+     "min": 0.5249,
+     "p01": 0.5249,
+     "p50": 0.5249,
+     "p99": 0.5249,
+     "max": 0.5249,
+     "frac_above_0.5": 1.0
+    }
+   },
+   "position_conditional": {
+    "prose": {
+     "n_positions": 240,
+     "pooled_share": 0.7646,
+     "poscond_share_mean": 0.772,
+     "poscond_share_p05": 0.7408,
+     "poscond_share_p95": 0.7866,
+     "cos_poscond_to_pooled_mean": 0.9912,
+     "resid_after_removing_bL_mean": 0.132,
+     "splithalf_floor_mean": 0.9633
+    },
+    "code": {
+     "n_positions": 240,
+     "pooled_share": 0.7706,
+     "poscond_share_mean": 0.7786,
+     "poscond_share_p05": 0.7488,
+     "poscond_share_p95": 0.7919,
+     "cos_poscond_to_pooled_mean": 0.9896,
+     "resid_after_removing_bL_mean": 0.1432,
+     "splithalf_floor_mean": 0.9564
+    }
+   }
+  }
+ }
+}

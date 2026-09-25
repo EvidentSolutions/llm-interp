@@ -13,9 +13,13 @@ shifting toward the multiplier end with depth.
 **Concept DOI:** [10.5281/zenodo.22813297](https://doi.org/10.5281/zenodo.22813297)
 (resolves to the latest version) &nbsp;·&nbsp;
 **This version (v1):** [10.5281/zenodo.22813298](https://doi.org/10.5281/zenodo.22813298) &nbsp;·&nbsp;
-**arXiv:** submitted, under review (arXiv ID pending) &nbsp;·&nbsp;
+**arXiv:** not posted as a standalone note &nbsp;·&nbsp;
 **Author:** Olli Tuomi, Evident Solutions Oy
 ([ORCID 0009-0006-2042-1576](https://orcid.org/0009-0006-2042-1576))
+
+> **Errata (2026-09-24):** a check of every reported number against the data
+> found corrections to v1, none of which changes a conclusion. See
+> [`ERRATA.md`](ERRATA.md).
 
 ## Overview
 
@@ -64,6 +68,7 @@ Scripts and the artifacts they write (public checkpoints, fixed seeds):
 | `census_ladder_gate_spectrum.py` | `ladder-gate-spectrum.json` | Table 5, cross-arm spectrum span |
 | `ladder_content_capacity.py` | `ladder-content-capacity.json` | Table 6, content-capacity reframe |
 | `measure_seed1_relocation.py` | `seed1-relocation.json` | Seed replicate (n=2) |
+| `bl_and_noise.py` | `bl-noise.json` | Pre-normalisation relocation check (the 0.12 vs 0.93 footnote; layer means) |
 | `census_moe_expert_reference.py` | `census-moe-expert-reference.json` | MoE pilot (OLMoE-1B-7B) |
 | `census_moe_shared_vs_routed.py` | `census-moe-shared-vs-routed.json` | MoE shared-vs-routed contrast (Qwen1.5-MoE) |
 | `ffn_variants.py` | — | Feed-forward variants used by the training ladder (incl. `DoubleGatedMLP`) |
@@ -109,8 +114,7 @@ checkpoints.
 
 ## Citation
 
-Archived on Zenodo; also on arXiv (under review, arXiv ID pending — add the
-`eprint` field once assigned).
+Archived on Zenodo.
 
 ```bibtex
 @misc{tuomi2026backgroundglu,

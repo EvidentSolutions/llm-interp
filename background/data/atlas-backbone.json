@@ -1,0 +1,79 @@
+{
+ "massive_dims": [
+  293,
+  743,
+  575,
+  1546,
+  1129,
+  1626,
+  2341,
+  1136
+ ],
+ "correlations": {
+  "dim293": {
+   "entropy": -0.302,
+   "position": 0.122,
+   "logfreq": -0.146
+  },
+  "dim743": {
+   "entropy": -0.08,
+   "position": 0.151,
+   "logfreq": 0.108
+  },
+  "dim575": {
+   "entropy": -0.258,
+   "position": 0.093,
+   "logfreq": -0.204
+  },
+  "dim1546": {
+   "entropy": 0.144,
+   "position": 0.067,
+   "logfreq": 0.096
+  },
+  "dim1129": {
+   "entropy": -0.276,
+   "position": -0.108,
+   "logfreq": -0.418
+  },
+  "dim1626": {
+   "entropy": -0.499,
+   "position": 0.663,
+   "logfreq": -0.084
+  },
+  "dim2341": {
+   "entropy": 0.144,
+   "position": -0.165,
+   "logfreq": -0.118
+  },
+  "dim1136": {
+   "entropy": 0.057,
+   "position": -0.124,
+   "logfreq": 0.185
+  },
+  "bias_proj": {
+   "entropy": 0.368,
+   "position": -0.406,
+   "logfreq": 0.096
+  }
+ },
+ "ablation": {
+  "const_massive": {
+   "dNLL": 0.086,
+   "dEntropy": 0.128,
+   "top1_kept": 0.871,
+   "dNLL_loEnt": 0.013,
+   "dNLL_hiEnt": 0.134,
+   "dNLL_func": 0.19,
+   "dNLL_content": 0.049
+  },
+  "no_bias": {
+   "dNLL": 0.493,
+   "dEntropy": 0.379,
+   "top1_kept": 0.704,
+   "dNLL_loEnt": 0.035,
+   "dNLL_hiEnt": 0.938,
+   "dNLL_func": 0.876,
+   "dNLL_content": 0.361
+  }
+ }
+}

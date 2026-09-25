@@ -1,0 +1,302 @@
+{
+ "n_docs": 12,
+ "skip": 16,
+ "depths": [
+  0.25,
+  0.5,
+  0.75
+ ],
+ "failed": {
+  "facebook/opt-1.3b": "RuntimeError: inconsistent tensor size, expected tensor [2032] and src [2048] to have the same number of elements, but got 2032 and 2048 elements respectively"
+ },
+ "results": {
+  "microsoft/phi-2": {
+   "family": "phi",
+   "n_layers": 32,
+   "has_beta": true,
+   "has_attn_bias": true,
+   "has_mlp_bias": true,
+   "layers": {
+    "L8": {
+     "total": 7.1876,
+     "beta": 1.5264,
+     "C": 1.6027,
+     "e_inv_sigma": 1.08152,
+     "bias_part": 1.7333,
+     "computed": 3.9279,
+     "bias_share": 0.4535
+    },
+    "L16": {
+     "total": 6.8174,
+     "beta": 1.343,
+     "C": 2.3803,
+     "e_inv_sigma": 0.7859,
+     "bias_part": 1.8707,
+     "computed": 3.6038,
+     "bias_share": 0.4714
+    },
+    "L24": {
+     "total": 7.6747,
+     "beta": 1.2503,
+     "C": 3.6287,
+     "e_inv_sigma": 0.52204,
+     "bias_part": 1.8943,
+     "computed": 4.5301,
+     "bias_share": 0.4097
+    }
+   }
+  },
+  "gpt2-medium": {
+   "family": "gpt2",
+   "n_layers": 24,
+   "has_beta": true,
+   "has_attn_bias": true,
+   "has_mlp_bias": true,
+   "layers": {
+    "L6": {
+     "total": 4.2235,
+     "beta": -0.4075,
+     "C": 4.0266,
+     "e_inv_sigma": 0.20222,
+     "bias_part": 0.8143,
+     "computed": 3.8167,
+     "bias_share": 0.0963
+    },
+    "L12": {
+     "total": 3.8871,
+     "beta": 0.1251,
+     "C": 6.8639,
+     "e_inv_sigma": 0.16508,
+     "bias_part": 1.1331,
+     "computed": 2.6288,
+     "bias_share": 0.3237
+    },
+    "L18": {
+     "total": 2.7275,
+     "beta": -0.0771,
+     "C": 7.7618,
+     "e_inv_sigma": 0.10903,
+     "bias_part": 0.8463,
+     "computed": 1.9583,
+     "bias_share": 0.282
+    }
+   }
+  },
+  "EleutherAI/pythia-410m": {
+   "family": "neox",
+   "n_layers": 24,
+   "has_beta": true,
+   "has_attn_bias": true,
+   "has_mlp_bias": true,
+   "layers": {
+    "L6": {
+     "total": 17.8684,
+     "beta": 0.5828,
+     "C": 7.5214,
+     "e_inv_sigma": 1.65931,
+     "bias_part": 12.4804,
+     "computed": 4.8051,
+     "bias_share": 0.7311
+    },
+    "L12": {
+     "total": 16.9506,
+     "beta": -0.0709,
+     "C": 9.2967,
+     "e_inv_sigma": 1.54135,
+     "bias_part": 14.3295,
+     "computed": 2.692,
+     "bias_share": 0.8412
+    },
+    "L18": {
+     "total": 34.1706,
+     "beta": 4.4422,
+     "C": 13.6173,
+     "e_inv_sigma": 0.97267,
+     "bias_part": 13.2451,
+     "computed": 16.4834,
+     "bias_share": 0.5176
+    }
+   }
+  },
+  "EleutherAI/pythia-1.4b": {
+   "family": "neox",
+   "n_layers": 24,
+   "has_beta": true,
+   "has_attn_bias": true,
+   "has_mlp_bias": true,
+   "layers": {
+    "L6": {
+     "total": 22.5463,
+     "beta": -0.379,
+     "C": 6.1642,
+     "e_inv_sigma": 1.00799,
+     "bias_part": 6.2134,
+     "computed": 16.7118,
+     "bias_share": 0.2588
+    },
+    "L12": {
+     "total": 22.3818,
+     "beta": 0.225,
+     "C": 11.4265,
+     "e_inv_sigma": 0.76781,
+     "bias_part": 8.7733,
+     "computed": 13.3835,
+     "bias_share": 0.402
+    },
+    "L18": {
+     "total": 39.7148,
+     "beta": 6.2761,
+     "C": 16.4232,
+     "e_inv_sigma": 0.40544,
+     "bias_part": 6.6586,
+     "computed": 26.78,
+     "bias_share": 0.3257
+    }
+   }
+  },
+  "Qwen/Qwen2.5-1.5B": {
+   "family": "llama",
+   "n_layers": 28,
+   "has_beta": false,
+   "has_attn_bias": false,
+   "has_mlp_bias": false,
+   "layers": {
+    "L7": {
+     "total": 9.367,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.84145,
+     "bias_part": 0.0,
+     "computed": 9.367,
+     "bias_share": 0.0
+    },
+    "L14": {
+     "total": 8.3474,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.67392,
+     "bias_part": 0.0,
+     "computed": 8.3474,
+     "bias_share": 0.0
+    },
+    "L21": {
+     "total": 13.8677,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.39796,
+     "bias_part": 0.0,
+     "computed": 13.8677,
+     "bias_share": 0.0
+    }
+   }
+  },
+  "TinyLlama/TinyLlama-1.1B-Chat-v1.0": {
+   "family": "llama",
+   "n_layers": 22,
+   "has_beta": false,
+   "has_attn_bias": false,
+   "has_mlp_bias": false,
+   "layers": {
+    "L6": {
+     "total": 1.9368,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 19.53606,
+     "bias_part": 0.0,
+     "computed": 1.9368,
+     "bias_share": 0.0
+    },
+    "L11": {
+     "total": 3.0878,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 9.4363,
+     "bias_part": 0.0,
+     "computed": 3.0878,
+     "bias_share": 0.0
+    },
+    "L16": {
+     "total": 4.2314,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 4.76282,
+     "bias_part": 0.0,
+     "computed": 4.2314,
+     "bias_share": 0.0
+    }
+   }
+  },
+  "HuggingFaceTB/SmolLM2-1.7B": {
+   "family": "llama",
+   "n_layers": 24,
+   "has_beta": false,
+   "has_attn_bias": false,
+   "has_mlp_bias": false,
+   "layers": {
+    "L6": {
+     "total": 1.0571,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.38898,
+     "bias_part": 0.0,
+     "computed": 1.0571,
+     "bias_share": 0.0
+    },
+    "L12": {
+     "total": 1.7472,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.22743,
+     "bias_part": 0.0,
+     "computed": 1.7472,
+     "bias_share": 0.0
+    },
+    "L18": {
+     "total": 2.5519,
+     "beta": 0.0,
+     "C": 0.0,
+     "e_inv_sigma": 0.08756,
+     "bias_part": 0.0,
+     "computed": 2.5519,
+     "bias_share": 0.0
+    }
+   }
+  },
+  "facebook/opt-350m": {
+   "family": "opt",
+   "n_layers": 24,
+   "has_beta": true,
+   "has_attn_bias": true,
+   "has_mlp_bias": true,
+   "layers": {
+    "L6": {
+     "total": 19.5867,
+     "beta": -0.1482,
+     "C": -1.6584,
+     "e_inv_sigma": 0.93947,
+     "bias_part": -1.558,
+     "computed": 21.2928,
+     "bias_share": -0.0871
+    },
+    "L12": {
+     "total": 15.771,
+     "beta": -0.1498,
+     "C": -2.6542,
+     "e_inv_sigma": 0.92335,
+     "bias_part": -2.4508,
+     "computed": 18.3715,
+     "bias_share": -0.1649
+    },
+    "L18": {
+     "total": 18.6655,
+     "beta": -0.032,
+     "C": -1.6403,
+     "e_inv_sigma": 0.92714,
+     "bias_part": -1.5208,
+     "computed": 20.2183,
+     "bias_share": -0.0832
+    }
+   }
+  }
+ }
+}

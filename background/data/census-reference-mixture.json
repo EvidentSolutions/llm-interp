@@ -1,0 +1,441 @@
+{
+ "config": {
+  "n_docs": 40,
+  "layers": [
+   6,
+   10,
+   14,
+   22
+  ],
+  "classes": [
+   "word_init",
+   "subword",
+   "punct",
+   "newline",
+   "digit",
+   "space"
+  ],
+  "min_class": 30,
+  "seed": 0
+ },
+ "pi": {
+  "prose": {
+   "word_init": 0.59619,
+   "subword": 0.17885,
+   "punct": 0.14829,
+   "newline": 0.0406,
+   "digit": 0.03022,
+   "space": 0.00586
+  },
+  "code": {
+   "word_init": 0.36,
+   "subword": 0.28111,
+   "punct": 0.26056,
+   "newline": 0.04917,
+   "digit": 0.01306,
+   "space": 0.03611
+  },
+  "prose_alt": {
+   "word_init": 0.55044,
+   "subword": 0.19517,
+   "punct": 0.16574,
+   "newline": 0.04367,
+   "digit": 0.03579,
+   "space": 0.00918
+  },
+  "random_tok": {
+   "word_init": 0.64,
+   "subword": 0.31208,
+   "punct": 0.01354,
+   "newline": 0.0,
+   "digit": 0.03313,
+   "space": 0.00125
+  },
+  "repeat_tok": {
+   "word_init": 1.0,
+   "subword": 0.0,
+   "punct": 0.0,
+   "newline": 0.0,
+   "digit": 0.0,
+   "space": 0.0
+  }
+ },
+ "layers": {
+  "6": {
+   "between_frac": {
+    "prose": 0.025,
+    "code": 0.0424,
+    "prose_alt": 0.0278,
+    "random_tok": 0.0303,
+    "repeat_tok": 0.0
+   },
+   "dev": {
+    "prose": {
+     "word_init": 0.1874,
+     "subword": 0.3916,
+     "punct": 0.5402,
+     "newline": 1.0726,
+     "digit": 0.9085,
+     "space": 1.4457
+    },
+    "code": {
+     "word_init": 0.2811,
+     "subword": 0.3298,
+     "punct": 0.4178,
+     "newline": 1.0341,
+     "digit": 0.8558,
+     "space": 1.086
+    },
+    "prose_alt": {
+     "word_init": 0.2239,
+     "subword": 0.3891,
+     "punct": 0.5173,
+     "newline": 1.0679,
+     "digit": 0.8585,
+     "space": 1.5356
+    },
+    "random_tok": {
+     "word_init": 0.176,
+     "subword": 0.3416,
+     "punct": 0.6335,
+     "digit": 0.7648
+    },
+    "repeat_tok": {
+     "word_init": 0.0
+    }
+   },
+   "line_cos": {
+    "prose|prose_alt": {
+     "word_init": 0.9829,
+     "subword": 0.9629,
+     "punct": 0.9779,
+     "newline": 0.9706,
+     "digit": 0.9631,
+     "space": 0.7568
+    },
+    "prose|code": {
+     "word_init": 0.806,
+     "subword": 0.8227,
+     "punct": 0.8497,
+     "newline": 0.8687,
+     "digit": 0.7975,
+     "space": 0.8342
+    },
+    "prose|random_tok": {
+     "word_init": 0.5195,
+     "subword": 0.5169,
+     "punct": 0.4691,
+     "digit": 0.5363
+    }
+   },
+   "reweight": {
+    "prose->code": {
+     "cos_before": 0.8422,
+     "cos_after": 0.8467,
+     "gap_closed": 0.0285,
+     "tvd_pi": 0.2534
+    },
+    "code->prose": {
+     "cos_before": 0.8422,
+     "cos_after": 0.8332,
+     "gap_closed": -0.0567,
+     "tvd_pi": 0.2534
+    },
+    "prose->random_tok": {
+     "cos_before": 0.5212,
+     "cos_after": 0.5342,
+     "gap_closed": 0.0271,
+     "tvd_pi": 0.142
+    },
+    "prose->prose_alt": {
+     "cos_before": 0.9844,
+     "cos_after": 0.985,
+     "gap_closed": 0.0416,
+     "tvd_pi": 0.0457
+    }
+   }
+  },
+  "10": {
+   "between_frac": {
+    "prose": 0.0201,
+    "code": 0.0353,
+    "prose_alt": 0.0218,
+    "random_tok": 0.0401,
+    "repeat_tok": 0.0
+   },
+   "dev": {
+    "prose": {
+     "word_init": 0.1878,
+     "subword": 0.4,
+     "punct": 0.5136,
+     "newline": 1.0154,
+     "digit": 0.9429,
+     "space": 1.4856
+    },
+    "code": {
+     "word_init": 0.2804,
+     "subword": 0.3358,
+     "punct": 0.4059,
+     "newline": 1.033,
+     "digit": 0.8765,
+     "space": 1.0584
+    },
+    "prose_alt": {
+     "word_init": 0.2237,
+     "subword": 0.3987,
+     "punct": 0.4896,
+     "newline": 0.9843,
+     "digit": 0.8702,
+     "space": 1.5105
+    },
+    "random_tok": {
+     "word_init": 0.1774,
+     "subword": 0.3442,
+     "punct": 0.6604,
+     "digit": 0.757
+    },
+    "repeat_tok": {
+     "word_init": 0.0
+    }
+   },
+   "line_cos": {
+    "prose|prose_alt": {
+     "word_init": 0.9775,
+     "subword": 0.957,
+     "punct": 0.9708,
+     "newline": 0.9526,
+     "digit": 0.9449,
+     "space": 0.7694
+    },
+    "prose|code": {
+     "word_init": 0.7722,
+     "subword": 0.7961,
+     "punct": 0.8232,
+     "newline": 0.8159,
+     "digit": 0.7351,
+     "space": 0.7845
+    },
+    "prose|random_tok": {
+     "word_init": 0.4628,
+     "subword": 0.4906,
+     "punct": 0.4304,
+     "digit": 0.5213
+    }
+   },
+   "reweight": {
+    "prose->code": {
+     "cos_before": 0.8141,
+     "cos_after": 0.8181,
+     "gap_closed": 0.022,
+     "tvd_pi": 0.2534
+    },
+    "code->prose": {
+     "cos_before": 0.8141,
+     "cos_after": 0.8031,
+     "gap_closed": -0.0588,
+     "tvd_pi": 0.2534
+    },
+    "prose->random_tok": {
+     "cos_before": 0.4806,
+     "cos_after": 0.4904,
+     "gap_closed": 0.0188,
+     "tvd_pi": 0.142
+    },
+    "prose->prose_alt": {
+     "cos_before": 0.9793,
+     "cos_after": 0.9801,
+     "gap_closed": 0.0358,
+     "tvd_pi": 0.0457
+    }
+   }
+  },
+  "14": {
+   "between_frac": {
+    "prose": 0.0186,
+    "code": 0.0324,
+    "prose_alt": 0.0202,
+    "random_tok": 0.0409,
+    "repeat_tok": 0.0
+   },
+   "dev": {
+    "prose": {
+     "word_init": 0.1844,
+     "subword": 0.3888,
+     "punct": 0.484,
+     "newline": 0.9462,
+     "digit": 0.9177,
+     "space": 1.4282
+    },
+    "code": {
+     "word_init": 0.2699,
+     "subword": 0.3239,
+     "punct": 0.3861,
+     "newline": 0.9773,
+     "digit": 0.8392,
+     "space": 0.9958
+    },
+    "prose_alt": {
+     "word_init": 0.2204,
+     "subword": 0.3873,
+     "punct": 0.4628,
+     "newline": 0.9245,
+     "digit": 0.8582,
+     "space": 1.479
+    },
+    "random_tok": {
+     "word_init": 0.1712,
+     "subword": 0.3278,
+     "punct": 0.6879,
+     "digit": 0.7576
+    },
+    "repeat_tok": {
+     "word_init": 0.0
+    }
+   },
+   "line_cos": {
+    "prose|prose_alt": {
+     "word_init": 0.9763,
+     "subword": 0.957,
+     "punct": 0.9674,
+     "newline": 0.9451,
+     "digit": 0.9367,
+     "space": 0.7416
+    },
+    "prose|code": {
+     "word_init": 0.7726,
+     "subword": 0.8011,
+     "punct": 0.8057,
+     "newline": 0.7896,
+     "digit": 0.7199,
+     "space": 0.7498
+    },
+    "prose|random_tok": {
+     "word_init": 0.4701,
+     "subword": 0.502,
+     "punct": 0.44,
+     "digit": 0.5167
+    }
+   },
+   "reweight": {
+    "prose->code": {
+     "cos_before": 0.8076,
+     "cos_after": 0.8104,
+     "gap_closed": 0.0149,
+     "tvd_pi": 0.2534
+    },
+    "code->prose": {
+     "cos_before": 0.8076,
+     "cos_after": 0.7988,
+     "gap_closed": -0.0455,
+     "tvd_pi": 0.2534
+    },
+    "prose->random_tok": {
+     "cos_before": 0.4909,
+     "cos_after": 0.4975,
+     "gap_closed": 0.0129,
+     "tvd_pi": 0.142
+    },
+    "prose->prose_alt": {
+     "cos_before": 0.9779,
+     "cos_after": 0.9788,
+     "gap_closed": 0.0386,
+     "tvd_pi": 0.0457
+    }
+   }
+  },
+  "22": {
+   "between_frac": {
+    "prose": 0.0199,
+    "code": 0.0367,
+    "prose_alt": 0.022,
+    "random_tok": 0.0318,
+    "repeat_tok": 0.0
+   },
+   "dev": {
+    "prose": {
+     "word_init": 0.1894,
+     "subword": 0.3961,
+     "punct": 0.5057,
+     "newline": 0.9886,
+     "digit": 0.9654,
+     "space": 1.5574
+    },
+    "code": {
+     "word_init": 0.2711,
+     "subword": 0.3259,
+     "punct": 0.3953,
+     "newline": 0.9851,
+     "digit": 0.8736,
+     "space": 0.9635
+    },
+    "prose_alt": {
+     "word_init": 0.231,
+     "subword": 0.3933,
+     "punct": 0.4869,
+     "newline": 0.9978,
+     "digit": 0.9221,
+     "space": 1.6458
+    },
+    "random_tok": {
+     "word_init": 0.1394,
+     "subword": 0.2645,
+     "punct": 0.6859,
+     "digit": 0.7323
+    },
+    "repeat_tok": {
+     "word_init": 0.0
+    }
+   },
+   "line_cos": {
+    "prose|prose_alt": {
+     "word_init": 0.969,
+     "subword": 0.9524,
+     "punct": 0.9579,
+     "newline": 0.9348,
+     "digit": 0.9449,
+     "space": 0.7097
+    },
+    "prose|code": {
+     "word_init": 0.7211,
+     "subword": 0.7619,
+     "punct": 0.7587,
+     "newline": 0.7907,
+     "digit": 0.7329,
+     "space": 0.7494
+    },
+    "prose|random_tok": {
+     "word_init": 0.4557,
+     "subword": 0.4979,
+     "punct": 0.4895,
+     "digit": 0.5344
+    }
+   },
+   "reweight": {
+    "prose->code": {
+     "cos_before": 0.7566,
+     "cos_after": 0.7605,
+     "gap_closed": 0.0157,
+     "tvd_pi": 0.2534
+    },
+    "code->prose": {
+     "cos_before": 0.7566,
+     "cos_after": 0.7484,
+     "gap_closed": -0.0336,
+     "tvd_pi": 0.2534
+    },
+    "prose->random_tok": {
+     "cos_before": 0.4844,
+     "cos_after": 0.4835,
+     "gap_closed": -0.0018,
+     "tvd_pi": 0.142
+    },
+    "prose->prose_alt": {
+     "cos_before": 0.9709,
+     "cos_after": 0.9719,
+     "gap_closed": 0.0331,
+     "tvd_pi": 0.0457
+    }
+   }
+  }
+ }
+}
