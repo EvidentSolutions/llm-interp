@@ -1,5 +1,14 @@
 # Errata: *Transformer MLP Gate Thresholds Are Couplings to a Carried Reference Direction*
 
+**As of 2026-09-29, the paper served in this folder is the arXiv-accepted text**
+([arXiv:2609.31956](https://arxiv.org/abs/2609.31956)), which already incorporates
+every correction listed below (spot-checked against the shipped `.tex` on 2026-09-29:
+e.g. the 23–59× and 48–56× figures are present as corrected). This errata file is kept
+for the historical record — it documents what changed between the Zenodo v2 text and
+the arXiv text — not as a list of open issues against the current PDF. The Zenodo v2
+release (DOI below) is unaffected and still carries the original, uncorrected numbers;
+whether it gets a v3 matching the arXiv text is an open decision.
+
 Applies to **Version 2** (September 2026),
 DOI [10.5281/zenodo.22723588](https://doi.org/10.5281/zenodo.22723588).
 

@@ -1,5 +1,6 @@
 # Transformer MLP Gate Thresholds Are Couplings to a Carried Reference Direction
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.31956-b31b1b.svg)](https://arxiv.org/abs/2609.31956)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21498411.svg)](https://doi.org/10.5281/zenodo.21498411)
 
 Code, data, and the paper for the finding that a transformer's corpus-mean
@@ -7,18 +8,20 @@ residual direction is not a nuisance to subtract but a functional reference: the
 constant the MLP gate population couples to when it sets its operating point.
 
 **Paper:** [`paper_background.pdf`](paper_background.pdf) &nbsp;·&nbsp;
-**Concept DOI:** [10.5281/zenodo.21498411](https://doi.org/10.5281/zenodo.21498411)
-(resolves to the latest version) &nbsp;·&nbsp;
-**This version (v2):** [10.5281/zenodo.22723588](https://doi.org/10.5281/zenodo.22723588) &nbsp;·&nbsp;
+**arXiv:** [2609.31956](https://arxiv.org/abs/2609.31956) (the version served here) &nbsp;·&nbsp;
+**Zenodo concept DOI:** [10.5281/zenodo.21498411](https://doi.org/10.5281/zenodo.21498411)
+(resolves to the latest archived version) &nbsp;·&nbsp;
+**Zenodo v2 (superseded by the arXiv text above; not yet re-archived to match it):**
+[10.5281/zenodo.22723588](https://doi.org/10.5281/zenodo.22723588) &nbsp;·&nbsp;
 **Author:** Olli Tuomi, Evident Solutions Oy
 ([ORCID 0009-0006-2042-1576](https://orcid.org/0009-0006-2042-1576))
 
-> **Errata (2026-09-24/25):** checks of every reported number against the data,
-> and of the paper's statements about cited work against those works, found
-> corrections to v2, none of which changes a conclusion. See
-> [`ERRATA.md`](ERRATA.md). The scripts and artifacts behind several of the
-> paper's numbers, missing from the v2 release, have been added to `code/` and
-> `data/`.
+> **Now the arXiv-accepted text (2026-09-29).** The paper above is
+> [arXiv:2609.31956](https://arxiv.org/abs/2609.31956), which already incorporates
+> the corrections below. See [`ERRATA.md`](ERRATA.md) for what changed and why —
+> it documents the difference from the Zenodo v2 text, kept for the record. The
+> scripts and artifacts behind several of the paper's numbers, missing from the v2
+> release, have been added to `code/` and `data/`.
 
 ## Overview
 
